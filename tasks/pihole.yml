@@ -20,4 +20,4 @@
       traefik.backend: "pihole"
       traefik.frontend.rule: "Host:pihole.{{ ansible_nas_domain }}"
       traefik.enable: "false"
-      traefik.port: "80"
+      traefik.port: "8070"
