@@ -96,7 +96,7 @@ ansible_nas_hostname: midget
 
 # Sets the timezone for your Ansible NAS
 # You can find a list here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-ansible_nas_timezone: UTC-08:00
+ansible_nas_timezone: UTC
 
 # Update all apt packages when playbook is run
 keep_packages_updated: true
