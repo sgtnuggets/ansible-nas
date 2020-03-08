@@ -15,6 +15,9 @@
 ### Ansible-NAS Applications
 ###
 
+# My Additions
+pihole_enabled: false
+
 # Downloading
 transmission_with_openvpn_enabled: false # Please see docs about how to set VPN credentials
 transmission_enabled: false

@@ -8,6 +8,9 @@
 
 # Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
 
+# My Additions
+pihole_enabled: true
+
 # Example options
 ansible_nas_hostname: ansible-nas
 ansible_nas_timezone: Etc/UTC
