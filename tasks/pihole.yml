@@ -6,13 +6,13 @@
     volumes:
       - './etc-pihole/:/etc/pihole/'
       - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
-    network_mode: "host"
     ports:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
       - "8070:80/tcp"
       - "443:443/tcp"
+    #network_mode: "host"
     env:
       TZ: "{{ ansible_nas_timezone }}"
     restart_policy: unless-stopped
