@@ -1,0 +1,15 @@
+- name: nodered Docker Container
+  docker_container:
+    name: nodered
+    image: nodered/node-red:latest
+    pull: true
+    ports:
+      - 1880:1880
+    #network_mode: "host"
+    volumes:
+      - node-red-data
+    labels:
+      traefik.backend: "nodered"
+      traefik.frontend.rule: "Host:nodered.{{ ansible_nas_domain }}"
+      traefik.enable: "false"
+      traefik.port: "nodered"
