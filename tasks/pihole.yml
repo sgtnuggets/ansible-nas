@@ -6,7 +6,7 @@
     volumes:
       - './etc-pihole/:/etc/pihole/'
       - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
-   dns:
+    dns:
       - 127.0.0.1
       - 1.1.1.1
     network_mode: "host"
@@ -21,7 +21,7 @@
     restart_policy: unless-stopped
     cap_add:
       - NET_ADMIN
-  labels:
+    labels:
       traefik.backend: "pihole"
       traefik.frontend.rule: "Host:pihole.{{ ansible_nas_domain }}"
       traefik.enable: "false"
