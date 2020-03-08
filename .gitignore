@@ -1,7 +1,6 @@
 tests/test.yml
 site
 .vagrant
-roles
 *.retry
 *.log
 
