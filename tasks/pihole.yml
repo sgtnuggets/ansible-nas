@@ -19,8 +19,6 @@
     env:
       TZ: "{{ ansible_nas_timezone }}"
     restart_policy: unless-stopped
-    cap_add:
-      - NET_ADMIN
     labels:
       traefik.backend: "pihole"
       traefik.frontend.rule: "Host:pihole.{{ ansible_nas_domain }}"
