@@ -15,4 +15,4 @@
 # ansible-nas ansible_connection=local ansible_host=localhost
 
 [nas]
-midget ansible_host=192.168.109
+midget ansible_host=192.168.1.109
