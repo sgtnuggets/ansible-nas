@@ -1,6 +1,6 @@
 - name: pihole Docker Container
   docker_container:
-    name:pihole
+    name: pihole
     image: pihole/pihole:latest
     pull: true
     volumes:
