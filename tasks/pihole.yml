@@ -6,9 +6,6 @@
     volumes:
       - './etc-pihole/:/etc/pihole/'
       - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
-    dns:
-      - 127.0.0.1
-      - 1.1.1.1
     network_mode: "host"
     ports:
       - "53:53/tcp"
