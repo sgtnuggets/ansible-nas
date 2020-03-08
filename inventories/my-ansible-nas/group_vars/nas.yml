@@ -10,7 +10,7 @@
 
 # Example options
 ansible_nas_hostname: ansible-nas
-ansible_nas_timezone: Etc/PST
+ansible_nas_timezone: Etc/UTC
 
 ## Enable some applications
 heimdall_enabled: true
@@ -96,7 +96,7 @@ ansible_nas_hostname: midget
 
 # Sets the timezone for your Ansible NAS
 # You can find a list here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-ansible_nas_timezone: PST
+ansible_nas_timezone: UTC-08:00
 
 # Update all apt packages when playbook is run
 keep_packages_updated: true
