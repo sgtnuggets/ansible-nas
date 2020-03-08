@@ -17,6 +17,7 @@
 
 # My Additions
 pihole_enabled: false
+nodered_enabled: true
 
 # Downloading
 transmission_with_openvpn_enabled: false # Please see docs about how to set VPN credentials
