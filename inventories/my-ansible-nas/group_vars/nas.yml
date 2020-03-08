@@ -84,7 +84,7 @@ calibre_enabled: false
 # home static IP address, the cloudflare with the cloudflare_ddns dynamic DNS container enabled, or use a dynamic DNS provider like no-ip.
 # You'll also need to map ports 80 and 443 from your router to your ansible-nas server, then enable the per-app "available_externally"
 # settings.
-traefik_enabled: false
+traefik_enabled: true
 traefik_port_http: "80"
 traefik_port_https: "443"
 traefik_port_ui: "8083"
@@ -96,7 +96,7 @@ ansible_nas_hostname: midget
 
 # Sets the timezone for your Ansible NAS
 # You can find a list here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-ansible_nas_timezone: UTC-08:00
+ansible_nas_timezone: UTC
 
 # Update all apt packages when playbook is run
 keep_packages_updated: true
