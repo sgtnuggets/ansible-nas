@@ -539,7 +539,7 @@ znc_port: "6677"
 ###
 ### Stats
 ###
-grafana_available_externally: "true"
+grafana_available_externally: "false"
 telegraf_data_directory: "{{ docker_home }}/telegraf"
 influxdb_data_directory: "{{ docker_home }}/influxdb"
 grafana_data_directory: "{{ docker_home }}/grafana"

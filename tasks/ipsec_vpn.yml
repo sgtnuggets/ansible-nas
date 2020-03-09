@@ -6,5 +6,5 @@
     ports:
       - "500:500/udp"
       - "4500:4500/udp"
-    #network_mode: "host"
+    privileged: true
     restart_policy: always
