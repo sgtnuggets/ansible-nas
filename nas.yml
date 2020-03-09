@@ -52,6 +52,10 @@
     when: (pihole_enabled | default(False))
     tags: pihole
 
+  - import_tasks: tasks/ipsec_vpn.yml
+    when: (ipsec_vpn_enabled | default(False))
+    tags: ipsec_vpn
+
   - import_tasks: tasks/nodered.yml
     when: (nodered_enabled | default(False))
     tags: nodered

@@ -1,0 +1,10 @@
+- name: ipsec VPN Docker Container
+  docker_container:
+    name: VPNServer
+    image: hwdsl2/ipsec-vpn-server
+    pull: true
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+    #network_mode: "host"
+    restart_policy: always
