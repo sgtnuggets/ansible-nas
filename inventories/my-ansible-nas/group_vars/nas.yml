@@ -10,6 +10,7 @@
 
 # My Additions
 pihole_enabled: true
+nodered_enabled: true
 
 # Example options
 ansible_nas_hostname: ansible-nas
@@ -57,12 +58,12 @@ heimdall_enabled: true
 portainer_enabled: true
 glances_enabled: false
 stats_enabled: true
-guacamole_enabled: true
+guacamole_enabled: false
 netdata_enabled: true
 watchtower_enabled: true
 cloudflare_ddns_enabled: false
 cloudcmd_enabled: false
-virtual_desktop_enabled: true
+virtual_desktop_enabled: false
 
 # Backup & Restore
 duplicati_enabled: true
@@ -75,7 +76,7 @@ firefly_enabled: true
 homeassistant_enabled: true
 mosquitto_enabled: true
 homebridge_enabled: false
-openhab_enabled: true
+openhab_enabled: false
 
 # Books
 calibre_enabled: false
@@ -537,7 +538,7 @@ znc_port: "6677"
 ###
 ### Stats
 ###
-grafana_available_externally: "false"
+grafana_available_externally: "true"
 telegraf_data_directory: "{{ docker_home }}/telegraf"
 influxdb_data_directory: "{{ docker_home }}/influxdb"
 grafana_data_directory: "{{ docker_home }}/grafana"
