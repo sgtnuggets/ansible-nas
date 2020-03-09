@@ -8,3 +8,9 @@
       - "4500:4500/udp"
     privileged: true
     restart_policy: always
+    labels:
+      traefik.backend: "vpn"
+      traefik.frontend.rule: "Host:vpn.{{ ansible_nas_domain }}"
+      traefik.enable: "true"
+      traefik.port: "500"
+      traefik.frontend.headers.SSLRedirect: "true"
