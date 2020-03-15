@@ -13,6 +13,8 @@
       - "8070:80/tcp"
       - "443:443/tcp"
     #network_mode: "host"
+    capabilities:
+      - NET_ADMIN
     env:
       TZ: "{{ ansible_nas_timezone }}"
     restart_policy: unless-stopped
