@@ -12,15 +12,7 @@
 pihole_enabled: true
 nodered_enabled: true
 ipsec_vpn_enabled: true
-
-# Example options
-ansible_nas_hostname: ansible-nas
-ansible_nas_timezone: America/Los Angeles
-
-## Enable some applications
-heimdall_enabled: true
-portainer_enabled: true
-
+organizr_enabled: true
 
 ###
 ### Ansible-NAS Applications

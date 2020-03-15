@@ -36,6 +36,10 @@
     when: (traefik_enabled | default(False))
     tags: traefik
 
+  - import_tasks: tasks/organizr.yml
+    when: (organizr_enabled | default(False))
+    tags: organizr
+
   - import_tasks: tasks/heimdall.yml
     when: (heimdall_enabled | default(False))
     tags: heimdall
