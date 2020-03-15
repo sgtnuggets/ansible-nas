@@ -311,6 +311,12 @@ traefik_data_directory: "{{ docker_home }}/traefik"
 traefik_debug: "false"
 
 ###
+### Organizr
+###
+organizr_available_externally: "false"
+organizr_config_directory: "{{ docker_home }}/organizr/config"
+
+###
 ### Heimdall
 ###
 heimdall_available_externally: "false"
