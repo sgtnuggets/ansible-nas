@@ -1,3 +1,4 @@
+---
 - name: nodered Docker Container
   docker_container:
     name: nodered

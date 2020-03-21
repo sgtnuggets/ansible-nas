@@ -1,3 +1,4 @@
+---
 - name: Create Plex Directories
   file:
     path: "{{ item }}"

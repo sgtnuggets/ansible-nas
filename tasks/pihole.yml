@@ -1,3 +1,4 @@
+---
 - name: pihole Docker Container
   docker_container:
     name: pihole

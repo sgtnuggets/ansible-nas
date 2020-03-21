@@ -1,26 +1,26 @@
 ---
-  - name: Create organizr Directories
-    file:
-      path: "{{ item }}"
-      state: directory
-    with_items:
-      - "{{ organizr_config_directory }}"
+- name: Create organizr Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ organizr_config_directory }}"
 
-  - name: organizr
-    docker_container:
-      name: organizr
-      image: lsiocommunity/organizr:latest
-      volumes:
-        - "{{ organizr_config_directory }}:/config"
-      ports:
-        - "8383:80"
-      env:
-        TZ: "{{ ansible_nas_timezone }}"
-        PUID: "1000"
-        PGID: "1000"
-        restart_policy: unless-stopped
-      labels:
-        traefik.backend: "organizr"
-        traefik.frontend.rule: "Host:organizr.{{ ansible_nas_domain }}"
-        traefik.enable: "{{ organizr_available_externally }}"
-        traefik.port: "5076"
+- name: organizr
+  docker_container:
+    name: organizr
+    image: lsiocommunity/organizr:latest
+    volumes:
+      - "{{ organizr_config_directory }}:/config"
+    ports:
+      - "8383:80"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+      PUID: "1000"
+      PGID: "1000"
+      restart_policy: unless-stopped
+    labels:
+      traefik.backend: "organizr"
+      traefik.frontend.rule: "Host:organizr.{{ ansible_nas_domain }}"
+      traefik.enable: "{{ organizr_available_externally }}"
+      traefik.port: "5076"
