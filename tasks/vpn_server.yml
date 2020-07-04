@@ -1,0 +1,23 @@
+---
+- include_vars: group_vars/vpn_credentials.yml
+
+- name: VPN Server Container
+  docker_container:
+    name: openvpn-server
+    image: linuxserver/openvpn-as
+    pull: true
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+      PUID: "{{ sonarr_user_id }}"
+      PGID: "{{ sonarr_group_id }}"
+    ports:
+      - "943:943"
+      - "9443:9443"
+      - "1194:1194"
+    volumes:
+      - "{{ docker_home }}/openvpn-server/config:/config:rw"
+    devices:
+      - /dev/net/tun
+    capabilities:
+      - NET_ADMIN
+    restart_policy: unless-stopped
