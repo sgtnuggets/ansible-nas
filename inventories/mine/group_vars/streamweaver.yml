@@ -9,6 +9,8 @@
 
 # Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
 
+# ansible-playbook -i inventories/mine/inventory nas.yml -b -K --limit mediaserver
+
 # Example options
 ansible_nas_hostname: streamweaver
 ansible_nas_timezone: Etc/GMT-8
