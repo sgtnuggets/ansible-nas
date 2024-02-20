@@ -14,6 +14,7 @@
 # Example options
 ansible_nas_hostname: orangpipc
 ansible_nas_timezone: Etc/GMT-8
+logging_stack_enabled: true
 
 ## Enable some applications
 dashy_enabled: true
