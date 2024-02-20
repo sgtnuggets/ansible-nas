@@ -19,7 +19,7 @@ ansible_nas_timezone: Etc/GMT-8
 dashy_enabled: true
 portainer_enabled: true
 # pihole_enabled: true
-esphome_enabled: true
-homeassistant_enabled: true
+esphome_enabled: false
+homeassistant_enabled: false
 # hyperion_enabled: true
 
