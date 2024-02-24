@@ -1,6 +1,6 @@
 ---
 - name: Ansible-NAS
-  hosts: stinker
+  hosts: all
 
   roles:
     ###
@@ -58,9 +58,9 @@
     ###
     ### Applications
     ###
-    # - role: airsonic
-    #   tags:
-    #     - airsonic
+    - role: airsonic
+      tags:
+        - airsonic
 
     # - role: bazarr
     #   tags:
