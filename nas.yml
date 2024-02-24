@@ -1,6 +1,6 @@
 ---
 - name: Ansible-NAS
-  hosts: all
+  hosts: armserver
 
   roles:
     ###
