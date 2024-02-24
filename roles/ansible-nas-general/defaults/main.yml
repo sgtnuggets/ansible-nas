@@ -1,6 +1,6 @@
 ---
 # Sets the hostname of your Ansible NAS
-ansible_nas_hostname: orangepipc
+ansible_nas_hostname: stinker
 
 # Update all apt packages when playbook is run
 keep_packages_updated: false

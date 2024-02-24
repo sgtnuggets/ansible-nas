@@ -1,3 +1,4 @@
+---
 ##                       ._____.   .__
 ##  _____    ____   _____|__\_ |__ |  |   ____             ____ _____    ______
 ##  \__  \  /    \ /  ___/  || __ \|  | _/ __ \   ______  /    \\__  \  /  ___/
@@ -6,20 +7,20 @@
 ##       \/     \/     \/        \/          \/               \/     \/     \/
 ##     a n s i b l e - n a s      https://github.com/davestephens/ansible-nas
 
+# Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
 
-[all]
-## Example when running from a remote workstation
-# ansible-nas ansible_host=192.168.1.30
+# ansible-playbook -i inventories/mine/inventory nas.yml -b -K --limit armserver
 
-## Example when running directly on your Ansible-NAS server
-# ansible-nas ansible_connection=local ansible_host=localhost
+# Example options
+ansible_nas_hostname: stinker
+ansible_nas_timezone: Etc/GMT-8
+logging_stack_enabled: true
 
-# [nas]
-# ansible-nas
+## Enable some applications
+dashy_enabled: true
+portainer_enabled: true
+# pihole_enabled: true
+esphome_enabled: true
+homeassistant_enabled: true
+# hyperion_enabled: true
 
-[mediacenter]
-streamweaver ansible_connection=local ansible_host=localhost
-
-[armserver]
-# orangepipc ansible_connection=local ansible_host=localhost
-stinker ansible_connection=local ansible_host=localhost
