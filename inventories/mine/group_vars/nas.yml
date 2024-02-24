@@ -15,6 +15,7 @@
 ansible_nas_hostname: stinker
 ansible_nas_timezone: Etc/GMT-8
 logging_stack_enabled: true
+airsonic_enabled: true
 
 ## Enable some applications
 dashy_enabled: true

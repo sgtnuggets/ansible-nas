@@ -1,6 +1,0 @@
-mediaservers:
-  hosts:
-    streamweaver:
-armservers:
-  hosts:
-    orangpipc:
