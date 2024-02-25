@@ -60,3 +60,20 @@ esphome_enabled: true
 homeassistant_enabled: true
 # hyperion_enabled: true
 
+
+
+deluge_enabled: true
+bazarr_enabled: true
+duplicati_enabled: true
+jackett_enabled: true
+lidarr_enabled: true
+netdata_enabled: true
+nzbget_enabled: true
+ombi_enabled: true
+overseerr_enabled: true
+plex_enabled: true
+radarr_enabled: true
+sabnzbd_enabled: true
+sonarr_enabled: true
+tautulli_enabled: true
+transmission-with-openvpn_enabled: true
