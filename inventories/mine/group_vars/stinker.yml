@@ -50,6 +50,7 @@ ansible_nas_timezone: Etc/GMT-8
 # logging_stack_enabled: true
 airsonic_enabled: true
 dashy_enabled: true
+organizr_enabled: true
 portainer_enabled: true
 # pihole_enabled: true
 esphome_enabled: true
