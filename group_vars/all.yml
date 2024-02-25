@@ -215,13 +215,13 @@ samba_map_to_guest: Bad Password
 samba_netbios_name: "{{ ansible_nas_hostname }}"
 
 
-## Enable some applications
-logging_stack_enabled: true
-airsonic_enabled: true
-dashy_enabled: true
-portainer_enabled: true
-# pihole_enabled: true
-esphome_enabled: true
-homeassistant_enabled: true
-# hyperion_enabled: true
+# ## Enable some applications
+# logging_stack_enabled: true
+# airsonic_enabled: true
+# dashy_enabled: true
+# portainer_enabled: true
+# # pihole_enabled: true
+# esphome_enabled: true
+# homeassistant_enabled: true
+# # hyperion_enabled: true
 
