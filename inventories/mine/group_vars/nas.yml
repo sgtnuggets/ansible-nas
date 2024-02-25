@@ -76,4 +76,4 @@ radarr_enabled: true
 sabnzbd_enabled: true
 sonarr_enabled: true
 tautulli_enabled: true
-transmission-with-openvpn_enabled: true
+transmission_with_openvpn_enabled: true
