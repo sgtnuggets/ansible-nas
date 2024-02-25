@@ -47,7 +47,7 @@ ansible_nas_hostname: stinker
 ansible_nas_timezone: Etc/GMT-8
 
 ## Enable some applications
-logging_stack_enabled: true
+# logging_stack_enabled: true
 airsonic_enabled: true
 dashy_enabled: true
 portainer_enabled: true
