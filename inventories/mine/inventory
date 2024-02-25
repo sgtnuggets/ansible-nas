@@ -15,14 +15,13 @@
 ## Example when running directly on your Ansible-NAS server
 # ansible-nas ansible_connection=local ansible_host=localhost
 
-[nas]
-stinker ansible_connection=local ansible_host=localhost
+# [nas]
+# stinker ansible_connection=local ansible_host=localhost
 # ansible-nas
 
 # [mediacenter]
 # streamweaver ansible_connection=local ansible_host=localhost
 
-# [armserver]
-# # orangepipc ansible_connection=local ansible_host=localhost
-# stinker ansible_connection=local ansible_host=localhost
-# stinker ansible_host=192.168.1.154
+[armserver]
+stinker ansible_connection=local ansible_host=localhost
+# orangepipc ansible_connection=local ansible_host=localhost
