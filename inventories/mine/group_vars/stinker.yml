@@ -9,7 +9,7 @@
 
 # Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
 
-# ansible-playbook -i inventories/mine/inventory ./nas.yml -b -K --limit armserver
+# ansible-playbook -i ./inventories/mine/inventory ./nas.yml -b -K --limit nas
 
 # Will be added to the docker group to give user command line access to docker
 ansible_nas_user: jake
@@ -47,8 +47,8 @@ ansible_nas_hostname: stinker
 ansible_nas_timezone: Etc/GMT-8
 
 ## Enable some applications
-# logging_stack_enabled: true
-airsonic_enabled: true
+logging_stack_enabled: false
+airsonic_enabled: false
 dashy_enabled: true
 organizr_enabled: true
 portainer_enabled: true
