@@ -58,6 +58,11 @@
     ###
     ### Applications
     ###
+
+    - role: pihole
+      tags:
+        - pihole
+
     - role: airsonic
       tags:
         - airsonic
@@ -297,10 +302,6 @@
     - role: paperless_ng
       tags:
         - paperless_ng
-
-    - role: pihole
-      tags:
-        - pihole
 
     - role: piwigo
       tags:
