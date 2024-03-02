@@ -1,0 +1,16 @@
+---
+pihole_enabled: false
+pihole_available_externally: false
+
+# directories
+pihole_data_directory: "{{ docker_home }}/pihole"
+
+# network
+pihole_port: "8070"
+pihole_hostname: "pihole"
+
+# specs
+# pihole_memory: 1g
+
+# docker
+pihole_container_name: pihole

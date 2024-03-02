@@ -77,3 +77,4 @@ sabnzbd_enabled: true
 sonarr_enabled: true
 tautulli_enabled: true
 transmission_with_openvpn_enabled: true
+pihole_enabled: true

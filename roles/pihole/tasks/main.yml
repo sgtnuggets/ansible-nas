@@ -1,0 +1,48 @@
+---
+- name: Start pihole
+  block:
+    - name: Create pihole Directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ pihole_data_directory }}/etc-pihole:/etc/pihole/"
+        - "{{ pihole_data_directory }}/etc-dnsmasq.d:/etc/dnsmasq.d/"
+
+    - name: pihole Docker Container
+      community.docker.docker_container:
+        name: "{{ pihole_container_name }}"
+        image: pihole/pihole:latest
+        pull: true
+        volumes:
+          - "{{ pihole_data_directory }}/etc-pihole:/etc/pihole/:rw"
+          - "{{ pihole_data_directory }}/etc-dnsmasq.d:/etc/dnsmasq.d/:rw"
+        ports:
+          - "53:53/tcp"
+          - "53:53/udp"
+          - "67:67/udp"
+          - "8070:80/tcp"
+          - "8443:443/tcp"
+        restart_policy: unless-stopped
+        # memory: "{{ pihole_memory }}"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+        dns_servers:
+          - 127.0.0.1
+          - 45.90.30.231
+        labels:
+          traefik.enable: "{{ pihole_available_externally | string }}"
+          traefik.http.routers.pihole.rule: "Host(`{{ pihole_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.pihole.tls.certresolver: "letsencrypt"
+          traefik.http.routers.pihole.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.pihole.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.pihole.loadbalancer.server.port: "8070"
+  when: pihole_enabled is true
+
+- name: Stop pihole
+  block:
+    - name: Stop pihole
+      community.docker.docker_container:
+        name: "{{ pihole_container_name }}"
+        state: absent
+  when: pihole_enabled is false
