@@ -23,13 +23,15 @@
           - "67:67/udp"
           - "8070:80/tcp"
           - "8443:443/tcp"
-        restart_policy: unless-stopped
+        capabilities:
+          - NET_ADMIN
         # memory: "{{ pihole_memory }}"
         env:
           TZ: "{{ ansible_nas_timezone }}"
         dns_servers:
           - 127.0.0.1
           - 45.90.30.231
+        restart_policy: unless-stopped
         labels:
           traefik.enable: "{{ pihole_available_externally | string }}"
           traefik.http.routers.pihole.rule: "Host(`{{ pihole_hostname }}.{{ ansible_nas_domain }}`)"
