@@ -61,6 +61,13 @@
           prometheus.io/port: "3100"
           prometheus.io/path: "/metrics"
 
+    - name: Create Grafana Datasoures directory
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ stats_grafana_config_directory }}/provisioning/datasources/"
+
     - name: Template Grafana Loki data source
       ansible.builtin.template:
         src: grafana-datasource.yml
