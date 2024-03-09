@@ -1,5 +1,5 @@
 ---
-stats_enabled: false
+stats_enabled: true
 stats_internet_speed_test_enabled: false
 stats_prometheus_available_externally: false
 stats_grafana_available_externally: false
