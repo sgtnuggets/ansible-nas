@@ -61,13 +61,18 @@
           prometheus.io/port: "3100"
           prometheus.io/path: "/metrics"
 
+    - name: Create Lidarr Directory
+      ansible.builtin.file:
+        path: "{{ lidarr_data_directory }}"
+        state: directory
+
     - name: Create Grafana Directories
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
-        owner: "472"
-        recurse: yes
-      changed_when: false
+      #   owner: "472"
+      #   recurse: yes
+      # changed_when: false
       with_items:
         - "{{ stats_grafana_data_directory }}"
         - "{{ stats_grafana_config_directory }}"
