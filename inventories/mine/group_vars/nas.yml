@@ -60,19 +60,20 @@ homeassistant_enabled: true
 
 
 
-deluge_enabled: true
-bazarr_enabled: true
+# deluge_enabled: true
+# bazarr_enabled: true
 duplicati_enabled: true
-jackett_enabled: true
-lidarr_enabled: true
+duplicacy_enabled: true
+# jackett_enabled: true
+# lidarr_enabled: true
 netdata_enabled: true
-nzbget_enabled: true
-ombi_enabled: true
+# nzbget_enabled: true
+# ombi_enabled: true
 overseerr_enabled: true
 plex_enabled: true
-radarr_enabled: true
-sabnzbd_enabled: true
-sonarr_enabled: true
-tautulli_enabled: true
-transmission_with_openvpn_enabled: true
+# radarr_enabled: true
+# sabnzbd_enabled: true
+# sonarr_enabled: true
+# tautulli_enabled: true
+# transmission_with_openvpn_enabled: true
 pihole_enabled: false
