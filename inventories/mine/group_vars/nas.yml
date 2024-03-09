@@ -53,27 +53,29 @@ airsonic_enabled: false
 dashy_enabled: true
 organizr_enabled: true
 portainer_enabled: true
-# pihole_enabled: true
 esphome_enabled: true
 homeassistant_enabled: true
-# hyperion_enabled: true
+# hyperion_enabled: false
 
 
 
-# deluge_enabled: true
-# bazarr_enabled: true
 duplicati_enabled: true
 duplicacy_enabled: true
-# jackett_enabled: true
-# lidarr_enabled: true
 netdata_enabled: true
-# nzbget_enabled: true
-# ombi_enabled: true
 overseerr_enabled: true
 plex_enabled: true
-# radarr_enabled: true
-# sabnzbd_enabled: true
-# sonarr_enabled: true
-# tautulli_enabled: true
-# transmission_with_openvpn_enabled: true
+
+
+## Disabled Stuff
+deluge_enabled: false
+bazarr_enabled: false
+radarr_enabled: false
+sabnzbd_enabled: false
+sonarr_enabled: false
+tautulli_enabled: false
+transmission_with_openvpn_enabled: false
 pihole_enabled: false
+jackett_enabled: false
+lidarr_enabled: false
+nzbget_enabled: false
+ombi_enabled: false
