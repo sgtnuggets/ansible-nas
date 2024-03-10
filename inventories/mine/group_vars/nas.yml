@@ -62,11 +62,11 @@ homeassistant_enabled: true
 duplicati_enabled: true
 duplicacy_enabled: true
 netdata_enabled: true
-overseerr_enabled: true
 plex_enabled: true
 
 
 ## Disabled Stuff
+overseerr_enabled: false
 deluge_enabled: false
 bazarr_enabled: false
 radarr_enabled: false
