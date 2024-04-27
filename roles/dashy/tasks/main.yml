@@ -20,7 +20,7 @@
         image: lissy93/dashy:latest
         pull: true
         ports:
-          - "{{ dashy_port }}:80"
+          - "{{ dashy_port }}:8080"
         restart_policy: unless-stopped
         memory: "{{ dashy_memory }}"
         volumes:
