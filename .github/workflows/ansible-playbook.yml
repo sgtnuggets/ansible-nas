@@ -27,13 +27,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+      # - name: Set up Python 3
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '3.x'
 
-      - name: Install Ansible
-        run: pip3 install ansible
+      # - name: Install Ansible
+      #   run: pip3 install ansible
 
       - name: Install roles
         run: ansible-galaxy install -r requirements.yml
