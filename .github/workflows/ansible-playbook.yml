@@ -42,4 +42,4 @@ jobs:
         # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass
         run: ansible-playbook -i ./inventories/mine/inventory ./nas.yml -K --become-user jake --extra-vars "ansible_sudo_pass=$PASSWORD" --limit nas
         env: # Or as an environment variable
-              PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
+          PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
