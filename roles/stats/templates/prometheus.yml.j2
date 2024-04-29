@@ -57,7 +57,7 @@ scrape_configs:
       - targets:
         - 192.168.1.1 # Router
         labels:
-          hostname: router
+          hostname: router.home
     metrics_path: /snmp
     params:
       module: [ddwrt]
