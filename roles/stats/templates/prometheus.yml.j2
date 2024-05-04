@@ -3,23 +3,11 @@ global:
   scrape_interval: {{ stats_collection_interval }} # Set the scrape interval to every 15 seconds. Default is every 1 minute.
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
   # scrape_timeout is set to the global default (10s).
-
+ 
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
   external_labels:
       monitor: 'ddwrt'
-
-# Load and evaluate rules in this file every 'evaluation_interval' seconds.
-# rule_files:
-#   - 'alert.rules'
-
-alerting:
-  alertmanagers:
-  - scheme: http
-    static_configs:
-    - targets:
-      - "alertmanager:9093"
-
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -52,7 +40,7 @@ scrape_configs:
                     "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:8083"
                  ]
 
-  - job_name: 'snmp'
+- job_name: 'snmp'
     static_configs:
       - targets:
         - 192.168.1.1 # Router
