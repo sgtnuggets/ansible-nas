@@ -3,7 +3,7 @@ global:
   scrape_interval: {{ stats_collection_interval }} # Set the scrape interval to every 15 seconds. Default is every 1 minute.
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
   # scrape_timeout is set to the global default (10s).
- 
+
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
   external_labels:
@@ -40,26 +40,26 @@ scrape_configs:
                     "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:8083"
                  ]
 
-- job_name: 'snmp'
-    static_configs:
-      - targets:
-        - 192.168.1.1 # Router
-        labels:
-          hostname: router.home
-    metrics_path: /snmp
-    params:
-      module: [ddwrt]
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - source_labels: [mib]           # Allow per-target MIB override
-        target_label: __param_module   # via 'mib' label
-      - target_label: mib
-        replacement: ''                # Remove the `mib` label
-      - target_label: __address__
-        replacement: 'snmp-exporter:9116'  # SNMP exporter.
+  - job_name: 'snmp'
+      static_configs:
+        - targets:
+          - 192.168.1.1 # Router
+          labels:
+            hostname: router.home
+      metrics_path: /snmp
+      params:
+        module: [ddwrt]
+      relabel_configs:
+        - source_labels: [__address__]
+          target_label: __param_target
+        - source_labels: [__param_target]
+          target_label: instance
+        - source_labels: [mib]           # Allow per-target MIB override
+          target_label: __param_module   # via 'mib' label
+        - target_label: mib
+          replacement: ''                # Remove the `mib` label
+        - target_label: __address__
+          replacement: 'snmp-exporter:9116'  # SNMP exporter.
 
 
 {% if stats_internet_speed_test_enabled %}
