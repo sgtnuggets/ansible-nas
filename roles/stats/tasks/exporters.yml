@@ -22,6 +22,19 @@
         restart_policy: unless-stopped
         memory: "{{ stats_speedtest_exporter_memory }}"
       when: stats_internet_speed_test_enabled
+
+    - name: SNMP Exporter Docker Container
+      community.docker.docker_container:
+        name: "snmp-exporter"
+        image: "prom/snmp-exporter"
+        pull: true
+        ports:
+          - "9116:9116"
+        volumes:
+          - "{{ docker_home }}/stats/files/snmp.yml:/etc/snmp_exporter/snmp.yml"
+        command: "--config.file=/etc/snmp_exporter/snmp.yml"
+        restart_policy: unless-stopped
+      # when: stats_internet_speed_test_enabled
   when: stats_enabled is true
 
 - name: Stop Exporters
