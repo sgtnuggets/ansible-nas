@@ -34,7 +34,6 @@
           - "{{ docker_home }}/stats/files/:/etc/snmp_exporter/"
         command: "--config.file=/etc/snmp_exporter/snmp.yml"
         restart_policy: unless-stopped
-      # when: stats_internet_speed_test_enabled
   when: stats_enabled is true
 
 - name: Stop Exporters
