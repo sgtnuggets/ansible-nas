@@ -16,7 +16,7 @@
           PUID: "1000"
           PGID: "1000"
           SERVERURL: jakesticka.duckdns.org
-          SERVERPORT: "51820"
+          SERVERPORT: "51821"
           PEERS: "1"
           PEERDNS: auto
         restart_policy: unless-stopped
