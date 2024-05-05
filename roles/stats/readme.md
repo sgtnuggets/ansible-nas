@@ -1,0 +1,1 @@
+I haven't found out how to automatically deploy snmp.yml to the spot it needs to go yet. 
