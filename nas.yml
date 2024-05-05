@@ -419,6 +419,10 @@
       tags:
         - watchtower
 
+    - role: wireguard
+      tags:
+        - wireguard
+        
     - role: wireshark
       tags:
         - wireshark
