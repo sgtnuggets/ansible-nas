@@ -1,0 +1,24 @@
+---
+wireguard_enabled: true
+
+# Sets the 6 field cron schedule to use for checks and updates. This will check at 5am daily.
+wireguard_cron_schedule: 0 0 5 * * *
+
+# Sets the wireguard Docker start command. Different options can be supplied based on whether you want to receive
+# notifications or not, some examples are provided below. See https://containrrr.dev/wireguard/arguments/ for more options.
+
+# No notifications
+wireguard_command: "--schedule '{{ wireguard_cron_schedule }}'"
+
+# Email notifications
+# wireguard_command: "--schedule '{{ wireguard_cron_schedule }}' --notifications 'email' --notification-email-from 'ansible@nas.com' --notification-email-to '{{ ansible_nas_email }}' --notification-email-server 'my.email.server.com' --notification-email-server-port '25' --notification-email-server-user 'email_username' --notification-email-server-password 'top-secret'"
+
+# Slack notifications
+# wireguard_command: "--schedule '{{ wireguard_cron_schedule }}' --notifications 'slack' --notification-slack-hook-url 'https://hooks.slack.com/services/xxx/yyyyyyyyyyyyyyy' --notification-slack-identifier 'ansible-nas'"
+
+# specs
+wireguard_memory: 1g
+
+wireguard_container_name: "wireguard"
+wireguard_image_name: "containrrr/wireguard"
+wireguard_image_version: "latest"

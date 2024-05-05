@@ -1,0 +1,36 @@
+---
+- name: Start wireguard
+  block:
+    - name: Wireguard Docker Container
+      community.docker.docker_container:
+        name: "wireguard"
+        image: "ghcr.io/linuxserver/wireguard"
+        pull: true
+        volumes:
+          - "{{ wireguardserver_config_directory }}:/config"
+          - /lib/modules:/lib/modules
+        ports:
+        - 51820:51820/udp
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+          PUID: "1000"
+          PGID: "1000"
+          SERVERURL: home.jakesticka.com
+          SERVERPORT: "51820"
+          PEERS: "1"
+          PEERDNS: auto
+        restart_policy: unless-stopped
+        sysctls:
+          net.ipv4.conf.all.src_valid_mark: "1"
+        capabilities:
+          - NET_ADMIN
+          - SYS_MODULE
+  when: wireguard_enabled is true
+
+- name: Stop wireguard
+  block:
+    - name: Stop wireguard
+      community.docker.docker_container:
+        name: "wireguard"
+        state: absent
+  when: wireguard_enabled is false
