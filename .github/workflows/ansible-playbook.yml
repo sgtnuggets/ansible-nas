@@ -40,9 +40,8 @@ jobs:
 
       - name: Run playbook
         # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass
-        run: ansible-playbook -i ./inventories/mine/inventory ./nas.yml -b --become-method=sudo --become-password-file=/home/jake/workspace/sudo_password.txt --limit nas --extra-vars "STATS_HASS_LONG_LIVED_ACCESS_TOKEN=$HASSPASS GODADDY_API_KEY=$GODADDY_API_KEY GODADDY_API_SECRET=$GODADDY_API_SECRET"
+        run: ansible-playbook -i ./inventories/mine/inventory ./nas.yml -b --become-method=sudo --become-password-file=/home/jake/workspace/sudo_password.txt --limit nas --extra-vars "STATS_HASS_LONG_LIVED_ACCESS_TOKEN=$HASSPASS CLOUDFLARE_DNS_EDIT=$CLOUDFLARE_DNS_EDIT"
         env: # Or as an environment variable
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
           HASSPASS: ${{ secrets.GSTATS_HASS_LONG_LIVED_ACCESS_TOKEN }}
-          GODADDY_API_KEY: ${{ secrets.GODADDY_API_KEY }}
-          GODADDY_API_SECRET: ${{ secrets.GODADDY_API_SECRET }}
+          CLOUDFLARE_DNS_EDIT: ${{ secrets.CLOUDFLARE_DNS_EDIT }}
