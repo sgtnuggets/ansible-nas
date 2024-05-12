@@ -66,7 +66,7 @@ plex_enabled: true
 
 
 ## Disabled Stuff
-overseerr_enabled: false
+overseerr_enabled: true
 deluge_enabled: false
 bazarr_enabled: false
 radarr_enabled: false
