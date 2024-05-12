@@ -78,4 +78,4 @@ pihole_enabled: false
 jackett_enabled: false
 lidarr_enabled: false
 nzbget_enabled: false
-ombi_enabled: false
+ombi_enabled: true
