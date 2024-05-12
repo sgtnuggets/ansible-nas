@@ -25,6 +25,7 @@ traefik_environment_variables:
   # GODADDY_API_KEY: "{{ GODADDY_API_KEY }}"
   # GODADDY_API_SECRET: "{{ GODADDY_API_SECRET }}"
   CF_API_KEY: "{{ CLOUDFLARE_DNS_EDIT }}"
+  CF_API_EMAIL: "{{ ansible_nas_email }}"
 # Ansible-NAS requests a wildcard certificate for your domain, so there should be no reason to have to use the staging
 # letsencrypt acme server. If you do want to flip between staging/production, you might need to stop Traefik and clear
 # the "{{ docker_home }}/traefik" after changing this setting.
