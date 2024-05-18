@@ -60,7 +60,7 @@ homeassistant_enabled: true
 
 
 duplicati_enabled: true
-duplicacy_enabled: true
+duplicacy_enabled: false
 netdata_enabled: true
 plex_enabled: true
 
