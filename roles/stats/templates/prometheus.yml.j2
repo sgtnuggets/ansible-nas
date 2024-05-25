@@ -107,8 +107,8 @@ scrape_configs:
   - job_name: "homeassistant"
     metrics_path: /api/prometheus
     authorization:
-      credentials: "{{ stats_hass_long_lived_access_token | default("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI2NmE4ZGU5OWQ1ZjQ0ZjhjOTIwZTRlMjgzZjMwMjNiZCIsImlhdCI6MTcxNjU5NzE5NywiZXhwIjoyMDMxOTU3MTk3fQ.HvLuMOhpEy16h1hLNb3GPEu5sh2x7fqJKDC-BvEL5BY") }}"
+      credentials: "{{ stats_hass_long_lived_access_token | default("abcd") }}"
     static_configs:
       - targets: [
-                    "192.168.1.2:8123"
+                    "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:8123"
                  ]
