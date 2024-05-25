@@ -43,5 +43,5 @@ jobs:
         run: ansible-playbook -i ./inventories/mine/inventory ./nas.yml -b --become-method=sudo --become-password-file=/home/jake/workspace/sudo_password.txt --limit nas --extra-vars "STATS_HASS_LONG_LIVED_ACCESS_TOKEN=$HASSPASS CLOUDFLARE_DNS_EDIT=$CLOUDFLARE_DNS_EDIT"
         env: # Or as an environment variable
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
-          HASSPASS: ${{ secrets.GSTATS_HASS_LONG_LIVED_ACCESS_TOKEN }}
+          HASSPASS: ${{ secrets.STATS_HASS_LONG_LIVED_ACCESS_TOKEN }}
           CLOUDFLARE_DNS_EDIT: ${{ secrets.CLOUDFLARE_DNS_EDIT }}
