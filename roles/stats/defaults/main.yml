@@ -56,4 +56,4 @@ stats_speedtest_collection_interval: 1h
 #  - 192.168.1.1:9100
 
 # uncomment to scrape metrics from HomeAssistant. You'll need to create a long lived access token.
-# stats_hass_long_lived_access_token: addfasdfasdf
+stats_hass_long_lived_access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI2NmE4ZGU5OWQ1ZjQ0ZjhjOTIwZTRlMjgzZjMwMjNiZCIsImlhdCI6MTcxNjU5NzE5NywiZXhwIjoyMDMxOTU3MTk3fQ.HvLuMOhpEy16h1hLNb3GPEu5sh2x7fqJKDC-BvEL5BY
