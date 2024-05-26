@@ -46,6 +46,7 @@
         env:
           PIHOLE_HOSTNAME: "192.168.1.2"
           # PIHOLE_PASSWORD: ""
+          PIHOLE_PORT: "888"
           PORT: "{{ stats_pihole_exporter_port }}"
         restart_policy: unless-stopped
       when: stats_pihole_exporter_enabled
