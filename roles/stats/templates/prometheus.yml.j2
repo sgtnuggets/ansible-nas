@@ -112,3 +112,7 @@ scrape_configs:
       - targets: [
                     "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:8123"
                  ]
+
+  - job_name: 'pihole'
+    static_configs:
+      - targets: ['{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:9617']
