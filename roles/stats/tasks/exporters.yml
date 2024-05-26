@@ -25,15 +25,31 @@
 
     - name: SNMP Exporter Docker Container
       community.docker.docker_container:
-        name: "snmp-exporter"
-        image: "prom/snmp-exporter"
+        name: "{{ stats_snmp_exporter_container_name }}"
+        image: "{{ stats_snmp_exporter_docker_image_name }}:{{ stats_snmp_exporter_docker_image_version }}"
         pull: true
         ports:
-          - "9116:9116"
+          - "{{ stats_snmp_exporter_port }}:9116"
         volumes:
           - "{{ docker_home }}/stats/files/:/etc/snmp_exporter/"
         command: "--config.file=/etc/snmp_exporter/snmp.yml"
         restart_policy: unless-stopped
+      when: stats_snmp_exporter_enabled
+
+    - name: PiHole Exporter Docker Container
+      community.docker.docker_container:
+        name: "{{ stats_pihole_exporter_container_name }}"
+        image: "{{ stats_pihole_exporter_docker_image_name }}:{{ stats_pihole_exporter_docker_image_version }}"
+        pull: true
+        ports:
+          - "{{ stats_pihole_exporter_port }}:9617"
+        env:
+          PIHOLE_HOSTNAME: "192.168.1.2"
+          PIHOLE_PASSWORD: ""
+          PORT: "{{ stats_pihole_exporter_port }}"
+        restart_policy: unless-stopped
+      when: stats_pihole_exporter_enabled
+
   when: stats_enabled is true
 
 - name: Stop Exporters
@@ -45,5 +61,13 @@
     - name: Stop Speedtest Exporter
       community.docker.docker_container:
         name: "{{ stats_speedtest_container_name }}"
+        state: absent
+    - name: Stop SNMP Exporter
+      community.docker.docker_container:
+        name: "{{ stats_snmp_exporter_container_name }}"
+        state: absent
+    - name: Stop PiHole Exporter
+      community.docker.docker_container:
+        name: "{{ stats_pihole_exporter_container_name }}"
         state: absent
   when: stats_enabled is false

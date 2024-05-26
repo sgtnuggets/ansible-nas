@@ -3,6 +3,8 @@ stats_enabled: true
 stats_internet_speed_test_enabled: true
 stats_prometheus_available_externally: false
 stats_grafana_available_externally: false
+stats_snmp_exporter_enabled: true
+stats_pihole_exporter_enabled: true
 
 # directories
 stats_telegraf_config_directory: "{{ docker_home }}/stats/telegraf/config"
@@ -20,6 +22,8 @@ stats_speedtest_exporter_port: "9798"
 stats_prometheus_hostname: "prometheus"
 stats_grafana_port: "3000"
 stats_grafana_hostname: "grafana"
+stats_snmp_exporter_port: "9116"
+stats_pihole_exporter_port: "9617"
 
 # docker:
 stats_grafana_container_name: "stats-grafana"
@@ -37,6 +41,12 @@ stats_smartctl_docker_image_version: "latest"
 stats_speedtest_container_name: "stats-speedtest"
 stats_speedtest_docker_image_name: "miguelndecarvalho/speedtest-exporter"
 stats_speedtest_docker_image_version: "latest"
+stats_snmp_exporter_container_name: "snmp-exporter"
+stats_snmp_exporter_docker_image_name: "prom/snmp-exporter"
+stats_snmp_exporter_docker_image_version: "latest"
+stats_pihole_exporter_container_name: "pihole-exporter"
+stats_pihole_exporter_docker_image_name: "ekofr/pihole-exporter"
+stats_pihole_exporter_docker_image_version: "latest"
 
 # specs
 stats_telegraf_memory: 1g
