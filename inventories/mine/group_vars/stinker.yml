@@ -57,7 +57,7 @@ homeassistant_enabled: true
 # hyperion_enabled: false
 
 
-
+readarr_enabled: true
 duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: true
