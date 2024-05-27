@@ -63,10 +63,12 @@ duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: true
 plex_enabled: true
+readarr_enabled: true
+overseerr_enabled: true
+ombi_enabled: true
 
 
 ## Disabled Stuff
-overseerr_enabled: true
 deluge_enabled: false
 bazarr_enabled: false
 radarr_enabled: false
@@ -78,4 +80,3 @@ pihole_enabled: false
 jackett_enabled: false
 lidarr_enabled: false
 nzbget_enabled: false
-ombi_enabled: true

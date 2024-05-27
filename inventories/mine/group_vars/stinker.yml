@@ -49,7 +49,6 @@ ansible_nas_timezone: Etc/GMT-8
 ## Enable some applications
 logging_stack_enabled: true
 stats_enabled: true
-airsonic_enabled: false
 dashy_enabled: true
 organizr_enabled: true
 portainer_enabled: true
@@ -64,9 +63,11 @@ duplicacy_enabled: false
 netdata_enabled: true
 overseerr_enabled: true
 plex_enabled: true
+ombi_enabled: true
 
 
 ## Disabled Stuff
+airsonic_enabled: false
 deluge_enabled: false
 bazarr_enabled: false
 radarr_enabled: false
@@ -78,4 +79,3 @@ pihole_enabled: false
 jackett_enabled: false
 lidarr_enabled: false
 nzbget_enabled: false
-ombi_enabled: true
