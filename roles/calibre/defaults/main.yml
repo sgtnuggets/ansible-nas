@@ -1,5 +1,5 @@
 ---
-calibre_enabled: false
+calibre_enabled: true
 calibre_available_externally: false
 
 # uid / gid
