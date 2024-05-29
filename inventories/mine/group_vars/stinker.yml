@@ -57,7 +57,6 @@ homeassistant_enabled: true
 # hyperion_enabled: false
 
 
-readarr_enabled: true
 duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: true
@@ -71,6 +70,7 @@ airsonic_enabled: false
 deluge_enabled: false
 bazarr_enabled: false
 radarr_enabled: false
+readarr_enabled: false
 sabnzbd_enabled: false
 sonarr_enabled: false
 tautulli_enabled: false

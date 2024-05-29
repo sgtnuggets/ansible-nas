@@ -63,7 +63,7 @@ duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: true
 plex_enabled: true
-readarr_enabled: true
+readarr_enabled: false
 overseerr_enabled: true
 ombi_enabled: true
 
