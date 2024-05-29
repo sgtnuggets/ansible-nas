@@ -335,6 +335,10 @@
       tags:
         - radarr
 
+    - role: readarr
+      tags:
+        - readarr
+
     - role: route53_ddns
       tags:
         - route53_ddns
