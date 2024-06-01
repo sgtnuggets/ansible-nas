@@ -66,6 +66,7 @@ plex_enabled: true
 readarr_enabled: false
 overseerr_enabled: true
 ombi_enabled: true
+transmission_with_openvpn_enabled: true
 
 
 ## Disabled Stuff
@@ -75,7 +76,6 @@ radarr_enabled: false
 sabnzbd_enabled: false
 sonarr_enabled: false
 tautulli_enabled: false
-transmission_with_openvpn_enabled: false
 pihole_enabled: false
 jackett_enabled: false
 lidarr_enabled: false

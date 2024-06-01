@@ -38,6 +38,8 @@
           OPENVPN_USERNAME: "{{ openvpn_username }}"
           OPENVPN_PASSWORD: "{{ openvpn_password }}"
           OPENVPN_CONFIG: "{{ openvpn_config }}"
+          NORDVPN_COUNTRY: US
+          NORDVPN_CATEGORY: legacy_p2p
           WEBPROXY_ENABLED: "true"
           WEBPROXY_PORT: "3128"
           PUID: "{{ transmission_openvpn_user_id }}"
