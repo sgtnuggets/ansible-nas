@@ -45,3 +45,5 @@ jobs:
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
           HASSPASS: ${{ secrets.STATS_HASS_LONG_LIVED_ACCESS_TOKEN }}
           CLOUDFLARE_DNS_EDIT: ${{ secrets.CLOUDFLARE_DNS_EDIT }}
+          NORD_USERNAME: ${{ secrets.NORD_USERNAME }}
+          NORD_PASSWORD: ${{ secrets.NORD_PASSWORD }}
