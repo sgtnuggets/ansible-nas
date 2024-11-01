@@ -18,7 +18,9 @@
           SERVERURL: jakesticka.duckdns.org
           SERVERPORT: "51821"
           PEERS: "1"
-          PEERDNS: auto
+          PEERDNS: "192.168.1.2"
+          # PEERDNS: auto
+          ALLOWEDIPS: 192.168.1.0/24,
         restart_policy: unless-stopped
         sysctls:
           net.ipv4.conf.all.src_valid_mark: "1"
