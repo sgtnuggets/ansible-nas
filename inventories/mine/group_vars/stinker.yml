@@ -64,6 +64,8 @@ overseerr_enabled: true
 plex_enabled: true
 ombi_enabled: true
 transmission_with_openvpn_enabled: true
+bitwarden_enabled: true
+
 
 
 ## Disabled Stuff
