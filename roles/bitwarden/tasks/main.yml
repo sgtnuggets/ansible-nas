@@ -52,6 +52,11 @@
         restart_policy: unless-stopped
         volumes_from: bitwarden
         memory: "{{ bitwarden_backup_memory }}"
+        volumes:
+          - "{{ bitwarden_data_directory }}:/myBackup"
+        env:
+          BACKUP_DIR: "/myBackup"
+
   when: bitwarden_enabled is true
 
 - name: Stop Bitwarden
