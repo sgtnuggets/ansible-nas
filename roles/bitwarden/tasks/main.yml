@@ -47,7 +47,7 @@
     - name: Bitwarden Backup Container
       community.docker.docker_container:
         name: "{{ bitwarden_backup_container_name }}"
-        image: bruceforce/bw_backup:latest
+        image: bruceforce/vaultwarden-backup:latest
         pull: true
         restart_policy: unless-stopped
         volumes_from: bitwarden
