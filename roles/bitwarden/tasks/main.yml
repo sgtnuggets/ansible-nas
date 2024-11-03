@@ -53,7 +53,7 @@
         volumes_from: bitwarden
         memory: "{{ bitwarden_backup_memory }}"
         volumes:
-          - "{{ bitwarden_data_directory }}:/myBackup"
+          - "{{ bitwarden_data_directory }}:/myBackup:rw"
         env:
           BACKUP_DIR: "/myBackup"
 
