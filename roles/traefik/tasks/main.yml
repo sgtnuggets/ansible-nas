@@ -21,6 +21,8 @@
         image: "{{ traefik_image_name }}:{{ traefik_image_version }}"
         pull: true
         network_mode: host
+        ports:
+          - "8888:80"
         volumes:
           - "{{ traefik_data_directory }}/traefik.toml:/etc/traefik/traefik.toml:ro"
           - "{{ traefik_data_directory }}/letsencrypt:/letsencrypt:rw"
