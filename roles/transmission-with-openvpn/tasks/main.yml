@@ -46,6 +46,8 @@
           PGID: "{{ transmission_openvpn_group_id }}"
           LOCAL_NETWORK: "{{ transmission_openvpn_local_network }}"
           ENABLE_UFW: "false"
+          OVERRIDE_DNS_1: "192.168.1.2"
+          OVERRIDE_DNS_2: "103.86.96.100"
         dns_servers: 
           - "192.168.1.2"
           - "192.168.1.1"
