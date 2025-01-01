@@ -22,7 +22,7 @@
         pull: true
         network_mode: host
         ports:
-          - "{{ WOL_port }}:5000"
+          - "{{ WOL_port }}:8000"
         volumes:
           - "{{ WOL_directory }}/:/app/"
         env:
