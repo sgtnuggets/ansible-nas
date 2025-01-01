@@ -431,9 +431,9 @@
       tags:
         - wireshark
 
-    # - role: wol
-    #   tags:
-    #     - wol
+    - role: WOL
+      tags:
+        - WOL
 
     - role: woodpecker-ci
       tags:
