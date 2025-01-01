@@ -426,10 +426,14 @@
     - role: wireguard
       tags:
         - wireguard
-        
+
     - role: wireshark
       tags:
         - wireshark
+
+    - role: wol
+      tags:
+        - wol
 
     - role: woodpecker-ci
       tags:
