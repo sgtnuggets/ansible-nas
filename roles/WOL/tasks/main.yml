@@ -1,0 +1,46 @@
+---
+- name: Start WOL
+  block:
+    # - name: Get docker group id
+    #   ansible.builtin.group:
+    #     name: docker
+    #   register: docker_group
+
+    - name: Create WOL Directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ wol_directory }}"
+
+    - name: WOL Docker Container
+      community.docker.docker_container:
+        name: "{{ wol_container_name }}"
+        image: "{{ wol_image_name }}:{{ wol_image_version }}"
+        hostname: "{{ ansible_nas_hostname }}.{{ ansible_nas_domain }}"
+        state: started
+        pull: true
+        network_mode: host
+        ports:
+          - "{{ wol_port }}:5000"
+        volumes:
+          - "{{ wol_directory }}/computers.txt:/app/computers.txt"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: unless-stopped
+        labels:
+          traefik.enable: "{{ wol_available_externally | string }}"
+          traefik.http.routers.wol.rule: "Host(`{{ wol_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.wol.tls.certresolver: "letsencrypt"
+          traefik.http.routers.wol.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.wol.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.wol.loadbalancer.server.port: "3001"
+  when: wol_enabled is true
+
+- name: Stop WOL
+  block:
+    - name: Stop WOL
+      community.docker.docker_container:
+        name: "{{ wol_container_name }}"
+        state: absent
+  when: wol_enabled is false
