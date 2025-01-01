@@ -3,5 +3,5 @@ provisioner:
   inventory:
     group_vars:
       all:
-        wol_enabled: true
+        WOL_enabled: true
         ansible_nas_hostname: ansible-nas

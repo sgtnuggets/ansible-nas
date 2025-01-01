@@ -54,7 +54,7 @@ organizr_enabled: true
 portainer_enabled: true
 esphome_enabled: true
 homeassistant_enabled: true
-wol_enabled: true
+WOL_enabled: true
 # hyperion_enabled: false
 
 

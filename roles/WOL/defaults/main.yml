@@ -1,16 +1,16 @@
 ---
-wol_enabled: true
-wol_available_externally: false
+WOL_enabled: true
+WOL_available_externally: false
 
 # directories
-wol_directory: "{{ docker_home }}/WOL"
+WOL_directory: "{{ docker_home }}/WOL"
 
 # network
-wol_hostname: "WOL"
-wol_port: "3001"
+WOL_hostname: "WOL"
+WOL_port: "3001"
 
 # docker
-wol_container_name: "wol"
-wol_image_name: "misterbabou/gptwol"
-wol_image_version: "latest"
+WOL_container_name: "WOL"
+WOL_image_name: "misterbabou/gptwol"
+WOL_image_version: "latest"
 

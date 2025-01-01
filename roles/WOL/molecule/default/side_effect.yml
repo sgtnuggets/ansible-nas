@@ -7,4 +7,4 @@
       ansible.builtin.include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
       vars:
-        wol_enabled: false
+        WOL_enabled: false

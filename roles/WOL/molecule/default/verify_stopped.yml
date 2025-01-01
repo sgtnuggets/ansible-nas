@@ -6,13 +6,13 @@
     - ansible.builtin.include_vars:
         file: ../../defaults/main.yml
 
-    - name: Try and stop and remove wol
+    - name: Try and stop and remove WOL
       community.docker.docker_container:
-        name: "{{ wol_container_name }}"
+        name: "{{ WOL_container_name }}"
         state: absent
       register: result
 
-    - name: Check if wol is stopped
+    - name: Check if WOL is stopped
       ansible.builtin.assert:
         that:
           - not result.changed

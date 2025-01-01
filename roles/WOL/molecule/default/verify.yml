@@ -6,12 +6,12 @@
     - ansible.builtin.include_vars:
         file: ../../defaults/main.yml
 
-    - name: Get wol container state
+    - name: Get WOL container state
       community.docker.docker_container:
-        name: "{{ wol_container_name }}"
+        name: "{{ WOL_container_name }}"
       register: result
 
-    - name: Check if wol containers are running
+    - name: Check if WOL containers are running
       ansible.builtin.assert:
         that:
           - result.container['State']['Status'] == "running"
