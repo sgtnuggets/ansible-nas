@@ -17,16 +17,17 @@
       community.docker.docker_container:
         name: "{{ WOL_container_name }}"
         image: "{{ WOL_image_name }}:{{ WOL_image_version }}"
-        hostname: "{{ ansible_nas_hostname }}.{{ ansible_nas_domain }}"
-        state: started
+        # hostname: "{{ ansible_nas_hostname }}.{{ ansible_nas_domain }}"
         pull: true
         network_mode: host
         ports:
-          - "{{ WOL_port }}:8000"
+          - "{{ WOL_port }}:3001"
         volumes:
           - "{{ WOL_directory }}/:/app/"
+          - "./appdata/cron:/etc/cron.d"
         env:
           TZ: "{{ ansible_nas_timezone }}"
+          port: "3001"
         restart_policy: unless-stopped
         labels:
           traefik.enable: "{{ WOL_available_externally | string }}"
