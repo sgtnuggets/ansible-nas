@@ -24,7 +24,7 @@
         ports:
           - "{{ WOL_port }}:5000"
         volumes:
-          - "{{ WOL_directory }}/computers.txt:/app/computers.txt"
+          - "{{ WOL_directory }}/:/app/"
         env:
           TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
