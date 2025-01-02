@@ -1,5 +1,5 @@
 ---
-WOL_enabled: true
+WOL_enabled: false
 WOL_available_externally: false
 
 # directories
