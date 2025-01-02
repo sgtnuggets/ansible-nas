@@ -24,7 +24,7 @@
           - "{{ WOL_port }}:3001"
         volumes:
           - "{{ WOL_directory }}/:/app/"
-          # - "./appdata/cron:/etc/cron.d"
+          - "{{ WOL_directory }}:/etc/cron.d"
         env:
           TZ: "{{ ansible_nas_timezone }}"
           port: "3001"
