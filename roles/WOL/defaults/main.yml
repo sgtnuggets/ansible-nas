@@ -12,5 +12,5 @@ WOL_port: "3001"
 # docker
 WOL_container_name: "WOL"
 WOL_image_name: "misterbabou/gptwol"
-WOL_image_version: "latest"
+WOL_image_version: "1.0.7"
 
