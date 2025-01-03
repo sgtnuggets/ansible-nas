@@ -21,7 +21,7 @@
         pull: true
         network_mode: host
         ports:
-          - "{{ WOL_port }}:3001"
+          - "{{ WOL_port }}:5000"
         volumes:
           - "{{ WOL_directory }}/:/app/pb_data"
         env:
