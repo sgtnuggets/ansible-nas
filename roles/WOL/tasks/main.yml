@@ -22,6 +22,7 @@
         network_mode: host
         ports:
           - "{{ WOL_port }}:5000"
+          - "8090:5001"
         volumes:
           - "{{ WOL_directory }}/:/app/pb_data"
         env:
