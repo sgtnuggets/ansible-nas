@@ -80,3 +80,4 @@ deluge_enabled: false
 bazarr_enabled: false
 pihole_enabled: false
 WOL_enabled: false
+bitwarden_enabled: false
