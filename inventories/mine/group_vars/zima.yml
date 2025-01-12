@@ -73,7 +73,7 @@ nzbget_enabled: true
 
 ## Disabled Stuff
 # hyperion_enabled: false
-traefik_enable: false
+traefik_enabled: false
 airsonic_enabled: false
 dashy_enabled: false
 homeassistant_enabled: false
