@@ -37,8 +37,8 @@ plex_image_version: "latest"
 plex_memory: "2g"
 
 # Device mappings for the docker container. E.g. To enable hardware transcoding:
-# plex_devices:
-#  - "/dev/dri:/dev/dri"
+plex_devices:
+ - "/dev/dri:/dev/dri"
 
 # see https://hub.docker.com/r/linuxserver/plex for details on this setting
 plex_version: "docker"
