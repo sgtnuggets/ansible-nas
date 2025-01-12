@@ -43,7 +43,7 @@ nfs_exports:
   - "{{ nfs_shares_root }}/public *(rw,sync,no_root_squash)"
 
 # Example options
-ansible_nas_hostname: stinker
+ansible_nas_hostname: zima
 ansible_nas_timezone: Etc/GMT-8
 
 ## Enable some applications
