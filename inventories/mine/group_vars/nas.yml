@@ -47,37 +47,36 @@ ansible_nas_hostname: zima
 ansible_nas_timezone: Etc/GMT-8
 
 ## Enable some applications
-logging_stack_enabled: false
+logging_stack_enabled: true
 stats_enabled: true
-airsonic_enabled: false
-dashy_enabled: false
 organizr_enabled: true
 portainer_enabled: true
 esphome_enabled: true
-homeassistant_enabled: true
-WOL_enabled: true
-# hyperion_enabled: false
-
 
 
 duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: true
 plex_enabled: true
-readarr_enabled: false
+readarr_enabled: true
 overseerr_enabled: true
 ombi_enabled: true
 transmission_with_openvpn_enabled: true
+radarr_enabled: true
+sabnzbd_enabled: true
+sonarr_enabled: true
+tautulli_enabled: true
+jackett_enabled: true
+lidarr_enabled: true
+nzbget_enabled: true
 
 
 ## Disabled Stuff
+# hyperion_enabled: false
+airsonic_enabled: false
+dashy_enabled: false
+homeassistant_enabled: false
 deluge_enabled: false
 bazarr_enabled: false
-radarr_enabled: false
-sabnzbd_enabled: false
-sonarr_enabled: false
-tautulli_enabled: false
 pihole_enabled: false
-jackett_enabled: false
-lidarr_enabled: false
-nzbget_enabled: false
+WOL_enabled: false
