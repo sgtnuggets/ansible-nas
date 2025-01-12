@@ -22,6 +22,6 @@ zima ansible_connection=local ansible_host=localhost
 # [mediacenter]
 # streamweaver ansible_connection=local ansible_host=localhost
 
-[armserver]
-zima ansible_connection=local ansible_host=localhost
+# [armserver]
+# zima ansible_connection=local ansible_host=localhost
 # orangepipc ansible_connection=local ansible_host=localhost
