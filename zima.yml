@@ -211,6 +211,10 @@
       tags:
         - lidarr
 
+    - role: stats
+      tags:
+        - stats
+
     - role: loki
       tags:
         - loki
@@ -362,10 +366,6 @@
     - role: speedtest-tracker
       tags:
         - speedtest-tracker
-
-    - role: stats
-      tags:
-        - stats
 
     - role: syncthing
       tags:
