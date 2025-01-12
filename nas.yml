@@ -21,12 +21,12 @@
         - nfs
         - skip_ansible_lint
 
-    - role: geerlingguy.docker
-      vars:
-        docker_apt_filename: download_docker_com_linux_ubuntu
-      tags:
-        - docker
-        - skip_ansible_lint
+    # - role: geerlingguy.docker
+    #   vars:
+    #     docker_apt_filename: download_docker_com_linux_ubuntu
+    #   tags:
+    #     - docker
+    #     - skip_ansible_lint
     # - role: geerlingguy.docker_arm
     #   when: ansible_architecture == "aarch64"
     #   tags:
