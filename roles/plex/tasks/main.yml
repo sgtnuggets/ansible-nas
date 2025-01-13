@@ -26,7 +26,7 @@
           - "{{ plex_audiobooks_directory }}:/audiobooks:{{ plex_audiobooks_permissions }}"
         network_mode: "host"
         ports:
-          - "32400:32400"
+          - "32402:32400"
         devices: "{{ plex_devices | default(omit) }}"
         env:
           TZ: "{{ ansible_nas_timezone }}"
