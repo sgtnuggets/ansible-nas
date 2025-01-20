@@ -1,13 +1,8 @@
-#
-# this script is a conversion of the original shell script
-# from https://github.com/home-assistant/supervised-installer/blob/master/installer.sh
-#
-# Version 0.4 - October 2020
 ---
 - name: Install Hassio on docker (Supervised)
-  hosts: zima
-  become: yes
-  user: jake
+  # hosts: zima
+  # become: yes
+  # user: jake
 
   vars:
     BINARY_DOCKER: /usr/bin/docker
