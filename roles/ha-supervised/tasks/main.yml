@@ -1,0 +1,402 @@
+pb_deb_ha_supervised.yml# Install HASSIO-Supervised on a Debian host
+#
+# this script is a conversion of the original shell script
+# from https://github.com/home-assistant/supervised-installer/blob/master/installer.sh
+#
+# Version 0.4 - October 2020
+---
+- name: Install Hassio on docker (Supervised)
+  hosts: zima
+  become: yes
+  user: jake
+
+  vars:
+    BINARY_DOCKER: /usr/bin/docker
+    DOCKER_REPO: homeassistant
+    SERVICE_DOCKER: "docker.service"
+    SERVICE_NM: "NetworkManager.service"
+    FILE_DOCKER_CONF: "/etc/docker/daemon.json"
+    FILE_NM_CONF: "/etc/NetworkManager/NetworkManager.conf"
+    FILE_NM_CONNECTION: "/etc/NetworkManager/system-connections/default"
+    URL_RAW_BASE: "https://raw.githubusercontent.com/home-assistant/supervised-installer/master/files"
+    URL_VERSION: "https://version.home-assistant.io/stable.json"
+    URL_DOCKER_DAEMON: "{{ URL_RAW_BASE }}/docker_daemon.json"
+    URL_NM_CONF: "{{ URL_RAW_BASE }}/NetworkManager.conf"
+    URL_NM_CONNECTION: "{{ URL_RAW_BASE }}/system-connection-default"
+    URL_HA: "{{ URL_RAW_BASE }}/ha"
+    URL_BIN_HASSIO: "{{ URL_RAW_BASE }}/hassio-supervisor"
+    URL_BIN_APPARMOR: "{{ URL_RAW_BASE }}/hassio-apparmor"
+    URL_SERVICE_HASSIO: "{{ URL_RAW_BASE }}/hassio-supervisor.service"
+    URL_SERVICE_APPARMOR: "{{ URL_RAW_BASE }}/hassio-apparmor.service"
+    URL_APPARMOR_PROFILE: "https://version.home-assistant.io/apparmor.txt"
+    ARCH_REPO:
+      arm: 'armhf-hassio-supervisor'
+      armv6l: 'armhf-hassio-supervisor'
+      armv7l: 'armv7-hassio-supervisor'
+      i386: 'i386-hassio-supervisor'
+      i686: 'i386-hassio-supervisor'
+      x86_64: 'amd64-hassio-supervisor'
+      aarch64: 'aarch64-hassio-supervisor'
+    HASSIO_DOCKER: "{{ DOCKER_REPO }}/{{ ARCH_REPO[ansible_architecture] }}"
+# The next five variables needs revision if command line arguments are implemented
+    PREFIX: /usr                             # =${PREFIX:-/usr}
+    SYSCONFDIR: /etc                         # =${SYSCONFDIR:-/etc}
+    DATA_SHARE: "{{ PREFIX }}/share/hassio"  # =${DATA_SHARE:-$PREFIX/share/hassio}
+    CONFIG: "{{ SYSCONFDIR }}/hassio.json"   # =$SYSCONFDIR/hassio.json
+    MACHINE: qemux86-64
+
+  tasks:
+   - name: Starting HASSIO-Supervised installation
+     debug:
+       msg: 
+         - "Some task will take a long time"
+         - "Please be patient and do not stop the script"
+
+   - name: Ensure Systemd is installed and at the latest version
+     apt:
+       name: systemd
+       state: latest
+
+   - name: Ensure Network Manager is installed and at the latest version
+     apt:
+       name: network-manager
+       state: latest
+
+   - name: Ensure AppArmor is installed and at the latest version
+     apt:
+       name: apparmor
+       state: latest
+
+   - name: Ensure git is installed and at the latest version
+     apt:
+       name: git
+       state: latest
+
+   - name: Ensure apt-transport-https is installed and at the latest version
+     apt:
+       name: apt-transport-https
+       state: latest
+
+   - name: Ensure ca-certificates is installed and at the latest version
+     apt:
+       name: ca-certificates
+       state: latest
+
+   - name: Ensure wget is installed and at the latest version
+     apt:
+       name: wget
+       state: latest
+
+   - name: Ensure software-properties-common is installed and at the latest version
+     apt:
+       name: software-properties-common
+       state: latest
+
+   - name: Ensure gnupg2 is installed and at the latest version
+     apt:
+       name: gnupg2
+       state: latest
+
+   - name: Ensure cURL is installed and at the latest version
+     apt:
+       name: curl
+       state: latest
+
+   - name: Ensure python3 is installed and at the latest version
+     apt:
+       name: python3
+       state: latest
+
+   - name: Ensure python3-pip is installed and at the latest version
+     apt:
+       name: python3-pip
+       state: latest
+
+   - name: Ensure python-docker is installed and at the latest version
+     apt:
+       name: python-docker
+       state: latest
+
+   - name: Add Apt signing key from official docker repo
+     apt_key:
+       url: https://download.docker.com/linux/debian/gpg
+       state: present
+
+   - name: Add docker official repository for Debian {{ ansible_distribution_release }}
+     apt_repository:
+       repo: deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
+       state: present
+
+   - name: Index new repo into the cache
+     become: yes
+     apt:
+       name: "*"
+       state: latest
+       update_cache: yes
+       force_apt_get: yes
+
+   - name: Ensure Docker-CE is installed and at the latest version
+     apt:
+       name: docker-ce
+       state: latest
+
+   - name: Ensure JQ is installed and at the latest version
+     apt:
+       name: jq
+       state: latest
+
+   - name: Ensure Avahi is installed and at the latest version
+     apt:
+       name: avahi-daemon
+       state: latest
+
+   - name: Ensure Dbus is installed and at the latest version
+     apt:
+       name: dbus
+       state: latest
+
+   - name: Restart Docker
+     service:
+       name: docker
+       state: restarted
+
+   - name: Stop and disable service ModemManager
+     systemd:
+       name: ModemManager
+       enabled: no
+       state: stopped
+
+   - name: Detect wrong docker logger config
+     stat:
+       path: "{{ FILE_DOCKER_CONF }}"
+     register: stat_result
+
+   - name: Creating default docker deamon configuration "{{ FILE_DOCKER_CONF }}"
+     get_url:
+       url: "{{ URL_DOCKER_DAEMON }}"
+       dest: "{{ FILE_DOCKER_CONF }}"
+     when: not stat_result.stat.exists
+
+   - name: Check Docker storage driver config
+     shell: docker info -f "{{ '{{' }}json .{{ '}}' }}" | jq -r -e .Driver | grep -qi overlay2
+     when: stat_result.stat.exists
+
+   - name: Check Docker logging driver config
+     shell: docker info -f "{{ '{{' }}json .{{ '}}' }}" | jq -r -e .LoggingDriver | grep -qi journald
+     when: stat_result.stat.exists
+   
+   - name: Check and fix  dmesg access
+     block:
+       - name: Check dmesg access
+         shell: "$(sysctl --values kernel.dmesg_restrict)"
+
+     rescue:
+       - name: Fix dmes access (/proc/sys/kernel/dmesg_restrict)
+         shell: echo 0 > /proc/sys/kernel/dmesg_restrict
+
+       - name: Fix dmesg access (/etc/sysctl.conf)
+         shell: echo "kernel.dmesg_restrict=0" >> /etc/sysctl.conf
+
+   - name: Create config for NetworkManager
+     block:
+       - name: Remove old NetworkManager configuration
+         file:
+           path: /etc/network/interfaces
+           state: absent
+
+   - name: Install new NetworkMonitor configuration
+     get_url:
+       url: "{{ URL_NM_CONF }}"
+       dest: "{{ FILE_NM_CONF }}"
+
+   - name: Check if exists file {{ FILE_NM_CONNECTION }}
+     stat: 
+       path: "{{ FILE_NM_CONNECTION }}"
+     register: res
+
+   - name: Install new NetworkMonitor Connection configuration
+     get_url:
+       url: "{{ URL_NM_CONNECTION }}"
+       dest: "{{ FILE_NM_CONNECTION }}"
+     when: not res.stat.exists
+
+   - name: Restart service {{ SERVICE_NM }}
+     systemd:
+       state: restarted
+       daemon_reload: yes
+       name: "{{ SERVICE_NM }}"
+
+   - name: Check directory {{ DATA_SHARE }}
+     stat:
+       path: "{{ DATA_SHARE }}"
+     register: datashare
+
+   - name: Create directory {{ DATA_SHARE }}
+     file:
+       path: "{{ DATA_SHARE }}"
+       state: directory
+       mode: 0755
+     when: not datashare.stat.exists
+
+   - name: Read infos from web
+     uri:
+       url: "{{ URL_VERSION }}"
+     register: HASSIO_VERSION
+
+   - name: Check if exists file  {{ CONFIG }} 
+     stat:
+       path: "{{ CONFIG }}"
+     register: conf
+
+   - name: Create file {{ CONFIG }}
+     file:
+       path: "{{ CONFIG }}"
+       state: touch
+       mode: 0755
+     when: not conf.stat.exists
+
+   - name: Initialize json file
+     shell: printf "{\n}\n\n" > "{{ CONFIG }}"
+
+   - name: Load Docker config file
+     slurp:
+       src: "{{ CONFIG }}"
+     register: imported_b64
+
+   - set_fact:
+       imported: "{{ imported_b64.content | b64decode }}"
+
+   - name: Set Supervisor on Docker config file
+     set_fact:
+       imported: "{{ imported|default([]) | combine({ 'supervisor': HASSIO_DOCKER }) }}"
+
+   - name: Set Machine on Docker config file
+     set_fact:
+       imported: "{{ imported|default([]) | combine({ 'machine': MACHINE }) }}"
+
+   - name: Set Data Share on Docker config file
+     set_fact:
+       imported: "{{ imported|default([]) | combine({ 'data': DATA_SHARE }) }}"
+
+   - name: Update Docker config file
+     copy:
+       content: "{{ imported | to_nice_json }}"
+       dest: "{{ CONFIG }}"
+
+   - name: Pull Docker HASSIO supervisor image
+     community.general.docker_image:
+       name: "{{ HASSIO_DOCKER }}:{{ HASSIO_VERSION.json.supervisor }}"
+       source: pull
+
+   - name: Add tag latest to HASSIO supervisor image
+     community.general.docker_image:
+       name: "{{ HASSIO_DOCKER }}:{{ HASSIO_VERSION.json.supervisor }}"
+       repository: "{{ HASSIO_DOCKER }}:latest"
+       force_tag: yes
+       source: local
+
+   - name: Install Hass.io Supervisor startup script
+     get_url:
+       url: "{{ URL_BIN_HASSIO }}"
+       dest: "{{ PREFIX }}/sbin/hassio-supervisor"
+       mode: 0755
+
+   - name: Install Hass.io Supervisor service
+     get_url:
+       url: "{{ URL_SERVICE_HASSIO }}"
+       dest: "{{ SYSCONFDIR }}/systemd/system/hassio-supervisor.service"
+
+   - name: Set config filename in hassio-supervisor startup script
+     replace:
+       path: "{{ PREFIX }}/sbin/hassio-supervisor"
+       regexp: '%%HASSIO_CONFIG%%'
+       replace: "{{ CONFIG }}"
+
+   - name: Set docker binary path in hassio-supervisor service script
+     replace:
+       path: "{{ SYSCONFDIR }}/systemd/system/hassio-supervisor.service"
+       regexp: '%%BINARY_DOCKER%%'
+       replace: "{{ BINARY_DOCKER }}"
+
+   - name: Set docker binary path in hassio-supervisor service script
+     replace:
+       path: "{{ SYSCONFDIR }}/systemd/system/hassio-supervisor.service"
+       regexp: '%%SERVICE_DOCKER%%'
+       replace: "{{ SERVICE_DOCKER }}"
+
+   - name: Set hassio-supervisor script path in hassio-supervisor service script
+     replace:
+       path: "{{ SYSCONFDIR }}/systemd/system/hassio-supervisor.service"
+       regexp: '%%BINARY_HASSIO%%'
+       replace: "{{ PREFIX }}/sbin/hassio-supervisor"
+
+   - name: Enable hassio-supervisor service 
+     systemd:
+       name: hassio-supervisor.service
+       enabled: yes
+
+   - name: Create AppArmor directory
+     file:
+       path: "{{ DATA_SHARE }}/apparmor"
+       state: directory
+       mode: 0755
+
+   - name: Install AppArmor binaries 
+     get_url:
+       url: "{{ URL_BIN_APPARMOR }}"
+       dest: "{{ PREFIX }}/sbin/hassio-apparmor"
+       mode: 0755
+
+   - name: Install AppArmor service
+     get_url:
+       url: "{{ URL_SERVICE_APPARMOR }}"
+       dest: "{{ SYSCONFDIR }}/systemd/system/hassio-apparmor.service"
+       mode: 0755
+ 
+   - name: Install AppArmor profile
+     get_url:
+       url: "{{ URL_APPARMOR_PROFILE }}"
+       dest: "{{ DATA_SHARE }}/apparmor/hassio-supervisor"
+
+   - name: Set hassio-config path in hassio-apparmor startup script
+     replace:
+       path: "{{ PREFIX }}/sbin/hassio-apparmor"
+       regexp: '%%HASSIO_CONFIG%%'
+       replace: "{{ CONFIG }}"
+
+   - name: Set Docker service name in hassio-apparmor service script
+     replace:
+       path: "{{ SYSCONFDIR }}/systemd/system/hassio-apparmor.service"
+       regexp: '%%SERVICE_DOCKER%%'
+       replace: "{{ SERVICE_DOCKER }}"
+
+   - name: Set hassio-apparmor script path in hassio-apparmor service script
+     replace:
+       path: "{{ SYSCONFDIR }}/systemd/system/hassio-apparmor.service"
+       regexp: '%%HASSIO_APPARMOR_BINARY%%'
+       replace: "{{ PREFIX }}/sbin/hassio-apparmor"
+
+   - name: Start and enable hassio-supervisor service 
+     systemd:
+       name: hassio-apparmor.service
+       enabled: yes
+       state: started
+
+   - name: Start Home Assistant Supervised
+     systemd:
+       name: hassio-supervisor.service
+       state: started
+
+   - name: Installing the HA cli
+     get_url:
+       url: "{{ URL_HA }}"
+       dest: "{{ PREFIX }}/bin/ha"
+       mode: 0755
+
+   - name: Installation terminated correctly
+     debug:
+       msg: 
+         - "Home Assistant supervised is now installed"
+         - "First setup will take some time"
+         - "When it's ready you can reach it here:"
+         - "http://{{ ansible_default_ipv4.address }}:8123"
