@@ -46,10 +46,6 @@
         - ansible-nas-docker
         - ansible-nas
 
-    - role: ha-supervised
-      tags:
-        - ha-supervised
-
     ###
     ### Stacks
     ###
