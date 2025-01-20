@@ -112,33 +112,33 @@
        name: python3-pip
        state: latest
 
-   - name: Ensure python-docker is installed and at the latest version
-     apt:
-       name: python-docker
-       state: latest
+  #  - name: Ensure python-docker is installed and at the latest version
+  #    apt:
+  #      name: python-docker
+  #      state: latest
 
-   - name: Add Apt signing key from official docker repo
-     apt_key:
-       url: https://download.docker.com/linux/debian/gpg
-       state: present
+  #  - name: Add Apt signing key from official docker repo
+  #    apt_key:
+  #      url: https://download.docker.com/linux/debian/gpg
+  #      state: present
 
-   - name: Add docker official repository for Debian {{ ansible_distribution_release }}
-     apt_repository:
-       repo: deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
-       state: present
+  #  - name: Add docker official repository for Debian {{ ansible_distribution_release }}
+  #    apt_repository:
+  #      repo: deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable
+  #      state: present
 
-   - name: Index new repo into the cache
-     become: yes
-     apt:
-       name: "*"
-       state: latest
-       update_cache: yes
-       force_apt_get: yes
+  #  - name: Index new repo into the cache
+  #    become: yes
+  #    apt:
+  #      name: "*"
+  #      state: latest
+  #      update_cache: yes
+  #      force_apt_get: yes
 
-   - name: Ensure Docker-CE is installed and at the latest version
-     apt:
-       name: docker-ce
-       state: latest
+  #  - name: Ensure Docker-CE is installed and at the latest version
+  #    apt:
+  #      name: docker-ce
+  #      state: latest
 
    - name: Ensure JQ is installed and at the latest version
      apt:
