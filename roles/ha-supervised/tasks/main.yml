@@ -1,4 +1,3 @@
-pb_deb_ha_supervised.yml# Install HASSIO-Supervised on a Debian host
 #
 # this script is a conversion of the original shell script
 # from https://github.com/home-assistant/supervised-installer/blob/master/installer.sh
