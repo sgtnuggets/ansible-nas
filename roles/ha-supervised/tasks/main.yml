@@ -1,8 +1,14 @@
+# Install HASSIO-Supervised on a Debian host
+#
+# this script is a conversion of the original shell script
+# from https://github.com/home-assistant/supervised-installer/blob/master/installer.sh
+#
+# Version 0.4 - October 2020
 ---
 - name: Install Hassio on docker (Supervised)
-  # hosts: zima
-  # become: yes
-  # user: jake
+  hosts: zima
+  become: yes
+  user: jake
 
   vars:
     BINARY_DOCKER: /usr/bin/docker
@@ -42,7 +48,7 @@
   tasks:
    - name: Starting HASSIO-Supervised installation
      debug:
-       msg: 
+       msg:
          - "Some task will take a long time"
          - "Please be patient and do not stop the script"
 
@@ -178,7 +184,7 @@
    - name: Check Docker logging driver config
      shell: docker info -f "{{ '{{' }}json .{{ '}}' }}" | jq -r -e .LoggingDriver | grep -qi journald
      when: stat_result.stat.exists
-   
+
    - name: Check and fix  dmesg access
      block:
        - name: Check dmesg access
@@ -204,7 +210,7 @@
        dest: "{{ FILE_NM_CONF }}"
 
    - name: Check if exists file {{ FILE_NM_CONNECTION }}
-     stat: 
+     stat:
        path: "{{ FILE_NM_CONNECTION }}"
      register: res
 
@@ -237,7 +243,7 @@
        url: "{{ URL_VERSION }}"
      register: HASSIO_VERSION
 
-   - name: Check if exists file  {{ CONFIG }} 
+   - name: Check if exists file  {{ CONFIG }}
      stat:
        path: "{{ CONFIG }}"
      register: conf
@@ -324,7 +330,7 @@
        regexp: '%%BINARY_HASSIO%%'
        replace: "{{ PREFIX }}/sbin/hassio-supervisor"
 
-   - name: Enable hassio-supervisor service 
+   - name: Enable hassio-supervisor service
      systemd:
        name: hassio-supervisor.service
        enabled: yes
@@ -335,7 +341,7 @@
        state: directory
        mode: 0755
 
-   - name: Install AppArmor binaries 
+   - name: Install AppArmor binaries
      get_url:
        url: "{{ URL_BIN_APPARMOR }}"
        dest: "{{ PREFIX }}/sbin/hassio-apparmor"
@@ -346,7 +352,7 @@
        url: "{{ URL_SERVICE_APPARMOR }}"
        dest: "{{ SYSCONFDIR }}/systemd/system/hassio-apparmor.service"
        mode: 0755
- 
+
    - name: Install AppArmor profile
      get_url:
        url: "{{ URL_APPARMOR_PROFILE }}"
@@ -370,7 +376,7 @@
        regexp: '%%HASSIO_APPARMOR_BINARY%%'
        replace: "{{ PREFIX }}/sbin/hassio-apparmor"
 
-   - name: Start and enable hassio-supervisor service 
+   - name: Start and enable hassio-supervisor service
      systemd:
        name: hassio-apparmor.service
        enabled: yes
@@ -389,7 +395,7 @@
 
    - name: Installation terminated correctly
      debug:
-       msg: 
+       msg:
          - "Home Assistant supervised is now installed"
          - "First setup will take some time"
          - "When it's ready you can reach it here:"
