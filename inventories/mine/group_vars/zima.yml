@@ -51,7 +51,7 @@ stats_enabled: true
 logging_stack_enabled: true
 organizr_enabled: true
 portainer_enabled: true
-esphome_enabled: true
+esphome_enabled: false
 watchtower_enabled: true
 
 
