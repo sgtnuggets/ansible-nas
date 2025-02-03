@@ -52,6 +52,7 @@ logging_stack_enabled: true
 organizr_enabled: true
 portainer_enabled: true
 esphome_enabled: true
+watchtower_enabled: true
 
 
 duplicati_enabled: true
@@ -68,8 +69,8 @@ sonarr_enabled: true
 tautulli_enabled: true
 jackett_enabled: true
 lidarr_enabled: true
-nzbget_enabled: true
-
+nzbget_enabled: false
+prowlarr_enabled: true
 
 ## Disabled Stuff
 # hyperion_enabled: false
