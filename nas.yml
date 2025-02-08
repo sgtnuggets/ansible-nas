@@ -135,6 +135,10 @@
       tags:
         - esphome
 
+    - role: flaresolverr
+      tags:
+        - flaresolverr
+
     - role: firefly
       tags:
         - firefly
