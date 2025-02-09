@@ -147,8 +147,8 @@ query_range:
         enabled: true
         max_size_mb: 100
 
-limits_config:
-  metric_aggregation_enabled: true
+# limits_config:
+#   metric_aggregation_enabled: true
 
 schema_config:
   configs:
@@ -160,11 +160,11 @@ schema_config:
         prefix: index_
         period: 24h
 
-pattern_ingester:
-  enabled: true
-  metric_aggregation:
-    enabled: true
-    loki_address: localhost:{{ loki_http_port }}
+# pattern_ingester:
+#   enabled: true
+#   metric_aggregation:
+#     enabled: true
+#     loki_address: localhost:{{ loki_http_port }}
 
 ruler:
   alertmanager_url: http://localhost:9093
