@@ -53,6 +53,10 @@
           - "192.168.1.1"
           - "45.90.28.231"
           - "45.90.30.231"
+        etc_hosts:
+          - "stinker:192.168.1.2"
+          - "streamweaver:192.168.1.5"
+          - "zima:192.168.1.7"
         devices:
           - /dev/net/tun
         capabilities:
