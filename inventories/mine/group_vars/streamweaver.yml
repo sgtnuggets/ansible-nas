@@ -26,7 +26,7 @@ transmission-with-openvpn_enabled: true
 radarr_enabled: true
 sonarr_enabled: true
 sabnzbd_enabled: true
-jackett_enabled: true
+jackett_enabled: false
 nszhydra_enabled: true
 
 # Media Streaming
