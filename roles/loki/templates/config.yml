@@ -103,7 +103,7 @@ storage_config:
     resync_interval: 5s
     shared_store: s3
   aws:
-    s3: http://{{ minio_admin_username }}:{{ minio_admin_password }}@zima.:9009/loki
+    s3: http://{{ minio_admin_username }}:{{ minio_admin_password }}@zima.:9000/loki
     s3forcepathstyle: true
 
 limits_config:
