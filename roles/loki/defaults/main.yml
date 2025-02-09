@@ -1,6 +1,6 @@
 ---
 # enable or disable the application
-loki_enabled: false
+loki_enabled: true
 loki_available_externally: false
 
 # directories
