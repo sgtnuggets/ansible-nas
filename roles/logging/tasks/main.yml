@@ -4,7 +4,7 @@
     - name: Enable logging roles
       ansible.builtin.set_fact:
         grafana_enabled: true
-        minio_enabled: true
+        minio_enabled: false
         loki_enabled: true
         promtail_enabled: true
   when: logging_stack_enabled is true
