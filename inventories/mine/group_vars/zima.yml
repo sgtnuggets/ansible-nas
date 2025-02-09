@@ -71,6 +71,7 @@ jackett_enabled: false
 lidarr_enabled: true
 nzbget_enabled: false
 prowlarr_enabled: true
+bazarr_enabled: true
 
 ## Disabled Stuff
 # hyperion_enabled: false
@@ -79,7 +80,6 @@ airsonic_enabled: false
 dashy_enabled: false
 homeassistant_enabled: false
 deluge_enabled: false
-bazarr_enabled: false
 pihole_enabled: false
 WOL_enabled: false
 bitwarden_enabled: false
