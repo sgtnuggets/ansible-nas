@@ -7,24 +7,23 @@
 #     - "{{ flaresolverr_data_directory }}"
 
 - name: flaresolverr
-  block:
-    community.docker.docker_container:
-      name: flaresolverr
-      hostname: flaresolverr
-      image: ghcr.io/flaresolverr/flaresolverr:latest
-      pull: true
-      ports:
-        - "8191:8191"
-      env:
-        TZ: "{{ ansible_nas_timezone }}"
-        LOG_LEVEL: 'info'
-      restart_policy: unless-stopped
-      labels:
-        traefik.enable: "{{ flaresolverr_available_externally | string }}"
-        traefik.http.routers.flaresolverr.rule: "Host(`{{ flaresolverr_hostname }}.{{ ansible_nas_domain }}`)"
-        traefik.http.routers.flaresolverr.tls.certresolver: "letsencrypt"
-        traefik.http.routers.flaresolverr.tls.domains[0].main: "{{ ansible_nas_domain }}"
-        traefik.http.routers.flaresolverr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-        traefik.http.services.flaresolverr.loadbalancer.server.port: "80"
+  community.docker.docker_container:
+    name: flaresolverr
+    hostname: flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    pull: true
+    ports:
+      - "8191:8191"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+      LOG_LEVEL: 'info'
+    restart_policy: unless-stopped
+    labels:
+      traefik.enable: "{{ flaresolverr_available_externally | string }}"
+      traefik.http.routers.flaresolverr.rule: "Host(`{{ flaresolverr_hostname }}.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.flaresolverr.tls.certresolver: "letsencrypt"
+      traefik.http.routers.flaresolverr.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.flaresolverr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.flaresolverr.loadbalancer.server.port: "80"
   when: flaresolverr_enabled is true
 
