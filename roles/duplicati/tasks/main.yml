@@ -25,6 +25,7 @@
           PUID: "{{ duplicati_user_id }}"
           PGID: "{{ duplicati_group_id }}"
           DUPLICATI__WEBSERVICE_PASSWORD: "changeme"
+          SETTINGS_ENCRYPTION_KEY: "{{ password }}"
         restart_policy: unless-stopped
         memory: "{{ duplicati_memory }}"
         labels:
