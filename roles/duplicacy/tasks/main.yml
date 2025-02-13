@@ -28,7 +28,6 @@
           TZ: "{{ ansible_nas_timezone }}"
           USR_ID: "{{ duplicacy_user_id }}"
           GRP_ID: "{{ duplicacy_group_id }}"
-          DUPLICATI__WEBSERVICE_PASSWORD: "changeme"
         restart_policy: unless-stopped
         memory: "{{ duplicacy_memory }}"
         labels:
