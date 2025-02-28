@@ -1,13 +1,13 @@
 ---
-grocy_enabled: false
+grocy_enabled: true
 grocy_available_externally: false
 
 # directories
 grocy_config_directory: "{{ docker_home }}/grocy/config"
 
 # uid / gid
-grocy_user_id: "0"
-grocy_group_id: "0"
+grocy_user_id: "1000"
+grocy_group_id: "1000"
 
 # network
 grocy_hostname: "grocy"
