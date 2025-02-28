@@ -55,7 +55,7 @@ organizr_enabled: true
 portainer_enabled: true
 esphome_enabled: true
 homeassistant_enabled: true
-WOL_enabled: true
+WOL_enabled: false
 # hyperion_enabled: false
 
 
@@ -65,8 +65,8 @@ duplicacy_enabled: false
 netdata_enabled: true
 plex_enabled: true
 readarr_enabled: false
-overseerr_enabled: true
-ombi_enabled: true
+overseerr_enabled: false
+ombi_enabled: false
 transmission_with_openvpn_enabled: true
 
 

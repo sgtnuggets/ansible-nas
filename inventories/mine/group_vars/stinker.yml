@@ -64,8 +64,8 @@ duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: true
 overseerr_enabled: false
-plex_enabled: true
 ombi_enabled: false
+plex_enabled: true
 transmission_with_openvpn_enabled: true
 bitwarden_enabled: true
 
