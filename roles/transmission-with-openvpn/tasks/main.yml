@@ -57,6 +57,8 @@
           stinker: "192.168.1.2"
           streamweaver: "192.168.1.5"
           zima: "192.168.1.7"
+          router: "192.168.1.1"
+          router.home: "192.168.1.1"
         devices:
           - /dev/net/tun
         capabilities:
