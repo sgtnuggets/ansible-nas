@@ -57,6 +57,7 @@ homeassistant_enabled: true
 WOL_enabled: false
 flaresolverr_enabled: true
 # hyperion_enabled: false
+grocy_enabled: true
 
 
 duplicati_enabled: true
