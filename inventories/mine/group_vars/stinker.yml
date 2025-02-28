@@ -49,7 +49,7 @@ ansible_nas_timezone: Etc/GMT-8
 ## Enable some applications
 logging_stack_enabled: true
 stats_enabled: true
-dashy_enabled: true
+dashy_enabled: false
 organizr_enabled: true
 portainer_enabled: true
 esphome_enabled: true
@@ -63,9 +63,9 @@ grocy_enabled: true
 duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: true
-overseerr_enabled: true
+overseerr_enabled: false
 plex_enabled: true
-ombi_enabled: true
+ombi_enabled: false
 transmission_with_openvpn_enabled: true
 bitwarden_enabled: true
 
