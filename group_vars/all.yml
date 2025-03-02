@@ -71,6 +71,9 @@ documents_root: "{{ samba_shares_root }}/documents"
 # Where personal repos and code are stored
 code_root: "{{ samba_shares_root }}/code"
 
+# Backups
+backups_root: "{{ samba_shares_root }}/backups"
+
 # Where roms are stored
 roms_root: "{{ samba_shares_root }}/roms"
 
@@ -182,6 +185,14 @@ samba_shares:
     writable: yes
     browseable: yes
     path: "{{ code_root }}"
+
+  - name: backups
+    comment: "backups"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browseable: yes
+    path: "{{ backups_root }}"
 
 ###
 ### NFS
