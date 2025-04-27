@@ -72,6 +72,7 @@ lidarr_enabled: true
 nzbget_enabled: false
 prowlarr_enabled: true
 bazarr_enabled: true
+firefly_enabled: true
 
 ## Disabled Stuff
 # hyperion_enabled: false

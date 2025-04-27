@@ -1,6 +1,6 @@
 ---
 # enable or disable the application
-firefly_enabled: false
+firefly_enabled: true
 firefly_available_externally: false
 
 # directories
