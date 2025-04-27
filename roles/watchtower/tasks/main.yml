@@ -10,6 +10,7 @@
           - "/var/run/docker.sock:/var/run/docker.sock"
         env:
           TZ: "{{ ansible_nas_timezone }}"
+          WATCHTOWER_CLEANUP: true
         command: "{{ watchtower_command }}"
         restart_policy: unless-stopped
         memory: "{{ watchtower_memory }}"
