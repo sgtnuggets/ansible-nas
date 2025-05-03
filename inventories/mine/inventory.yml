@@ -5,6 +5,8 @@ all:
     servers:
       vars:
         someVar: "testValue"
+        ansible_connection: local
+        ansible_host: localhost
       hosts:
         stinker:
           hostnamevar: stinker
