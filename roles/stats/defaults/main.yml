@@ -46,7 +46,7 @@ stats_snmp_exporter_docker_image_name: "prom/snmp-exporter"
 stats_snmp_exporter_docker_image_version: "latest"
 stats_pihole_exporter_container_name: "pihole-exporter"
 stats_pihole_exporter_docker_image_name: "ekofr/pihole-exporter"
-stats_pihole_exporter_docker_image_version: "v1.0.0"
+stats_pihole_exporter_docker_image_version: "latest"
 
 # specs
 stats_telegraf_memory: 1g

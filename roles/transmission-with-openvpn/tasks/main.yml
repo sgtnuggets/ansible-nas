@@ -59,6 +59,7 @@
           zima: "192.168.1.7"
           router: "192.168.1.1"
           router.home: "192.168.1.1"
+          nuc0: "192.168.1.8"
         devices:
           - /dev/net/tun
         capabilities:
