@@ -1,0 +1,15 @@
+all: 
+  vars:
+    ansible_user: jake
+  children:
+    servers:
+      vars:
+        someVar: "testValue"
+      hosts:
+        stinker:
+          hostnamevar: stinker
+        # streamweaver:
+        #   hostnamevar: streamweaver
+        # zima:
+        #   hostnamevar: zima
+        

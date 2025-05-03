@@ -1,0 +1,72 @@
+---
+---
+##                       ._____.   .__
+##  _____    ____   _____|__\_ |__ |  |   ____             ____ _____    ______
+##  \__  \  /    \ /  ___/  || __ \|  | _/ __ \   ______  /    \\__  \  /  ___/
+##   / __ \|   |  \\___ \|  || \_\ \  |_\  ___/  /_____/ |   |  \/ __ \_\___ \
+##  (____  /___|  /____  >__||___  /____/\___  >         |___|  (____  /____  >
+##       \/     \/     \/        \/          \/               \/     \/     \/
+##     a n s i b l e - n a s      https://github.com/davestephens/ansible-nas
+
+# Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
+
+# ansible-playbook -i ./inventories/mine/inventory ./nas.yml -b -K --limit nas
+
+# Will be added to the docker group to give user command line access to docker
+ansible_nas_user: jake
+
+# Your email and domain, used for Let's Encrypt SSL certs
+ansible_nas_email: sgtnuggets@hotmail.com
+
+# Applications will have subdomain SSL certificates created if Traefik is enabled, e.g. ansible-nas.<your-domain>, nextcloud.<your-domain>
+ansible_nas_domain: jakesticka.com
+
+# What version of python ansible should use on target system (path to spesific binary)
+ansible_python_interpreter: /usr/bin/python3
+
+###
+### Samba
+###
+# The location where all shares will be created by default. Can be overridden on a per-share basis.
+# This path will be mounted to backup containers, Duplicati
+samba_shares_root: /mnt/storage
+
+###
+### NFS
+###
+# Data you want published over NFS. More info on the NFS config format can be found at
+# https://help.ubuntu.com/community/SettingUpNFSHowTo#Shares
+# WARNING: Weird things might happen if you share the same data over Samba and NFS and allow writes on both!
+
+nfs_shares_root: /mnt/storage
+
+nfs_exports:
+  - "{{ nfs_shares_root }}/public *(rw,sync,no_root_squash)"
+
+# Example options
+ansible_nas_hostname: streamweaver
+ansible_nas_timezone: Etc/GMT-8
+## Misc applications
+dashy_enabled: true
+portainer_enabled: true
+
+# Media Acquisition
+bazarr_enabled: true
+# deluge_enabled: true
+transmission-with-openvpn_enabled: true
+radarr_enabled: true
+sonarr_enabled: true
+sabnzbd_enabled: true
+jackett_enabled: false
+nszhydra_enabled: true
+
+# Media Streaming
+plex_enabled: true
+tautulli_enabled: true
+
+
+# Infra Monitoring
+stats_enabled: true
+netdata_enabled: true
+
+
