@@ -40,7 +40,7 @@ plex_memory: "{{ plex_memory_override }}"
 # plex_devices:
 #  - "/dev/dri:/dev/dri"
 
-plex_devices: "{{ plex_devices }}"
+plex_devices: "{{ plex_devices_override }}"
 
 # see https://hub.docker.com/r/linuxserver/plex for details on this setting
 plex_version: "docker"
