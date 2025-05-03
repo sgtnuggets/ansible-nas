@@ -5,21 +5,15 @@
 # that works even if disks are added and removed. See fstab(5).
 #
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
-# / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation
-/dev/disk/by-id/dm-uuid-LVM-hdZI7l29di4woMmHPKu2vcsd9ZSkgdxDf906CxenD3RDxNwniD8CQKtuBQlrPdwE / ext4 defaults 0 1
-# /boot was on /dev/sda2 during curtin installation
-/dev/disk/by-uuid/af058314-938f-4dd6-9b8a-9ac897880ce0 /boot ext4 defaults 0 1
-# /boot/efi was on /dev/sda1 during curtin installation
-/dev/disk/by-uuid/1522-716B /boot/efi vfat defaults 0 1
+# / was on /dev/sdb2 during curtin installation
+/dev/disk/by-uuid/f5ac8799-5240-4ff9-850a-f97991f562a3 / ext4 defaults 0 1
+# /boot/efi was on /dev/sdb1 during curtin installation
+/dev/disk/by-uuid/A4CB-6A1C /boot/efi vfat defaults 0 1
 /swap.img       none    swap    sw      0       0
 
-#//stinker/music /mnt/storage/music cifs credentials=/home/jake/.credentials 0 0
-
-
-# This mounts the 2TB drive
 UUID=1ae867a0-0803-44ff-853e-32ea756c0cc0 /mnt/2tb ext4 defaults 0 0
 
 
-/mnt/2tb/Movies /mnt/storage/movies     none    bind
-/mnt/2tb/Music  /mnt/storage/music      none    bind
-/mnt/2tb/TV     /mnt/storage/tv         none    bind
+/mnt/2tb/movies /mnt/storage/movies     none    bind
+/mnt/2tb/music  /mnt/storage/music      none    bind
+/mnt/2tb/tv     /mnt/storage/tv         none    bind
