@@ -19,4 +19,5 @@ all:
           ansible_user: jake
           ansible_ssh_private_key_file: ~/.ssh/id_rsa
           ansible_become: true
-          speedtest_enabled: true
+          speedtest_enabled: false
+          speedtest_tracker_enabled: false
