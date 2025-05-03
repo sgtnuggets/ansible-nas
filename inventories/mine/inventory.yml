@@ -1,4 +1,4 @@
-all: 
+all:
   vars:
     ansible_user: jake
   children:
@@ -10,6 +10,7 @@ all:
           hostnamevar: stinker
           ansible_connection: local
           ansible_host: localhost
+          speedtest_enabled: true
         # streamweaver:
         #   hostnamevar: streamweaver
         zima:
@@ -18,3 +19,4 @@ all:
           ansible_user: jake
           ansible_ssh_private_key_file: ~/.ssh/id_rsa
           ansible_become: true
+          speedtest_enabled: true

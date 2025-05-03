@@ -42,47 +42,48 @@ nfs_shares_root: /mnt/storage
 nfs_exports:
   - "{{ nfs_shares_root }}/public *(rw,sync,no_root_squash)"
 
-# Example options
-ansible_nas_hostname: stinker
-ansible_nas_timezone: Etc/GMT-8
 
 speedtest_enabled: true
 
+# Example options
+ansible_nas_hostname: zima
+ansible_nas_timezone: Etc/GMT-8
+
 ## Enable some applications
-logging_stack_enabled: true
 stats_enabled: true
-dashy_enabled: false
+logging_stack_enabled: true
 organizr_enabled: true
 portainer_enabled: true
-esphome_enabled: true
-homeassistant_enabled: true
-WOL_enabled: false
-flaresolverr_enabled: true
-# hyperion_enabled: false
-grocy_enabled: true
+esphome_enabled: false
+watchtower_enabled: true
 
 
 duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: true
-overseerr_enabled: false
-ombi_enabled: false
 plex_enabled: true
+readarr_enabled: true
+overseerr_enabled: true
+ombi_enabled: true
 transmission_with_openvpn_enabled: true
-bitwarden_enabled: true
-
-
+radarr_enabled: true
+sabnzbd_enabled: true
+sonarr_enabled: true
+tautulli_enabled: true
+jackett_enabled: false
+lidarr_enabled: true
+nzbget_enabled: false
+prowlarr_enabled: true
+bazarr_enabled: true
+firefly_enabled: true
 
 ## Disabled Stuff
+# hyperion_enabled: false
+traefik_enabled: false
 airsonic_enabled: false
+dashy_enabled: false
+homeassistant_enabled: false
 deluge_enabled: false
-bazarr_enabled: false
-radarr_enabled: false
-readarr_enabled: false
-sabnzbd_enabled: false
-sonarr_enabled: false
-tautulli_enabled: false
 pihole_enabled: false
-jackett_enabled: false
-lidarr_enabled: false
-nzbget_enabled: false
+WOL_enabled: false
+bitwarden_enabled: false
