@@ -2,7 +2,7 @@ LABEL=writable  /       ext4    defaults        0       1
 LABEL=system-boot       /boot/firmware  vfat    defaults        0       1
 
 
-//192.168.1.7/movies /mnt/storage/Movies cifs credentials=/home/jake/.credentials 0 0
-//192.168.1.7/music /mnt/storage/Music cifs credentials=/home/jake/.credentials 0 0
-//192.168.1.7/tv /mnt/storage/TV cifs credentials=/home/jake/.credentials 0 0
+//192.168.1.7/movies /mnt/storage/movies cifs credentials=/home/jake/.credentials 0 0
+//192.168.1.7/music /mnt/storage/music cifs credentials=/home/jake/.credentials 0 0
+//192.168.1.7/tv /mnt/storage/tv cifs credentials=/home/jake/.credentials 0 0
 //192.168.1.7/backups /mnt/storage/backups cifs credentials=/home/jake/.credentials 0 0
