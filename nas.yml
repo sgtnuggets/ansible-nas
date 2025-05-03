@@ -371,9 +371,9 @@
     #   tags:
     #     - speedtest-tracker
 
-    # - role: stats
-    #   tags:
-    #     - stats
+    - role: stats
+      tags:
+        - stats
 
     - role: syncthing
       tags:
