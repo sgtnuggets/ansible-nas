@@ -64,6 +64,7 @@ netdata_enabled: true
 plex_enabled: true
 plex_memory_override: "4g"
 plex_port_override: "32402"
+plex_devices: "/dev/dri:/dev/dri"
 readarr_enabled: true
 overseerr_enabled: true
 ombi_enabled: true
