@@ -5,13 +5,13 @@ all:
     servers:
       vars:
         someVar: "testValue"
-        ansible_connection: local
-        ansible_host: localhost
       hosts:
         stinker:
           hostnamevar: stinker
+          ansible_connection: local
+          ansible_host: localhost
         # streamweaver:
         #   hostnamevar: streamweaver
-        # zima:
-        #   hostnamevar: zima
+        zima:
+          hostnamevar: zima
         
