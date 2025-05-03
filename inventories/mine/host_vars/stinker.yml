@@ -46,8 +46,6 @@ nfs_exports:
 ansible_nas_hostname: stinker
 ansible_nas_timezone: Etc/GMT-8
 
-speedtest_enabled: true
-
 ## Enable some applications
 logging_stack_enabled: true
 stats_enabled: true
@@ -68,6 +66,8 @@ netdata_enabled: true
 overseerr_enabled: false
 ombi_enabled: false
 plex_enabled: true
+plex_memory_override: "2g"
+plex_port_override: "32401"
 transmission_with_openvpn_enabled: true
 bitwarden_enabled: true
 

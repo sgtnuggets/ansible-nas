@@ -11,6 +11,19 @@
     dest: /etc/motd
   when: inventory_hostname == "zima"
 
+- name: Set login banner
+  ansible.builtin.copy:
+    src: streamweaver.txt
+    dest: /etc/motd
+  when: inventory_hostname == "streamweaver"
+
+- name: Set login banner
+  ansible.builtin.copy:
+    src: nuc0.txt
+    dest: /etc/motd
+  when: inventory_hostname == "nuc0"
+
+
 - name: Update apt-cache
   ansible.builtin.apt:
     update_cache: yes

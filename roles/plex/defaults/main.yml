@@ -34,11 +34,13 @@ plex_image_name: "linuxserver/plex"
 plex_image_version: "latest"
 
 # specs
-plex_memory: "2g"
+plex_memory: "{{ plex_memory_override }}"
 
 # Device mappings for the docker container. E.g. To enable hardware transcoding:
-# plex_devices:
-#  - "/dev/dri:/dev/dri"
+{% if inventory_hostname == 'zima' %}
+plex_devices:
+ - "/dev/dri:/dev/dri"
+ {% endif %}
 
 # see https://hub.docker.com/r/linuxserver/plex for details on this setting
 plex_version: "docker"
