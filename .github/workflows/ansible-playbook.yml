@@ -25,7 +25,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # - name: Set up Python 3
       #   uses: actions/setup-python@v2
@@ -38,8 +38,15 @@ jobs:
       - name: Install roles
         run: ansible-galaxy install -r requirements.yml
 
-      # - name: leak a secret
-      #   run: echo ${{secrets.YOUR_SECRET}} | sed 's/./& /g'
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H zima >> ~/.ssh/known_hosts
+
+      - name: Test SSH
+        run: ssh jake@zima "echo 'Connected to remote host'"
 
       - name: Run playbook
         # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass

@@ -167,9 +167,9 @@
     #   tags:
     #     - gotify
 
-    - role: grocy
-      tags:
-        - grocy
+    # - role: grocy
+    #   tags:
+    #     - grocy
 
     # - role: guacamole
     #   tags:
@@ -271,9 +271,9 @@
     #   tags:
     #     - netbootxyz
 
-    # - role: netdata
-    #   tags:
-    #     - netdata
+    - role: netdata
+      tags:
+        - netdata
 
     # - role: nextcloud
     #   tags:
