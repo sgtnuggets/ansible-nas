@@ -50,46 +50,46 @@
     ### Stacks
     ###
 
-    # - role: logging
-    #   tags:
-    #     - logging
+    - role: logging
+      tags:
+        - logging
 
 
-    ###
-    ### Applications
-    ###
+    ##
+    ## Applications
+    ##
 
     # - role: pihole
     #   tags:
     #     - pihole
 
-    # - role: airsonic
-    #   tags:
-    #     - airsonic
+    - role: airsonic
+      tags:
+        - airsonic
 
-    # - role: bazarr
-    #   tags:
-    #     - bazarr
+    - role: bazarr
+      tags:
+        - bazarr
 
-    # - role: bitwarden
-    #   tags:
-    #     - bitwarden
+    - role: bitwarden
+      tags:
+        - bitwarden
 
-    # - role: booksonic
-    #   tags:
-    #     - booksonic
+    - role: booksonic
+      tags:
+        - booksonic
 
-    # - role: calibre
-    #   tags:
-    #     - calibre
+    - role: calibre
+      tags:
+        - calibre
 
     # - role: cloudcmd
     #   tags:
     #     - cloudcmd
 
-    # - role: cloudflare_ddns
-    #   tags:
-    #     - cloudflare_ddns
+    - role: cloudflare_ddns
+      tags:
+        - cloudflare_ddns
 
     # - role: code-server
     #   tags:
@@ -99,13 +99,13 @@
     #   tags:
     #     - couchpotato
 
-    # - role: dashy
-    #   tags:
-    #     - dashy
+    - role: dashy
+      tags:
+        - dashy
 
-    # - role: ddns_updater
-    #   tags:
-    #     - ddns_updater
+    - role: ddns_updater
+      tags:
+        - ddns_updater
 
     # - role: deluge
     #   tags:
@@ -119,29 +119,29 @@
     #   tags:
     #     - drone_ci
 
-    # - role: duplicacy
-    #   tags:
-    #     - duplicacy
+    - role: duplicacy
+      tags:
+        - duplicacy
 
-    # - role: duplicati
-    #   tags:
-    #     - duplicati
+    - role: duplicati
+      tags:
+        - duplicati
 
     # - role: emby
     #   tags:
     #     - emby
 
-    # - role: esphome
-    #   tags:
-    #     - esphome
+    - role: esphome
+      tags:
+        - esphome
 
-    # - role: flaresolverr
-    #   tags:
-    #     - flaresolverr
+    - role: flaresolverr
+      tags:
+        - flaresolverr
 
-    # - role: firefly
-    #   tags:
-    #     - firefly
+    - role: firefly
+      tags:
+        - firefly
 
     # - role: freshrss
     #   tags:
@@ -159,17 +159,17 @@
     #   tags:
     #     - gitlab
 
-    # - role: glances
-    #   tags:
-    #     - glances
+    - role: glances
+      tags:
+        - glances
 
     # - role: gotify
     #   tags:
     #     - gotify
 
-    # - role: grocy
-    #   tags:
-    #     - grocy
+    - role: grocy
+      tags:
+        - grocy
 
     # - role: guacamole
     #   tags:
@@ -179,17 +179,17 @@
     #   tags:
     #     - healthchecks.io
 
-    # - role: heimdall
-    #   tags:
-    #     - heimdall
+    - role: heimdall
+      tags:
+        - heimdall
 
     # - role: hello_world
     #   tags:
     #     - hello_world
 
-    # - role: homeassistant
-    #   tags:
-    #     - homeassistant
+    - role: homeassistant
+      tags:
+        - homeassistant
 
     # - role: homebridge
     #   tags:
@@ -215,13 +215,13 @@
     #   tags:
     #     - krusader
 
-    # - role: lidarr
-    #   tags:
-    #     - lidarr
+    - role: lidarr
+      tags:
+        - lidarr
 
-    # - role: loki
-    #   tags:
-    #     - loki
+    - role: loki
+      tags:
+        - loki
 
     # - role: mealie
     #   tags:
@@ -271,9 +271,9 @@
     #   tags:
     #     - netbootxyz
 
-    # - role: netdata
-    #   tags:
-    #     - netdata
+    - role: netdata
+      tags:
+        - netdata
 
     # - role: nextcloud
     #   tags:
@@ -291,21 +291,21 @@
     #   tags:
     #     - octoprint
 
-    # - role: ombi
-    #   tags:
-    #     - ombi
+    - role: ombi
+      tags:
+        - ombi
 
     # - role: openhab
     #   tags:
     #     - openhab
 
-    # - role: organizr
-    #   tags:
-    #     - organizr
+    - role: organizr
+      tags:
+        - organizr
 
-    # - role: overseerr
-    #   tags:
-    #     - overseerr
+    - role: overseerr
+      tags:
+        - overseerr
 
     # - role: paperless_ng
     #   tags:
@@ -319,17 +319,17 @@
       tags:
         - plex
 
-    # - role: portainer
-    #   tags:
-    #     - portainer
+    - role: portainer
+      tags:
+        - portainer
 
-    # - role: prowlarr
-    #   tags:
-    #     - prowlarr
+    - role: prowlarr
+      tags:
+        - prowlarr
 
-    # - role: promtail
-    #   tags:
-    #     - promtail
+    - role: promtail
+      tags:
+        - promtail
 
     # - role: pyload
     #   tags:
@@ -339,13 +339,13 @@
     #   tags:
     #     - pytivo
 
-    # - role: radarr
-    #   tags:
-    #     - radarr
+    - role: radarr
+      tags:
+        - radarr
 
-    # - role: readarr
-    #   tags:
-    #     - readarr
+    - role: readarr
+      tags:
+        - readarr
 
     # - role: route53_ddns
     #   tags:
@@ -355,17 +355,17 @@
     #   tags:
     #     - rssbridge
 
-    # - role: sabnzbd
-    #   tags:
-    #     - sabnzbd
+    - role: sabnzbd
+      tags:
+        - sabnzbd
 
     # - role: sickchill
     #   tags:
     #     - sickchill
 
-    # - role: sonarr
-    #   tags:
-    #     - sonarr
+    - role: sonarr
+      tags:
+        - sonarr
 
     # - role: speedtest-tracker
     #   tags:
@@ -375,13 +375,13 @@
     #   tags:
     #     - stats
 
-    # - role: syncthing
-    #   tags:
-    #     - syncthing
+    - role: syncthing
+      tags:
+        - syncthing
 
-    # - role: tautulli
-    #   tags:
-    #     - tautulli
+    - role: tautulli
+      tags:
+        - tautulli
 
     # - role: thelounge
     #   tags:
@@ -399,17 +399,17 @@
     #   tags:
     #     - timemachine
 
-    # - role: traefik
-    #   tags:
-    #     - traefik
+    - role: traefik
+      tags:
+        - traefik
 
     # - role: transmission
     #   tags:
     #     - transmission
 
-    # - role: transmission-with-openvpn
-    #   tags:
-    #     - transmission_with_openvpn
+    - role: transmission-with-openvpn
+      tags:
+        - transmission_with_openvpn
 
     # - role: ubooquity
     #   tags:
@@ -427,13 +427,13 @@
     #   tags:
     #     - wallabag
 
-    # - role: watchtower
-    #   tags:
-    #     - watchtower
+    - role: watchtower
+      tags:
+        - watchtower
 
-    # - role: wireguard
-    #   tags:
-    #     - wireguard
+    - role: wireguard
+      tags:
+        - wireguard
 
     # - role: wireshark
     #   tags:
