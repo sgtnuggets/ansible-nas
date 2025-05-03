@@ -9,23 +9,24 @@ all:
         stinker:
           ansible_connection: local
           ansible_host: localhost
+          host_ip: "192.168.1.2"
         # streamweaver:
         #   ansible_host: streamweaver
         #   ansible_user: jake
         #   ansible_ssh_private_key_file: ~/.ssh/id_rsa
         #   ansible_become: true
-        #   host_ip: 192.168.1.5
+        #   host_ip: "192.168.1.5"
         # nuc0:
         #   ansible_host: nuc0
         #   ansible_user: jake
         #   ansible_ssh_private_key_file: ~/.ssh/id_rsa
         #   ansible_become: true
-        #   host_ip: 192.168.1.8
+        #   host_ip: "192.168.1.8"
         zima:
           ansible_host: zima
           ansible_user: jake
           ansible_ssh_private_key_file: ~/.ssh/id_rsa
           ansible_become: true
-          host_ip: 192.168.1.7
+          host_ip: "192.168.1.7"
           plex_devices:
             - "/dev/dri:/dev/dri"
