@@ -239,9 +239,9 @@
     #   tags:
     #     - miniflux
 
-    # - role: minio
-    #   tags:
-    #     - minio
+    - role: minio
+      tags:
+        - minio
 
     # - role: mosquitto
     #   tags:
