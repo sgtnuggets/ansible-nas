@@ -49,8 +49,8 @@ jobs:
         run: |
           ssh-keyscan -H zima >> ~/.ssh/known_hosts
 
-      - name: Test SSH
-        run: ssh jake@zima "echo 'Connected to remote host'"
+      # - name: Test SSH
+      #   run: ssh jake@zima "echo 'Connected to remote host'"
 
       - name: Run playbook
         # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass
