@@ -48,7 +48,7 @@ ansible_nas_timezone: Etc/GMT-8
 
 ## Enable some applications
 logging_stack_enabled: true
-stats_enabled: true
+stats_enabled: false
 dashy_enabled: false
 organizr_enabled: true
 portainer_enabled: true
