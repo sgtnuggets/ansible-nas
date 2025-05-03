@@ -315,9 +315,9 @@
     #   tags:
     #     - piwigo
 
-    # - role: plex
-    #   tags:
-    #     - plex
+    - role: plex
+      tags:
+        - plex
 
     # - role: portainer
     #   tags:
@@ -367,9 +367,9 @@
     #   tags:
     #     - sonarr
 
-    - role: speedtest-tracker
-      tags:
-        - speedtest-tracker
+    # - role: speedtest-tracker
+    #   tags:
+    #     - speedtest-tracker
 
     # - role: stats
     #   tags:
