@@ -59,7 +59,7 @@ readarr_enabled: false
 overseerr_enabled: false
 ombi_enabled: false
 transmission_with_openvpn_enabled: false
-radarr_enabled: true
+radarr_enabled: false
 sabnzbd_enabled: false
 sonarr_enabled: false
 tautulli_enabled: false
