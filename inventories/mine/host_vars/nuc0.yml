@@ -77,9 +77,11 @@ lidarr_enabled: false
 prowlarr_enabled: false
 bazarr_enabled: false
 firefly_enabled: false
+flaresolverr_enabled: false
+grocy_enabled: false
+
 
 ## Disabled Stuff
-# hyperion_enabled: false
 traefik_enabled: false
 airsonic_enabled: false
 dashy_enabled: false
