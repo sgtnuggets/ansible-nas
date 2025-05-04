@@ -218,11 +218,6 @@
     - role: lidarr
       tags:
         - lidarr
-
-    - role: loki
-      tags:
-        - loki
-
     # - role: mealie
     #   tags:
     #     - mealie
@@ -374,6 +369,10 @@
     - role: stats
       tags:
         - stats
+
+    - role: loki
+      tags:
+        - loki
 
     - role: syncthing
       tags:
