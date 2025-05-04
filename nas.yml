@@ -75,13 +75,13 @@
       tags:
         - bitwarden
 
-    - role: booksonic
-      tags:
-        - booksonic
+    # - role: booksonic
+    #   tags:
+    #     - booksonic
 
-    - role: calibre
-      tags:
-        - calibre
+    # - role: calibre
+    #   tags:
+    #     - calibre
 
     # - role: cloudcmd
     #   tags:
@@ -159,9 +159,9 @@
     #   tags:
     #     - gitlab
 
-    - role: glances
-      tags:
-        - glances
+    # - role: glances
+    #   tags:
+    #     - glances
 
     # - role: gotify
     #   tags:

@@ -50,23 +50,38 @@ ansible_nas_timezone: Etc/GMT-8
 dashy_enabled: false
 portainer_enabled: true
 duplicati_enabled: true
-
-
-# Media Acquisition
-bazarr_enabled: false
-# deluge_enabled: true
-transmission-with-openvpn_enabled: true
-radarr_enabled: false
-sonarr_enabled: false
+grocy_enabled: false
+bitwarden_enabled: false
+flaresolverr_enabled: false
+speedtest_enabled: false
+calibre_enable: false
+readarr_enabled: false
+overseerr_enabled: false
+ombi_enabled: false
+transmission_with_openvpn_enabled: false
+radarr_enabled: true
 sabnzbd_enabled: false
+sonarr_enabled: false
+tautulli_enabled: false
 jackett_enabled: false
+lidarr_enabled: false
+nzbget_enabled: false
+prowlarr_enabled: false
+bazarr_enabled: false
+firefly_enabled: false
 nszhydra_enabled: false
+traefik_enabled: false
+airsonic_enabled: false
+homeassistant_enabled: false
+deluge_enabled: false
+pihole_enabled: false
+WOL_enabled: false
+
 
 # Media Streaming
 plex_enabled: true
 plex_memory_override: "4g"
 plex_port_override: "32400"
-tautulli_enabled: true
 
 
 # Infra Monitoring

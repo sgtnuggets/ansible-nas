@@ -50,6 +50,7 @@ ansible_nas_timezone: Etc/GMT-8
 logging_stack_enabled: true
 stats_enabled: true
 stats_master: false
+speedtest_enabled: true
 dashy_enabled: false
 organizr_enabled: true
 portainer_enabled: true

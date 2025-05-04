@@ -43,7 +43,7 @@ nfs_exports:
   - "{{ nfs_shares_root }}/public *(rw,sync,no_root_squash)"
 
 
-speedtest_enabled: true
+speedtest_enabled: false
 
 # Example options
 ansible_nas_hostname: zima
