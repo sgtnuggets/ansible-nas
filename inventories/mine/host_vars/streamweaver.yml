@@ -79,6 +79,7 @@ WOL_enabled: false
 esphome_enabled: false
 watchtower_enabled: true
 organizr_enabled: true
+stats_internet_speed_test_enabled: false
 
 
 # Media Streaming

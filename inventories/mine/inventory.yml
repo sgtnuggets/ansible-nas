@@ -6,10 +6,10 @@ all:
       vars:
         someVar: "testValue"
       hosts:
-        # stinker:
-        #   ansible_connection: local
-        #   ansible_host: localhost
-        #   host_ip: "192.168.1.2"
+        stinker:
+          ansible_connection: local
+          ansible_host: localhost
+          host_ip: "192.168.1.2"
         # streamweaver:
         #   ansible_host: streamweaver
         #   ansible_user: jake
