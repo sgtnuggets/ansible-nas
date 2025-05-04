@@ -83,7 +83,7 @@ stats_internet_speed_test_enabled: false
 
 
 # Media Streaming
-plex_enabled: false
+plex_enabled: true
 plex_memory_override: "4g"
 plex_port_override: "32400"
 
