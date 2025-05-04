@@ -6,7 +6,7 @@ organizr_available_externally: false
 organizr_data_directory: "{{ docker_home }}/organizr"
 
 # network
-organizr_port_http: "10081"
+organizr_port_http: "3333"
 organizr_port_https: "10444"
 organizr_hostname: "organizr"
 
