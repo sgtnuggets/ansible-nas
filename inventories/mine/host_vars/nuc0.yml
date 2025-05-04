@@ -1,0 +1,90 @@
+---
+##                       ._____.   .__
+##  _____    ____   _____|__\_ |__ |  |   ____             ____ _____    ______
+##  \__  \  /    \ /  ___/  || __ \|  | _/ __ \   ______  /    \\__  \  /  ___/
+##   / __ \|   |  \\___ \|  || \_\ \  |_\  ___/  /_____/ |   |  \/ __ \_\___ \
+##  (____  /___|  /____  >__||___  /____/\___  >         |___|  (____  /____  >
+##       \/     \/     \/        \/          \/               \/     \/     \/
+##     a n s i b l e - n a s      https://github.com/davestephens/ansible-nas
+
+# Add your all.yml config overrides to this file. See group_vars/all.yml for all possible settings.
+
+# ansible-playbook -i ./inventories/mine/inventory ./nas.yml -b -K --limit nas
+
+# Will be added to the docker group to give user command line access to docker
+ansible_nas_user: jake
+
+# Your email and domain, used for Let's Encrypt SSL certs
+ansible_nas_email: sgtnuggets@hotmail.com
+
+# Applications will have subdomain SSL certificates created if Traefik is enabled, e.g. ansible-nas.<your-domain>, nextcloud.<your-domain>
+ansible_nas_domain: jakesticka.com
+
+# What version of python ansible should use on target system (path to spesific binary)
+ansible_python_interpreter: /usr/bin/python3
+
+###
+### Samba
+###
+# The location where all shares will be created by default. Can be overridden on a per-share basis.
+# This path will be mounted to backup containers, Duplicati
+samba_shares_root: /mnt/storage
+
+###
+### NFS
+###
+# Data you want published over NFS. More info on the NFS config format can be found at
+# https://help.ubuntu.com/community/SettingUpNFSHowTo#Shares
+# WARNING: Weird things might happen if you share the same data over Samba and NFS and allow writes on both!
+
+nfs_shares_root: /mnt/storage
+
+nfs_exports:
+  - "{{ nfs_shares_root }}/public *(rw,sync,no_root_squash)"
+
+
+speedtest_enabled: true
+
+# Example options
+ansible_nas_hostname: nuc0
+ansible_nas_timezone: Etc/GMT-8
+
+## Enable some applications
+stats_enabled: false
+stats_master: false
+logging_stack_enabled: true
+organizr_enabled: true
+portainer_enabled: true
+esphome_enabled: false
+watchtower_enabled: true
+
+
+duplicati_enabled: true
+duplicacy_enabled: false
+netdata_enabled: true
+plex_enabled: true
+plex_memory_override: "8g"
+plex_port_override: "32403"
+readarr_enabled: false
+overseerr_enabled: false
+ombi_enabled: false
+transmission_with_openvpn_enabled: true
+radarr_enabled: false
+sabnzbd_enabled: false
+sonarr_enabled: false
+tautulli_enabled: true
+lidarr_enabled: false
+prowlarr_enabled: false
+bazarr_enabled: false
+firefly_enabled: false
+
+## Disabled Stuff
+# hyperion_enabled: false
+traefik_enabled: false
+airsonic_enabled: false
+dashy_enabled: false
+homeassistant_enabled: false
+deluge_enabled: false
+pihole_enabled: false
+WOL_enabled: false
+bitwarden_enabled: false
