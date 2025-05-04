@@ -23,18 +23,21 @@ scrape_configs:
       - targets: 
         - "localhost:{{ stats_prometheus_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_port }}"
+        - "{{ hostvars['nuc0']['host_ip'] }}:{{ stats_prometheus_port }}"
 
   - job_name: "telegraf"
     static_configs:
       - targets: 
         - "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ stats_telegraf_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_telegraf_port }}"
+        - "{{ hostvars['nuc0']['host_ip'] }}:{{ stats_telegraf_port }}"
 
   - job_name: "smartctl"
     static_configs:
       - targets: 
         - "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ stats_prometheus_smartctl_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
+        - "{{ hostvars['nuc0']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
 
 
   - job_name: "traefik"

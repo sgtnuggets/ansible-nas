@@ -43,13 +43,13 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          # ssh-keyscan -H zima >> ~/.ssh/known_hosts
+          ssh-keyscan -H zima >> ~/.ssh/known_hosts
           # ssh-keyscan -H streamweaver >> ~/.ssh/known_hosts
           ssh-keyscan -H nuc0 >> ~/.ssh/known_hosts
 
       - name: Add remote host to known_hosts
         run: |
-          # ssh-keyscan -H zima >> ~/.ssh/known_hosts
+          ssh-keyscan -H zima >> ~/.ssh/known_hosts
           # ssh-keyscan -H streamweaver >> ~/.ssh/known_hosts
           ssh-keyscan -H nuc0 >> ~/.ssh/known_hosts
 
