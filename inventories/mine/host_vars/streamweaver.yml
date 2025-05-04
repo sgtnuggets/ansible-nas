@@ -76,10 +76,13 @@ homeassistant_enabled: false
 deluge_enabled: false
 pihole_enabled: false
 WOL_enabled: false
+esphome_enabled: false
+watchtower_enabled: true
+organizr_enabled: true
 
 
 # Media Streaming
-plex_enabled: true
+plex_enabled: false
 plex_memory_override: "4g"
 plex_port_override: "32400"
 
