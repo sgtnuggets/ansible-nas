@@ -65,7 +65,7 @@ grocy_enabled: true
 
 duplicati_enabled: true
 duplicacy_enabled: false
-netdata_enabled: true
+netdata_enabled: false
 overseerr_enabled: false
 ombi_enabled: false
 plex_enabled: true

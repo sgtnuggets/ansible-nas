@@ -91,6 +91,6 @@ plex_port_override: "32400"
 # Infra Monitoring
 stats_enabled: true
 stats_master: false
-netdata_enabled: true
+netdata_enabled: false
 
 

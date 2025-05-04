@@ -62,7 +62,7 @@ watchtower_enabled: true
 
 duplicati_enabled: true
 duplicacy_enabled: false
-netdata_enabled: true
+netdata_enabled: false
 plex_enabled: true
 plex_memory_override: "4g"
 plex_port_override: "32402"
