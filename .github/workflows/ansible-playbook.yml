@@ -5,10 +5,10 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
   schedule:
     - cron: "0 7 * * 3" # midnight pst on Wed
 
@@ -16,18 +16,19 @@ on:
     inputs:
       inventory:
         required: true
-        type: choice
-        options:
-          - inventory.yml
+        type: string
+        default: "inventory.yml"
       playbook:
         required: true
         type: choice
+        default: "nas.yml"
         options:
-          - nas.yml
-          - nas-targeted.yml
+          - "nas.yml"
+          - "nas-targeted.yml"
       limit:
         required: true
         type: choice
+        default: "servers"
         options:
           - "servers"
           - "stinker"
