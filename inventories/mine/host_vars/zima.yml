@@ -58,6 +58,7 @@ organizr_enabled: true
 portainer_enabled: true
 esphome_enabled: false
 watchtower_enabled: true
+syncthing_enabled: true
 
 
 duplicati_enabled: true
