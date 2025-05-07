@@ -85,7 +85,6 @@ scrape_configs:
         replacement: '192.168.1.2:9116'  # SNMP exporter.
 
 
-# {% if stats_internet_speed_test_enabled %}
   - job_name: "speedtest"
     scrape_interval: {{ stats_speedtest_collection_interval }}
     scrape_timeout: 5m
@@ -93,7 +92,6 @@ scrape_configs:
       - targets: [
                     "localhost:{{ stats_speedtest_exporter_port }}"
                  ]
-# {% endif %}
 
 {% if stats_prometheus_additional_hosts is defined %}
   - job_name: "additional_hosts"
