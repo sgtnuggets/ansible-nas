@@ -24,6 +24,7 @@ scrape_configs:
         - "localhost:{{ stats_prometheus_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_port }}"
         - "{{ hostvars['nuc0']['host_ip'] }}:{{ stats_prometheus_port }}"
+        # - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_prometheus_port }}"
 
   - job_name: "telegraf"
     static_configs:
@@ -31,6 +32,7 @@ scrape_configs:
         - "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ stats_telegraf_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_telegraf_port }}"
         - "{{ hostvars['nuc0']['host_ip'] }}:{{ stats_telegraf_port }}"
+        # - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_telegraf_port }}"
 
   - job_name: "smartctl"
     static_configs:
@@ -38,7 +40,7 @@ scrape_configs:
         - "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ stats_prometheus_smartctl_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
         - "{{ hostvars['nuc0']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
-
+        # - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
 
   - job_name: "traefik"
     static_configs:
@@ -86,7 +88,7 @@ scrape_configs:
         replacement: '192.168.1.2:9116'  # SNMP exporter.
 
 
-{% if stats_internet_speed_test_enabled %}
+# {% if stats_internet_speed_test_enabled %}
   - job_name: "speedtest"
     scrape_interval: {{ stats_speedtest_collection_interval }}
     scrape_timeout: 5m
@@ -94,7 +96,7 @@ scrape_configs:
       - targets: [
                     "{{ hostvars['stinker']['host_ip'] }}:{{ stats_speedtest_exporter_port }}"
                  ]
-{% endif %}
+# {% endif %}
 
 {% if stats_prometheus_additional_hosts is defined %}
   - job_name: "additional_hosts"

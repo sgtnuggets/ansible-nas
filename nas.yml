@@ -362,9 +362,9 @@
       tags:
         - sonarr
 
-    # - role: speedtest-tracker
-    #   tags:
-    #     - speedtest-tracker
+    - role: speedtest-tracker
+      tags:
+        - speedtest-tracker
 
     - role: stats
       tags:
