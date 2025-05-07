@@ -33,13 +33,6 @@ on:
         required: false
         type: string
         default: "inventory.yml"
-      playbook:
-        required: false
-        type: choice
-        default: "nas.yml"
-        options:
-          - "nas.yml"
-          - "nas-targeted.yml"
       runOneTimeAuth:
         required: true
         type: boolean
@@ -91,7 +84,7 @@ jobs:
 
       - name: Run playbook
         # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass
-        run: ansible-playbook -i ./inventories/mine/${{ inputs.inventory }} ./${{ inputs.playbook }} -b --become-method=sudo --become-password-file=/home/jake/workspace/sudo_password.txt --limit ${{ inputs.limit }} --tags ${{ inputs.tags }} --extra-vars "STATS_HASS_LONG_LIVED_ACCESS_TOKEN=$HASSPASS CLOUDFLARE_DNS_EDIT=$CLOUDFLARE_DNS_EDIT github_openvpn_username=$NORD_USERNAME github_openvpn_password=$NORD_PASSWORD bitwarden=$BITWARDEN"
+        run: ansible-playbook -i ./inventories/mine/${{ inputs.inventory }} ./nas.yml -b --become-method=sudo --become-password-file=/home/jake/workspace/sudo_password.txt --limit ${{ inputs.limit }} --tags ${{ inputs.tags }} --extra-vars "STATS_HASS_LONG_LIVED_ACCESS_TOKEN=$HASSPASS CLOUDFLARE_DNS_EDIT=$CLOUDFLARE_DNS_EDIT github_openvpn_username=$NORD_USERNAME github_openvpn_password=$NORD_PASSWORD bitwarden=$BITWARDEN"
         env: # Or as an environment variable
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
           HASSPASS: ${{ secrets.STATS_HASS_LONG_LIVED_ACCESS_TOKEN }}
