@@ -286,9 +286,9 @@
     #   tags:
     #     - octoprint
 
-    - role: ombi
-      tags:
-        - ombi
+    # - role: ombi
+    #   tags:
+    #     - ombi
 
     # - role: openhab
     #   tags:

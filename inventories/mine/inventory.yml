@@ -10,14 +10,14 @@ all:
           ansible_connection: local
           ansible_host: localhost
           host_ip: "192.168.1.2"
-        # streamweaver:
-        #   ansible_host: streamweaver
-        #   ansible_user: jake
-        #   ansible_ssh_private_key_file: ~/.ssh/id_rsa
-        #   ansible_become: true
-        #   host_ip: "192.168.1.5"
-        #   plex_devices:
-        #     - "/dev/dri:/dev/dri"
+        streamweaver:
+          ansible_host: streamweaver
+          ansible_user: jake
+          ansible_ssh_private_key_file: ~/.ssh/id_rsa
+          ansible_become: true
+          host_ip: "192.168.1.5"
+          plex_devices:
+            - "/dev/dri:/dev/dri"
         #   plex_user_id: "1000"
         #   plex_group_id: "1000"
         nuc0:

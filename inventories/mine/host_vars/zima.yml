@@ -69,7 +69,7 @@ plex_memory_override: "4g"
 plex_port_override: "32402"
 readarr_enabled: true
 overseerr_enabled: true
-ombi_enabled: true
+ombi_enabled: false
 transmission_with_openvpn_enabled: true
 radarr_enabled: true
 sabnzbd_enabled: true
