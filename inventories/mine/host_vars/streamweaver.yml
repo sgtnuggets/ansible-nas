@@ -79,7 +79,12 @@ WOL_enabled: false
 esphome_enabled: false
 watchtower_enabled: true
 organizr_enabled: true
+stats_enabled: true
+stats_master: false
 stats_internet_speed_test_enabled: false
+stats_pihole_exporter_enabled: false
+stats_snmp_exporter_enabled: false
+
 
 
 # Media Streaming
@@ -89,8 +94,6 @@ plex_port_override: "32400"
 
 
 # Infra Monitoring
-stats_enabled: true
-stats_master: false
 netdata_enabled: false
 
 

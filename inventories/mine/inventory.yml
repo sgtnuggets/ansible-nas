@@ -18,8 +18,6 @@ all:
           host_ip: "192.168.1.5"
           plex_devices:
             - "/dev/dri:/dev/dri"
-        #   plex_user_id: "1000"
-        #   plex_group_id: "1000"
         nuc0:
           ansible_host: nuc0
           ansible_user: jake
