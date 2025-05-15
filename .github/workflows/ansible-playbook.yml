@@ -15,6 +15,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
+      environment:
+        description: 'Environment'
+        required: false
+        default: 'weekly'
       limit:
         required: false
         type: choice
@@ -45,6 +49,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: [self-hosted, linux, stinker]
+    env:
+      # fallback to 'staging' if input is undefined
+      ENVIRONMENT: ${{ github.event.inputs.environment || 'weekly' }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
