@@ -222,9 +222,9 @@
     #   tags:
     #     - mealie
 
-    # - role: minecraft-server
-    #   tags:
-    #     - minecraft-server
+    - role: minecraft-server
+      tags:
+        - minecraft-server
 
     # - role: minidlna
     #   tags:
