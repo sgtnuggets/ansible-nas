@@ -11,7 +11,7 @@ minecraft_bedrock_server_port: "19132"
 minecraft_bedrock_server_container_name: minecraft-bedrock-server
 
 # minecraft settings
-minecraft_bedrock_server_name: "Ansible-NAS Minecraft Server"
-minecraft_bedrock_server_game_mode: "creative"
+minecraft_bedrock_server_name: "SuperCraft"
+minecraft_bedrock_server_game_mode: "survival"
 minecraft_bedrock_server_difficulty: "normal"
-minecraft_bedrock_server_online_mode: "false"
+minecraft_bedrock_server_online_mode: "true"
