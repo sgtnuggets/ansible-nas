@@ -60,7 +60,8 @@ esphome_enabled: false
 watchtower_enabled: true
 syncthing_enabled: true
 
-minecraft_server: true
+minecraft_bedrock_server_enabled: true
+minecraft_server_enabled: true
 
 duplicati_enabled: true
 duplicacy_enabled: false
