@@ -1,0 +1,15 @@
+---
+orb_enabled: false
+orb_available_externally: false
+
+# directories
+orb_config_directory: "{{ docker_home }}/orb/config"
+
+
+# docker
+orb_container_name: "orb"
+orb_image_name: "orbforge/orb"
+orb_image_version: "latest"
+
+# specs
+orb_memory: 1g

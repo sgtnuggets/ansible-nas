@@ -294,6 +294,10 @@
     #   tags:
     #     - openhab
 
+    - role: orb
+      tags:
+        - orb
+        
     - role: organizr
       tags:
         - organizr

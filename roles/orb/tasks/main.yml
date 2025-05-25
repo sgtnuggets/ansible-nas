@@ -1,0 +1,27 @@
+---
+- name: Start Orb Sensor
+  block:
+    - name: Create Orb Configuration Directory
+      ansible.builtin.file:
+        path: "{{ orb_config_directory }}"
+        state: directory
+        # mode: '0755'
+
+    - name: Deploy Orb Docker Container
+      community.docker.docker_container:
+        name: "{{ orb_container_name }}"
+        image: "{{ orb_image_name }}:{{ orb_image_version }}"
+        pull: true
+        network_mode: host
+        volumes:
+          - "{{ orb_config_directory }}:/root/.config/orb:rw"
+        restart_policy: unless-stopped
+  when: orb_enabled | default(true)
+
+- name: Stop Orb Sensor
+  block:
+    - name: Remove Orb Docker Container
+      community.docker.docker_container:
+        name: "{{ orb_container_name }}"
+        state: absent
+  when: orb_enabled is false

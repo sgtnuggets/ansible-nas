@@ -1,6 +1,6 @@
 ---
 # enable or disable the application
-flaresolverr_enabled: true
+flaresolverr_enabled: false
 flaresolverr_available_externally: false
 
 # directories
