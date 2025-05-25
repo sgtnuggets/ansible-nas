@@ -50,6 +50,7 @@ ansible_nas_timezone: Etc/GMT-8
 dashy_enabled: false
 portainer_enabled: true
 duplicati_enabled: true
+orb_enabled: true
 grocy_enabled: false
 bitwarden_enabled: false
 flaresolverr_enabled: false
