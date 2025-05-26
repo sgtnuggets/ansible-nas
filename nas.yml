@@ -215,6 +215,10 @@
     #   tags:
     #     - krusader
 
+    - role: kuma
+      tags:
+        - kuma
+
     - role: lidarr
       tags:
         - lidarr

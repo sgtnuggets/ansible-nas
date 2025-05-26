@@ -63,6 +63,7 @@ flaresolverr_enabled: true
 grocy_enabled: true
 orb_enabled: true
 ntfy_enabled: true
+kuma_enabled: true
 
 
 duplicati_enabled: true

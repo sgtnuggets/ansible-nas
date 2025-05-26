@@ -1,0 +1,3 @@
+kuma_enabled: false
+kuma_config_directory: "{{ docker_home }}/kuma/config"
+kuma_port: "3001"

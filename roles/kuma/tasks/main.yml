@@ -1,0 +1,29 @@
+---
+- name: Start kuma
+  block:
+    - name: Create kuma Configuration Directory
+      ansible.builtin.file:
+        path: "{{ kuma_config_directory }}"
+        state: directory
+
+    - name: Deploy kuma Docker Container
+      community.docker.docker_container:
+        name: "kuma"
+        image: "louislam/uptime-kuma:1"
+        pull: true
+        volumes:
+          - "{{ kuma_config_directory }}:/app/data"
+        ports:
+          - "{{ kuma_port }}:3001"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: always
+  when: kuma_enabled | default(true)
+
+- name: Stop kuma Sensor
+  block:
+    - name: Remove kuma Docker Container
+      community.docker.docker_container:
+        name: "kuma"
+        state: absent
+  when: kuma_enabled is defined and not kuma_enabled
