@@ -11,6 +11,7 @@
         name: "ntfy"
         image: "binwiederhier/ntfy:latest"
         pull: true
+        command: "serve"
         volumes:
           - "{{ ntfy_config_directory }}/cache/ntfy:/var/cache/ntfy"
           - "{{ ntfy_config_directory }}//etc/ntfy:/etc/ntfy"
