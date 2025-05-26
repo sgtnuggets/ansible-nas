@@ -9,7 +9,7 @@
     - name: Deploy ntfy Docker Container
       community.docker.docker_container:
         name: "ntfy"
-        image: "ntfyforge/ntfy:latest"
+        image: "binwiederhier/ntfy:latest"
         pull: true
         volumes:
           - "{{ ntfy_config_directory }}/cache/ntfy:/var/cache/ntfy"
