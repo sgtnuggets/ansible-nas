@@ -278,6 +278,10 @@
     #   tags:
     #     - nomad
 
+    - role: ntfy
+      tags:
+        - ntfy
+
     # - role: nzbget
     #   tags:
     #     - nzbget
@@ -297,7 +301,7 @@
     - role: orb
       tags:
         - orb
-        
+
     - role: organizr
       tags:
         - organizr

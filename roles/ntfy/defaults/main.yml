@@ -1,0 +1,3 @@
+ntfy_enabled: false
+ntfy_config_directory: "{{ docker_home }}/ntfy/config"
+ntfy_port: "6262"

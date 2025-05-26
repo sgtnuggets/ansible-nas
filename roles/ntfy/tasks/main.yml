@@ -1,0 +1,32 @@
+---
+- name: Start ntfy
+  block:
+    - name: Create ntfy Configuration Directory
+      ansible.builtin.file:
+        path: "{{ ntfy_config_directory }}"
+        state: directory
+
+    - name: Deploy ntfy Docker Container
+      community.docker.docker_container:
+        name: "ntfy"
+        image: "ntfyforge/ntfy:latest"
+        pull: true
+        volumes:
+          - "{{ ntfy_config_directory }}/cache/ntfy:/var/cache/ntfy"
+          - "{{ ntfy_config_directory }}//etc/ntfy:/etc/ntfy"
+        ports:
+          - "{{ ntfy_port }}:80"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+          # PUID: "{{ ntfy_user_id }}"
+          # PGID: "{{ ntfy_group_id }}"
+        restart_policy: always
+  when: ntfy_enabled | default(true)
+
+- name: Stop ntfy Sensor
+  block:
+    - name: Remove ntfy Docker Container
+      community.docker.docker_container:
+        name: "ntfy"
+        state: absent
+  when: ntfy_enabled is defined and not ntfy_enabled

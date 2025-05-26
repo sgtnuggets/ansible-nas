@@ -62,6 +62,7 @@ flaresolverr_enabled: true
 # hyperion_enabled: false
 grocy_enabled: true
 orb_enabled: true
+ntfy_enabled: true
 
 
 duplicati_enabled: true
