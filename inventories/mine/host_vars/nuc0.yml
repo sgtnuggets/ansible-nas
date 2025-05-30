@@ -46,7 +46,7 @@ nfs_exports:
 
 # Example options
 ansible_nas_hostname: nuc0
-ansible_nas_timezone: Etc/GMT-8
+ansible_nas_timezone: America/Los_AngelesS
 
 ## Enable some applications
 stats_enabled: true
