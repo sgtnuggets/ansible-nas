@@ -48,7 +48,7 @@ stats_internet_speed_test_enabled: false
 
 # Example options
 ansible_nas_hostname: zima
-ansible_nas_timezone: Etc/GMT-8
+ansible_nas_timezone: America/Los_Angeles
 
 ## Enable some applications
 stats_enabled: true
