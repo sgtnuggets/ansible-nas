@@ -24,6 +24,7 @@ scrape_configs:
         - "localhost:{{ stats_prometheus_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_port }}"
         - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_prometheus_port }}"
+        - "nuc0c:9113"
 
   - job_name: "telegraf"
     static_configs:
