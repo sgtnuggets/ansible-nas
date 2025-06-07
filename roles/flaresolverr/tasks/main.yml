@@ -10,7 +10,7 @@
   community.docker.docker_container:
     name: flaresolverr
     hostname: flaresolverr
-    image: ghcr.io/flaresolverr/flaresolverr:latest
+    image: ghcr.io/flaresolverr/flaresolverr:v3.3.21
     pull: true
     ports:
       - "8191:8191"
