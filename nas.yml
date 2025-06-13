@@ -191,6 +191,10 @@
       tags:
         - homeassistant
 
+    - role: homebook
+      tags:
+        - homebook
+
     # - role: homebridge
     #   tags:
     #     - homebridge

@@ -64,6 +64,7 @@ grocy_enabled: true
 orb_enabled: true
 ntfy_enabled: true
 kuma_enabled: true
+homebox_enabled: true
 
 
 duplicati_enabled: true

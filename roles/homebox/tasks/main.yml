@@ -1,0 +1,42 @@
+---
+- name: Start Homebox
+  block:
+    - name: Create Homebox Directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ homebox_user_id }}"
+        group: "{{ homebox_group_id }}"
+      with_items:
+        - "{{ homebox_data_dir }}"
+
+    - name: Homebox Docker Container
+      community.docker.docker_container:
+        name: "{{ homebox_container_name }}"
+        image: "{{ homebox_image_name }}:{{ homebox_image_version }}"
+        pull: true
+        volumes:
+          - "{{ homebox_data_dir }}:/data:rw"
+        ports:
+          - "{{ homebox_host_port }}:{{ homebox_container_port }}"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+          PUID: "{{ homebox_user_id }}"
+          PGID: "{{ homebox_group_id }}"
+        restart_policy: unless-stopped
+        labels:
+          traefik.enable: "{{ homebox_available_externally | string }}"
+          traefik.http.routers.homebox.rule: "Host(`{{ homebox_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.homebox.tls.certresolver: "letsencrypt"
+          traefik.http.routers.homebox.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.homebox.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.homebox.loadbalancer.server.port: "{{ homebox_container_port }}"
+  when: homebox_enabled | bool
+
+- name: Stop Homebox
+  block:
+    - name: Stop Homebox
+      community.docker.docker_container:
+        name: "{{ homebox_container_name }}"
+        state: absent
+  when: not homebox_enabled | bool
