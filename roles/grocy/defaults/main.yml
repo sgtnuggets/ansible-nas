@@ -1,5 +1,5 @@
 ---
-grocy_enabled: true
+grocy_enabled: false
 grocy_available_externally: false
 
 # directories
