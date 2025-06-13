@@ -4,7 +4,7 @@ homebox_container_name: homebox
 homebox_image_name: ghcr.io/sysadminsmedia/homebox
 homebox_image_version: latest
 homebox_data_dir: "{{ docker_home }}/homebox/data"
-homebox_host_port: "3101"
+homebox_host_port: "7745"
 homebox_container_port: "7745"
 homebox_user_id: "1000"
 homebox_group_id: "1000"
