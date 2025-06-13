@@ -191,9 +191,9 @@
       tags:
         - homeassistant
 
-    - role: homebook
+    - role: homebox
       tags:
-        - homebook
+        - homebox
 
     # - role: homebridge
     #   tags:
