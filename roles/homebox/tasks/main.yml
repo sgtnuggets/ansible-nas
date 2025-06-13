@@ -23,6 +23,9 @@
           TZ: "{{ ansible_nas_timezone }}"
           PUID: "{{ homebox_user_id }}"
           PGID: "{{ homebox_group_id }}"
+          HBOX_LOG_LEVEL: "info"
+          HBOX_LOG_FORMAT: "text"
+          HBOX_WEB_MAX_FILE_UPLOAD: "100"
         restart_policy: unless-stopped
         labels:
           traefik.enable: "{{ homebox_available_externally | string }}"
@@ -31,7 +34,7 @@
           traefik.http.routers.homebox.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.homebox.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.homebox.loadbalancer.server.port: "{{ homebox_container_port }}"
-  when: homebox_enabled | bool
+  when: homebox_enabled is true
 
 - name: Stop Homebox
   block:
@@ -39,4 +42,4 @@
       community.docker.docker_container:
         name: "{{ homebox_container_name }}"
         state: absent
-  when: not homebox_enabled | bool
+  when: not homebox_enabled is false
