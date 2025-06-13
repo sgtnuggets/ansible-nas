@@ -42,4 +42,4 @@
       community.docker.docker_container:
         name: "{{ homebox_container_name }}"
         state: absent
-  when: not homebox_enabled is false
+  when: homebox_enabled is false
