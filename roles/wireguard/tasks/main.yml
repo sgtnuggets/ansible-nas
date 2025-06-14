@@ -12,14 +12,14 @@
           - "/lib/modules:/lib/modules:ro"
         ports:
           - "51820:51820/udp"
-          - "51821:51821/tcp"
+          - "7777:51821/tcp"
         env:
           TZ: "{{ ansible_nas_timezone }}"
           PUID: "1000"
           PGID: "1000"
           SERVERURL: jakesticka.duckdns.org
           SERVERPORT: "51820"
-          # PORT: "7777"
+          PORT: "7777"
           INSECURE: "true"
           PEERS: "1"
           PEERDNS: "192.168.1.2"

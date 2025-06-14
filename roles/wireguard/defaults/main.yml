@@ -1,5 +1,5 @@
 ---
-wireguard_enabled: true
+wireguard_enabled: false
 
 # Sets the 6 field cron schedule to use for checks and updates. This will check at 5am daily.
 # wireguard_cron_schedule: 0 0 5 * * *

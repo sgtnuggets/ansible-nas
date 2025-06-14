@@ -77,7 +77,7 @@ plex_memory_override: "2g"
 plex_port_override: "32401"
 transmission_with_openvpn_enabled: true
 bitwarden_enabled: true
-
+wireguard_enabled: true
 
 
 ## Disabled Stuff
