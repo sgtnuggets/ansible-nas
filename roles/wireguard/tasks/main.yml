@@ -4,19 +4,21 @@
     - name: Wireguard Docker Container
       community.docker.docker_container:
         name: "wireguard"
-        image: "ghcr.io/linuxserver/wireguard"
+        image: "ghcr.io/wg-easy/wg-easy:15"
         pull: true
         volumes:
-          - "{{ docker_home }}/wireguard-server/config:/config"
-          - /lib/modules:/lib/modules
+          # - "{{ docker_home }}/wireguard-server/config:/config"
+          - "{{ docker_home }}/wireguard:/etc/wireguard"
+          - "/lib/modules:/lib/modules:ro"
         ports:
-        - 51821:51820/udp
+          - "51820:51820/udp"
+          - "51821:51821/tcp"
         env:
           TZ: "{{ ansible_nas_timezone }}"
           PUID: "1000"
           PGID: "1000"
           SERVERURL: jakesticka.duckdns.org
-          SERVERPORT: "51821"
+          SERVERPORT: "51820"
           PEERS: "1"
           PEERDNS: "192.168.1.2"
           # PEERDNS: auto
