@@ -19,7 +19,7 @@
           PGID: "1000"
           SERVERURL: jakesticka.duckdns.org
           SERVERPORT: "51820"
-          PORT: "7777"
+          # PORT: "7777"
           INSECURE: "true"
           PEERS: "1"
           PEERDNS: "192.168.1.2"
