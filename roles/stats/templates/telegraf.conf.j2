@@ -174,7 +174,7 @@
   gather_services = false
 
   ## Only collect metrics for these containers, collect all if empty
-  container_names = []
+  # container_names = []
 
   ## Containers to include and exclude. Globs accepted.
   ## Note that an empty array for both will include all containers
@@ -191,9 +191,9 @@
 
   ## Whether to report for each container per-device blkio (8:0, 8:1...) and
   ## network (eth0, eth1, ...) stats or not
-  perdevice = true
+  perdevice_include = true
   ## Whether to report for each container total blkio and network stats or not
-  total = false
+  total_include = false
   ## Which environment variables should we use as a tag
   ##tag_env = ["JAVA_HOME", "HEAP_SIZE"]
 
