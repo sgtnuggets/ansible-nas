@@ -11,6 +11,9 @@
         env:
           TZ: "{{ ansible_nas_timezone }}"
           WATCHTOWER_CLEANUP: "true"
+          WATCHTOWER_NOTIFICATIONS: "shoutrrr"
+          WATCHTOWER_NOTIFICATION_URL: "ntfy://stinker:6262/yjwboRkqUu5YTT0T"
+          WATCHTOWER_NOTIFICATION_TITLE_TAG: "WatchTower Update"
         command: "{{ watchtower_command }}"
         restart_policy: unless-stopped
         memory: "{{ watchtower_memory }}"
