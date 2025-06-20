@@ -16,6 +16,7 @@
         privileged: true
         volumes:
           - "{{ homeassistant_data_directory }}/config:/config:rw"
+          - "/dev:/dev"
           - "/run/dbus:/run/dbus:ro"
         network_mode: host
         restart_policy: unless-stopped
