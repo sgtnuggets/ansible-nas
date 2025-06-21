@@ -13,6 +13,7 @@ ansible_nas_extra_packages:
   - bonnie++
   - unzip
   - lm-sensors
+  - bluez
   # - ctop
 
 # Sets the timezone for your Ansible NAS
