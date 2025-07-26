@@ -17,6 +17,6 @@ readarr_hostname: "readarr"
 
 # docker
 readarr_container_name: "readarr"
-readarr_image_name: "hotio/readarr"
+readarr_image_name: "lscr.io/linuxserver/readarr"
 readarr_image_version: "latest"
 
