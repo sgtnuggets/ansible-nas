@@ -17,5 +17,5 @@ readarr_hostname: "readarr"
 
 # docker
 readarr_container_name: "readarr"
-readarr_image_name: "inuxserver/readarr"
+readarr_image_name: "linuxserver/readarr"
 readarr_image_version: "0.4.19-nightly"
