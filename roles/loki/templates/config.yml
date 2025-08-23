@@ -29,7 +29,7 @@ storage_config:
     # Format: `http://<access_key>:<secret_key>@<minio_host>:<port>/<bucket_name>`
     # Example: http://minioadmin:minioadmin@minio:9000/loki
     # Note: For Docker Compose, `minio` would be the service name.
-    s3: "http://{{ minio_admin_username }}:{{ minio_admin_password }}@zima:{{ minio_api_port }}/loki-data"
+    s3: "http://{{ minio_admin_username }}:{{ minio_admin_password }}@{{ loki_server }}:{{ minio_api_port }}/loki-data"
     # Tell Loki to use MinIO's path-style addressing instead of subdomain.
     s3forcepathstyle: true
     # You can specify a region, but it might not be required for MinIO.

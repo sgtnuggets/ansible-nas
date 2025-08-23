@@ -65,6 +65,7 @@ orb_enabled: true
 ntfy_enabled: true
 kuma_enabled: true
 homebox_enabled: true
+promtail_enabled: true
 
 
 duplicati_enabled: true

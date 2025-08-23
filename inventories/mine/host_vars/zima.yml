@@ -55,6 +55,7 @@ stats_enabled: true
 stats_master: true
 loki_enabled: true
 minio_enabled: true
+promtail_enabled: true
 logging_stack_enabled: true
 organizr_enabled: true
 portainer_enabled: true

@@ -1,6 +1,7 @@
 all:
   vars:
     ansible_user: jake
+    loki_server: zima
   children:
     servers:
       vars:
