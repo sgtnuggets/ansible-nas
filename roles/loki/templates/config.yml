@@ -1,43 +1,62 @@
 ---
+
+auth_enabled: false
+
 server:
   http_listen_port: {{ loki_http_port }}
-  log_level: {{ loki_log_level }}
+  grpc_listen_port: 9096
 
-memberlist:
+# The path_prefix is still needed for local storage of things like the KV store.
+common:
+  path_prefix: /loki
 
+# Storage configuration for your MinIO (S3-compatible) instance.
+storage_config:
+  boltdb_shipper:
+    # Directory to store the active index files locally before shipping to MinIO.
+    active_index_directory: /loki/index
+    # Directory for index cache.
+    cache_location: /loki/cache
+    # Use s3 for the shared store.
+    shared_store: s3
+  aws:
+    # The s3 block specifies the S3-compatible backend (MinIO).
+    s3:
+      # Use `http` or `https` for your MinIO endpoint.
+      # Format: `http://<access_key>:<secret_key>@<minio_host>:<port>/<bucket_name>`
+      # Example: http://minioadmin:minioadmin@minio:9000/loki
+      # Note: For Docker Compose, `minio` would be the service name.
+      s3: "http://{{ minio_admin_username }}:{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ minio_api_port }}/loki-data"
+      # Tell Loki to use MinIO's path-style addressing instead of subdomain.
+      s3forcepathstyle: true
+      # You can specify a region, but it might not be required for MinIO.
+      # If MinIO is not running with SSL/TLS, set this to true.
+      insecure: true
+
+# Retention policy. The compactor will enforce this.
+limits_config:
+  retention_period: {{ loki_log_retention }}
+
+# Schema configuration.
 schema_config:
   configs:
-    - from: 2021-08-01
-      store: boltdb-shipper
+    - from: 2020-05-15
+      store: tsdb
+      # Set the object_store to s3.
       object_store: s3
-      schema: v11
+      schema: v13
       index:
         prefix: index_
         period: 24h
 
-common:
-  path_prefix: /loki
+# The compactor now needs access to the s3 store.
+compactor:
+  working_directory: /loki/compactor
+  shared_store: s3
+  retention_enabled: true
+
+# Ring configuration for ingesters.
+ring:
+  kvstore:
+    store: inmemory
   replication_factor: 1
-  storage:
-    s3:
-      endpoint: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ minio_api_port }}"
-      insecure: true
-      bucketnames: loki-data
-      access_key_id: "{{ minio_admin_username }}"
-      secret_access_key: "{{ minio_admin_password }}"
-      s3forcepathstyle: true
-  ring:
-    kvstore:
-      store: memberlist
-
-ruler:
-  storage:
-    s3:
-      bucketnames: loki-ruler
-
-chunk_store_config:
-  max_look_back_period: {{ loki_log_retention }}
-
-table_manager:
-  retention_deletes_enabled: true
-  retention_period: {{ loki_log_retention }}
