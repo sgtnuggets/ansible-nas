@@ -1,10 +1,10 @@
 ---
 - name: Start Promtail
   block:
-    - name: Check for Loki installation
-      ansible.builtin.fail:
-        msg: "Promtail requires Loki enabled and running as a write target, please set that up first."
-      when: loki_enabled is false
+    # - name: Check for Loki installation
+    #   ansible.builtin.fail:
+    #     msg: "Promtail requires Loki enabled and running as a write target, please set that up first."
+    #   when: loki_enabled is false
 
     - name: Include Loki variables
       ansible.builtin.include_vars: ../../loki/defaults/main.yml
