@@ -15,6 +15,13 @@ scrape_configs:
     docker_sd_configs:
       - host: unix:///var/run/docker.sock
         refresh_interval: 5s
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: "system_logs"
+          host: "{{ ansible_hostname }}"  # Use the hostname from Ansible
+          environment: "production"
     relabel_configs:
       - source_labels: ['__meta_docker_container_name']
         regex: '/(.*)'
