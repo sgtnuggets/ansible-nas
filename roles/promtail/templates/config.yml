@@ -20,7 +20,7 @@ scrape_configs:
           - localhost
         labels:
           job: "system_logs"
-          host: "{{ ansible_hostname }}"  # Use the hostname from Ansible
+          host: "{{ ansible_nas_hostname }}"  # Use the hostname from Ansible
           environment: "production"
     relabel_configs:
       - source_labels: ['__meta_docker_container_name']
