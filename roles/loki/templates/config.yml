@@ -55,6 +55,6 @@ schema_config:
 # # The compactor now needs access to the s3 store.
 compactor:
   working_directory: /loki/compactor
-  shared_store: s3
-  retention_enabled: true
-
+  compaction_interval: 5m
+  # shared_store: s3
+  # retention_enabled: true
