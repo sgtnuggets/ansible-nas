@@ -9,7 +9,11 @@ server:
 # The path_prefix is still needed for local storage of things like the KV store.
 common:
   path_prefix: /loki
-
+  ring:
+    kvstore:
+      store: inmemory
+  replication_factor: 1
+  
 # Storage configuration for your MinIO (S3-compatible) instance.
 storage_config:
   boltdb_shipper:
@@ -55,7 +59,3 @@ schema_config:
 #   retention_enabled: true
 
 # Ring configuration for ingesters.
-ring:
-  kvstore:
-    store: inmemory
-  replication_factor: 1
