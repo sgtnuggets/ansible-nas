@@ -34,7 +34,7 @@
           - "{{ promtail_data_directory }}/config/config.yml:/etc/promtail/config.yml"
           - "{{ promtail_data_directory }}/data/:/data"
           - "/var/run/docker.sock:/var/run/docker.sock"
-          - "{{ docker_home }}/plex/config/Library/Application Support/Plex Media Server/Logs/:/plex"
+          - "{{ docker_home }}/plex/config/Library/Application Support/Plex Media Server/Logs/:/plex:ro"
         restart_policy: unless-stopped
         memory: "{{ promtail_memory }}"
         labels:
