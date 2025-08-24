@@ -47,9 +47,12 @@ ansible_nas_hostname: stinker
 ansible_nas_timezone: America/Los_Angeles
 
 ## Enable some applications
-logging_stack_enabled: true
+logging_stack_enabled: false
 stats_enabled: true
 stats_master: false
+minio_enabled: false
+loki_enabled: false
+promtail_enabled: true
 speedtest_enabled: false
 stats_internet_speed_test_enabled: false
 dashy_enabled: false
@@ -65,7 +68,6 @@ orb_enabled: true
 ntfy_enabled: true
 kuma_enabled: true
 homebox_enabled: true
-promtail_enabled: true
 
 
 duplicati_enabled: true
