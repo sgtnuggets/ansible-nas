@@ -23,7 +23,7 @@ scrape_configs:
         target_label: 'container'
     pipeline_stages:
       - regex:
-      expression: '^\[(?P<level>[A-Za-z]+)\]'
+          expression: '^\[(?P<level>[A-Za-z]+)\]'
       - replace:
           expression: '(?i)info'
           replace: info
