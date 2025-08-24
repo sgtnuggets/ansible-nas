@@ -22,13 +22,15 @@ scrape_configs:
         regex: '/(.*)'
         target_label: 'container'
   - job_name: plex_logs
-    static_configs:
-      - targets:
-          - localhost
-        labels:
-          job: "plex"
-          host: "{{ ansible_nas_hostname }}"
-          container: "plex"
-          service: "plex"
-        paths:
+    file_sd_configs:
+      - files:
           - /plex/*.log
+    relabel_configs:
+      - target_label: job
+        replacement: "plex"
+      - target_label: host
+        replacement: "{{ ansible_nas_hostname }}"
+      - target_label: application
+        replacement: "plex"
+      - target_label: service
+        replacement: "plex"
