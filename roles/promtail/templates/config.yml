@@ -44,6 +44,9 @@ scrape_configs:
         labels:
           job: plex
           __path__: /plex/**/*.log
+          hostname: "{{ ansible_nas_hostname }}"
+          service: plex
+          container: plex
     pipeline_stages:
       - regex:
           expression: '^(?P<ts>\w{3} \w{3} [0-9]{1,2} [0-9:]{8}\.[0-9]{3}) (?P<level>[A-Z]+) (?P<component>[^:]+): (?P<msg>.*)'
