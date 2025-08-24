@@ -45,7 +45,7 @@ scrape_configs:
           job: plex
           __path__: /plex/**/*.log
           hostname: "{{ ansible_nas_hostname }}"
-          service: plex
+          service_name: plex
           container: plex
     pipeline_stages:
       - regex:
