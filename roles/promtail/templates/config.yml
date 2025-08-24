@@ -21,15 +21,6 @@ scrape_configs:
       - source_labels: ['__meta_docker_container_name']
         regex: '/(.*)'
         target_label: 'container'
-{% if plex_enabled %}
-  - job_name: plex
-    static_configs:
-      - targets:
-          - localhost
-        labels:
-          job: plex
-          __path__: /plex/**/*.log
-
     pipeline_stages:
       - regex:
       expression: '^\[(?P<level>[A-Za-z]+)\]'
@@ -45,6 +36,15 @@ scrape_configs:
           expression: '(?i)error'
           replace: error
           source: level
+{% if plex_enabled %}
+  - job_name: plex
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: plex
+          __path__: /plex/**/*.log
+    pipeline_stages:
       - regex:
           expression: '^(?P<ts>\w{3} \w{3} [0-9]{1,2} [0-9:]{8}\.[0-9]{3}) (?P<level>[A-Z]+) (?P<component>[^:]+): (?P<msg>.*)'
       - timestamp:
