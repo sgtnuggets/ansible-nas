@@ -75,9 +75,9 @@ duplicacy_enabled: false
 netdata_enabled: false
 overseerr_enabled: false
 ombi_enabled: false
-plex_enabled: true
-plex_memory_override: "2g"
-plex_port_override: "32401"
+plex_enabled: false
+# plex_memory_override: "2g"
+# plex_port_override: "32401"
 transmission_with_openvpn_enabled: true
 bitwarden_enabled: true
 wireguard_enabled: true
