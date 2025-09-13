@@ -70,6 +70,7 @@ duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: false
 plex_enabled: true
+ddwrt_enabled: true
 plex_memory_override: "4g"
 plex_port_override: "32402"
 readarr_enabled: true

@@ -57,3 +57,27 @@ scrape_configs:
           level:
           component:
 {% endif %}
+{% if ddwrt_enabled %}
+  - job_name: ddwrt
+    syslog:
+      listen_address: 0.0.0.0:1514  # Promtail listens on this port for syslog messages
+      idle_timeout: 60s
+      label_structured_data: true
+    relabel_configs:
+      - target_label: hostname
+        replacement: "{{ ansible_nas_hostname }}"  # Use the hostname from Ansible
+      - target_label: job
+        replacement: "ddwrt"
+      - target_label: router
+        replacement: "{{ ddwrt_router_name }}"  # Replace with your router's name
+    pipeline_stages:
+      - regex:
+          expression: '<[0-9]+>(?P<ts>[A-Za-z]{3} [0-9]{1,2} [0-9:]{8}) (?P<hostname>[^ ]+) (?P<msg>.*)'
+      - timestamp:
+          source: ts
+          format: Jan _2 15:04:05
+      - labels:
+          hostname:
+      - output:
+          source: msg
+{% endif %}
