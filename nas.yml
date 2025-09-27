@@ -67,6 +67,10 @@
       tags:
         - airsonic
 
+    - role: atlas
+      tags:
+        - atlas
+
     - role: bazarr
       tags:
         - bazarr

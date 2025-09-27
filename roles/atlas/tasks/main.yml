@@ -1,0 +1,33 @@
+---
+- name: Start Atlas
+  block:
+    - name: Create Atlas Directories
+      ansible.builtin.file:
+        path: "{{ atlas_data_directory }}"
+        state: directory
+
+    - name: Atlas Docker Container
+      community.docker.docker_container:
+        name: "{{ atlas_container_name }}"
+        image: "{{ atlas_image }}:{{ atlas_version }}"
+        pull: true
+        network_mode: host
+        capabilities:
+          - NET_RAW
+          - NET_ADMIN
+        volumes:
+          - "/var/run/docker.sock:/var/run/docker.sock"
+          # - "{{ atlas_data_directory }}:/data"  # Uncomment if the container supports a data directory
+        env:
+          ATLAS_UI_PORT: "{{ atlas_ui_port }}"
+          ATLAS_API_PORT: "{{ atlas_api_port }}"
+        restart_policy: unless-stopped
+  when: atlas_enabled is true
+
+- name: Stop Atlas
+  block:
+    - name: Stop Atlas
+      community.docker.docker_container:
+        name: "{{ atlas_container_name }}"
+        state: absent
+  when: atlas_enabled is false

@@ -1,0 +1,20 @@
+---
+# Enable or disable the Atlas container
+atlas_enabled: false
+
+# Container name
+atlas_container_name: atlas
+
+# Data directory for Atlas (not used in this image, but included for consistency)
+# atlas_data_directory: "{{ docker_home }}/atlas"
+
+# Atlas image and version
+atlas_image: keinstien/atlas
+atlas_version: "3.2.18"
+
+# Ports for Atlas UI and API
+atlas_ui_port: 8884
+atlas_api_port: 8885
+
+# Additional environment variables can be added here
+# atlas_extra_env: {}
