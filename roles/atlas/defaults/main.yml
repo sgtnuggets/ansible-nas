@@ -6,7 +6,7 @@ atlas_enabled: false
 atlas_container_name: atlas
 
 # Data directory for Atlas (not used in this image, but included for consistency)
-# atlas_data_directory: "{{ docker_home }}/atlas"
+atlas_data_directory: "{{ docker_home }}/atlas"
 
 # Atlas image and version
 atlas_image: keinstien/atlas
