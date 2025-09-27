@@ -25,8 +25,9 @@
           ESPHOME_DASHBOARD_USE_PING: "true"
         restart_policy: unless-stopped
         memory: "{{ esphome_memory }}"
-        dns_servers: 
+        dns_servers:
           - "192.168.1.2"
+          - "192.168.1.1"
         labels:
           traefik.enable: "{{ esphome_available_externally | string }}"
           traefik.http.routers.esphome.rule: "Host(`{{ esphome_hostname }}.{{ ansible_nas_domain }}`)"
