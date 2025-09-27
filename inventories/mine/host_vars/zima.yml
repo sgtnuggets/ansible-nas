@@ -66,6 +66,7 @@ syncthing_enabled: false
 minecraft_bedrock_server_enabled: false
 minecraft_server_enabled: false
 
+atlas_enabled: true
 duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: false
