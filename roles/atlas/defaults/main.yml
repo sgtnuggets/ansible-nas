@@ -13,8 +13,8 @@ atlas_image: keinstien/atlas
 atlas_version: "3.2.18"
 
 # Ports for Atlas UI and API
-atlas_ui_port: 8884
-atlas_api_port: 8885
+atlas_ui_port: "8884"
+atlas_api_port: "8885"
 
 # Additional environment variables can be added here
 # atlas_extra_env: {}
