@@ -27,7 +27,7 @@
         memory: "{{ esphome_memory }}"
         dns_servers:
           - "192.168.1.2"
-          # - "192.168.1.1"
+          - "192.168.1.1"
         labels:
           traefik.enable: "{{ esphome_available_externally | string }}"
           traefik.http.routers.esphome.rule: "Host(`{{ esphome_hostname }}.{{ ansible_nas_domain }}`)"
