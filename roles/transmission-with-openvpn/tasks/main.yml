@@ -47,7 +47,7 @@
           LOCAL_NETWORK: "{{ transmission_openvpn_local_network }}"
           ENABLE_UFW: "false"
           OVERRIDE_DNS_1: "192.168.1.2"
-          OVERRIDE_DNS_2: "103.86.96.100"
+          OVERRIDE_DNS_2: "45.90.28.231"
         dns_servers: # I don't think this works
           - "192.168.1.2"
           - "192.168.1.1"

@@ -24,6 +24,9 @@
           PUID: "{{ sabnzbd_user_id }}"
           PGID: "{{ sabnzbd_group_id }}"
         restart_policy: unless-stopped
+        dns_servers:
+          - "192.168.1.2"
+          - "192.168.1.1"
         labels:
           traefik.enable: "{{ sabnzbd_available_externally | string }}"
           traefik.http.routers.sabnzbd.rule: "Host(`{{ sabnzbd_hostname }}.{{ ansible_nas_domain }}`)"
