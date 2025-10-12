@@ -24,7 +24,6 @@ scrape_configs:
         - "localhost:{{ stats_prometheus_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_port }}"
         - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_prometheus_port }}"
-        - "nuc0c:9113"
 
   - job_name: "telegraf"
     static_configs:
@@ -39,7 +38,6 @@ scrape_configs:
         - "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ stats_prometheus_smartctl_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
         - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
-        - "nuc0c:9902"
 
   - job_name: "traefik"
     static_configs:
