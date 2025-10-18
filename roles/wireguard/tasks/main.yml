@@ -25,7 +25,6 @@
           PEERS: "1"
           PEERDNS: "192.168.1.2"
           INIT_DNS: "192.168.1.2, 192.168.1.1"
-          # PEERDNS: auto
           ALLOWEDIPS: 192.168.1.0/24,
         restart_policy: unless-stopped
         sysctls:
@@ -33,10 +32,6 @@
         capabilities:
           - NET_ADMIN
           - SYS_MODULE
-        # network_mode: host
-        # dns_servers:
-        #   - "192.168.1.2"
-        #   - "192.168.1.1"
 
   when: wireguard_enabled is true
 
