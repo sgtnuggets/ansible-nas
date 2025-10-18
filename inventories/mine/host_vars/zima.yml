@@ -88,7 +88,7 @@ nzbget_enabled: false
 prowlarr_enabled: true
 bazarr_enabled: true
 firefly_enabled: true
-orb_enabled: true
+orb_enabled: false
 flaresolverr_enabled: true
 
 

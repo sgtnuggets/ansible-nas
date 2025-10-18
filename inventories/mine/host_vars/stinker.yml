@@ -64,7 +64,7 @@ WOL_enabled: false
 flaresolverr_enabled: false
 # hyperion_enabled: false
 grocy_enabled: true
-orb_enabled: true
+orb_enabled: false
 ntfy_enabled: true
 kuma_enabled: true
 homebox_enabled: true
