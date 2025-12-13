@@ -71,6 +71,9 @@ documents_root: "{{ samba_shares_root }}/documents"
 # Where personal repos and code are stored
 code_root: "{{ samba_shares_root }}/code"
 
+# Where personal repos and code are stored
+config_root: "{{ samba_shares_root }}/docker"
+
 # Backups
 backups_root: "{{ samba_shares_root }}/backups"
 
@@ -185,6 +188,14 @@ samba_shares:
     writable: yes
     browseable: yes
     path: "{{ code_root }}"
+
+  - name: config
+    comment: "Config"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browseable: yes
+    path: "{{ config_root }}"
 
   - name: backups
     comment: "backups"
