@@ -82,6 +82,7 @@ watchtower_enabled: true
 organizr_enabled: true
 stats_enabled: true
 promtail_enabled: true
+ddwrt_enabled: false
 stats_master: false
 stats_internet_speed_test_enabled: false
 stats_pihole_exporter_enabled: false

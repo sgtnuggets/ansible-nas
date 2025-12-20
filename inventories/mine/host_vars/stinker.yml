@@ -53,6 +53,7 @@ stats_master: false
 minio_enabled: false
 loki_enabled: false
 promtail_enabled: true
+ddwrt_enabled: false
 speedtest_enabled: false
 stats_internet_speed_test_enabled: false
 dashy_enabled: false
