@@ -70,7 +70,7 @@ ntfy_enabled: true
 kuma_enabled: true
 homebox_enabled: true
 
-atlas_enabled: true
+atlas_enabled: false
 duplicati_enabled: true
 duplicacy_enabled: false
 netdata_enabled: false
