@@ -6,7 +6,7 @@
         grafana_enabled: true
         minio_enabled: true
         loki_enabled: true
-        promtail_enabled: true
+        # promtail_enabled: true
   when: logging_stack_enabled is true
   # vars:
   #   minio_enabled: true
@@ -21,7 +21,7 @@
         grafana_enabled: false
         minio_enabled: false
         loki_enabled: false
-        promtail_enabled: false
+        # promtail_enabled: false
   when: logging_stack_enabled is false
   # vars:
   #   minio_enabled: false
