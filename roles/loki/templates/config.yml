@@ -24,17 +24,33 @@ storage_config:
     # Use s3 for the shared store.
     # shared_store: s3
   aws:
-    # The s3 block specifies the S3-compatible backend (MinIO).
-    # Use `http` or `https` for your MinIO endpoint.
-    # Format: `http://<access_key>:<secret_key>@<minio_host>:<port>/<bucket_name>`
-    # Example: http://minioadmin:minioadmin@minio:9000/loki
-    # Note: For Docker Compose, `minio` would be the service name.
-    s3: "http://{{ minio_admin_username }}:{{ minio_admin_password }}@{{ loki_server }}:{{ minio_api_port }}/loki-data"
-    # Tell Loki to use MinIO's path-style addressing instead of subdomain.
-    s3forcepathstyle: true
-    # You can specify a region, but it might not be required for MinIO.
-    # If MinIO is not running with SSL/TLS, set this to true.
-    insecure: true
+    # # The s3 block specifies the S3-compatible backend (MinIO).
+    # # Use `http` or `https` for your MinIO endpoint.
+    # # Format: `http://<access_key>:<secret_key>@<minio_host>:<port>/<bucket_name>`
+    # # Example: http://minioadmin:minioadmin@minio:9000/loki
+    # # Note: For Docker Compose, `minio` would be the service name.
+    # s3: "http://{{ minio_admin_username }}:{{ minio_admin_password }}@{{ loki_server }}:{{ minio_api_port }}/loki-data"
+    # # Tell Loki to use MinIO's path-style addressing instead of subdomain.
+    # s3forcepathstyle: true
+    # # You can specify a region, but it might not be required for MinIO.
+    # # If MinIO is not running with SSL/TLS, set this to true.
+    # insecure: true
+
+    # Configure the S3-compatible backend (MinIO) using explicit fields instead
+    # of a single URL string. This prevents the AWS SDK from trying to use
+    # virtual-hosted style addressing (which appends amazonaws.com) and allows
+    # using path-style addressing which MinIO expects.
+    s3:
+      # Use the MinIO host (service name / hostname) and port here.
+      endpoint: "http://{{ minio_hostname }}:{{ minio_api_port }}"
+      bucketnames: "loki-data"
+      access_key_id: "{{ minio_admin_username }}"
+      secret_access_key: "{{ minio_admin_password }}"
+      # Force path-style addressing (host/<bucket>) instead of virtual-hosted style.
+      s3forcepathstyle: true
+      # If MinIO is not running with SSL/TLS, set insecure to true.
+      insecure: true
+
 
 # Retention policy. The compactor will enforce this.
 limits_config:
