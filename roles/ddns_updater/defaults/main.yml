@@ -10,7 +10,7 @@ ddns_updater_port: 8202
 ddns_updater_hostname: "ddns-updater"
 
 # docker
-ddns_updater_container_name: qmcgaw/ddns-updater
+ddns_updater_container_name: ddns-updater
 
 # specs
 ddns_updater_memory: 1g
