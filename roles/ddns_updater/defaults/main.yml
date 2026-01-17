@@ -45,4 +45,4 @@ ddns_updater_config:
       zone_identifier: "b4f893a6b928be345a9e495cc5fd933d"
       ip_version: "ipv4"
       ipv6_suffix: ""
-      ttl: "600"
+      ttl: 600
