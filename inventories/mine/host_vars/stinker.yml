@@ -69,6 +69,7 @@ orb_enabled: false
 ntfy_enabled: true
 kuma_enabled: true
 homebox_enabled: true
+ddns_updater_enabled: true
 
 atlas_enabled: false
 duplicati_enabled: true
