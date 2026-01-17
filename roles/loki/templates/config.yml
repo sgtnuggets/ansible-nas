@@ -16,7 +16,7 @@ common:
 
 # Storage configuration for your MinIO (S3-compatible) instance.
 storage_config:
-  boltdb_shipper:
+  tsdb_shipper:
     # Directory to store the active index files locally before shipping to MinIO.
     active_index_directory: /loki/index
     # Directory for index cache.
@@ -59,7 +59,7 @@ limits_config:
 # Schema configuration.
 schema_config:
   configs:
-    - from: 2020-05-15
+    - from: 2020-07-01
       store: tsdb
       # Set the object_store to s3.
       object_store: s3
