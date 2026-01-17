@@ -32,17 +32,17 @@ ddns_updater_http_timeout: 10s
 # ddns_updater_config describes the content of the config.json used to configure the updater.
 # see https://github.com/qdm12/ddns-updater#configuration for more info
 #
-# ddns_updater_config:
-settings:
-  - provider: duckdns
-    domain: jakesticka.duckdns.org
-    token: "{{ duckdns_token }}"
-    ip_version: ipv4
-    ipv6_suffix: ""
-  - provider: "cloudflare"
-    domain: "home.jakesticka.com"
-    token: "{{ CLOUDFLARE_DNS_EDIT }}"
-    zone_identifier: "b4f893a6b928be345a9e495cc5fd933d"
-    ip_version: "ipv4"
-    ipv6_suffix: ""
-    ttl: "600"
+ddns_updater_config:
+  settings:
+    - provider: duckdns
+      domain: jakesticka.duckdns.org
+      token: "{{ duckdns_token }}"
+      ip_version: ipv4
+      ipv6_suffix: ""
+    - provider: "cloudflare"
+      domain: "home.jakesticka.com"
+      token: "{{ CLOUDFLARE_DNS_EDIT }}"
+      zone_identifier: "b4f893a6b928be345a9e495cc5fd933d"
+      ip_version: "ipv4"
+      ipv6_suffix: ""
+      ttl: "600"
