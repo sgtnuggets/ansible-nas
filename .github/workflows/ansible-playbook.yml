@@ -101,7 +101,7 @@ jobs:
           github_openvpn_password=$NORD_PASSWORD \
           bitwarden=$BITWARDEN \
           duplicati_pass=$DUPLICATI_PASWORD \
-          wireguard_pass=$WIREGUARD_PASSWORD" \
+          wireguard_pass=$WIREGUARD_PASSWORD \
           duckdns_token=$DUCKDNS_TOKEN"
         env: # Or as an environment variable
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
