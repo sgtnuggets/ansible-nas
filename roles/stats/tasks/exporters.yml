@@ -45,7 +45,7 @@
           - "{{ stats_pihole_exporter_port }}:9617"
         env:
           PIHOLE_HOSTNAME: "192.168.1.2"
-          # PIHOLE_PASSWORD: ""
+          PIHOLE_PASSWORD: "{{ DUPLICATI_PASSWORD }}"
           PIHOLE_PORT: "8080"
           PORT: "{{ stats_pihole_exporter_port }}"
         restart_policy: unless-stopped

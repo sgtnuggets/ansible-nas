@@ -100,7 +100,7 @@ jobs:
           github_openvpn_username=$NORD_USERNAME \
           github_openvpn_password=$NORD_PASSWORD \
           bitwarden=$BITWARDEN \
-          duplicati_pass=$DUPLICATI_PASWORD \
+          duplicati_pass=$DUPLICATI_PASSWORD \
           wireguard_pass=$WIREGUARD_PASSWORD \
           duckdns_token=$DUCKDNS_TOKEN"
         env: # Or as an environment variable
@@ -110,6 +110,6 @@ jobs:
           NORD_USERNAME: ${{ secrets.NORD_USERNAME }}
           NORD_PASSWORD: ${{ secrets.NORD_PASSWORD }}
           BITWARDEN: ${secrets.BITWARDEN}
-          DUPLICATI_PASWORD: ${{ secrets.SYSTEM_PASSWORD }}
+          DUPLICATI_PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
           WIREGUARD_PASSWORD: ${{ secrets.WIREGUARDLOGIN }}
           DUCKDNS_TOKEN: ${{ secrets.DUCKDNS_TOKEN }}
