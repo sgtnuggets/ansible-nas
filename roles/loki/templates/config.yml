@@ -55,6 +55,7 @@ storage_config:
 # Retention policy. The compactor will enforce this.
 limits_config:
   retention_period: {{ loki_log_retention }}
+  volume_enabled: true
 
 # Schema configuration.
 schema_config:
