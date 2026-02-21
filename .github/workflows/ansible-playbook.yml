@@ -10,7 +10,7 @@ on:
   # pull_request:
   #   branches: [ master ]
   schedule:
-    - cron: "0 7 * * 3" # midnight pst on Wed
+    - cron: "0 6 * * 3" # 11pm pst on Wed
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
