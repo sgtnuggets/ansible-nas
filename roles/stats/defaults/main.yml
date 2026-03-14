@@ -3,8 +3,8 @@
 # stats_internet_speed_test_enabled: true
 stats_prometheus_available_externally: false
 stats_grafana_available_externally: false
-stats_snmp_exporter_enabled: true
-stats_pihole_exporter_enabled: true
+stats_snmp_exporter_enabled: false
+stats_pihole_exporter_enabled: false
 
 # directories
 stats_telegraf_config_directory: "{{ docker_home }}/stats/telegraf/config"
