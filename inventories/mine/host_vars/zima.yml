@@ -74,7 +74,7 @@ plex_enabled: true
 ddwrt_enabled: true
 plex_memory_override: "4g"
 plex_port_override: "32402"
-readarr_enabled: true
+readarr_enabled: false
 overseerr_enabled: true
 ombi_enabled: false
 transmission_with_openvpn_enabled: true
@@ -83,7 +83,7 @@ sabnzbd_enabled: true
 sonarr_enabled: true
 tautulli_enabled: true
 jackett_enabled: false
-lidarr_enabled: true
+lidarr_enabled: false
 nzbget_enabled: false
 prowlarr_enabled: true
 bazarr_enabled: true
