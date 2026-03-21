@@ -28,7 +28,7 @@ on:
           - "stinker"
           - "zima"
           # - "nuc0"
-          - "streamweaver"
+          # - "streamweaver"
       tags:
         required: false
         type: string
