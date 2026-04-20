@@ -24,6 +24,7 @@
         command:
         - "--accesslog=true"
         - "--accesslog.format=json"
+        - "--accesslog.filePath={{ traefik_data_directory }}/logs/access.log"
         ports:
           - "8888:80"
         volumes:
