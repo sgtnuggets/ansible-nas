@@ -18,7 +18,7 @@ musicseerr_cache_directory: "{{ docker_home }}/musicseerr/cache"
 
 # Optional: music library for local file playback
 # Set to a valid path on your host to enable; must match the root folder Lidarr uses
-musicseerr_music_directory: null
+musicseerr_music_directory: "{{ music_root }}"
 
 # User and group IDs (run `id` on your host to find these)
 musicseerr_puid: "1000"
