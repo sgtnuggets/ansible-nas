@@ -9,7 +9,7 @@
         - "{{ musicseerr_config_directory }}"
         - "{{ musicseerr_cache_directory }}"
 
-    - name: Musicseerr Docker Container
+    - name: Musicseerr
       community.docker.docker_container:
         name: "{{ musicseerr_container_name }}"
         image: "{{ musicseerr_image }}:{{ musicseerr_version }}"
@@ -29,9 +29,9 @@
             - curl
             - -f
             - "http://localhost:8688/health"
-          interval: 30
-          timeout: 10
-          start_period: 15
+          interval: 30s
+          timeout: 10s
+          start_period: 15s
           retries: 3
         labels:
           traefik.enable: "{{ musicseerr_available_externally | default(false) | string }}"
