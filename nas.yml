@@ -250,6 +250,10 @@
       tags:
         - minio
 
+    - role: musicseerr
+      tags:
+        - musicseerr
+
     # - role: mosquitto
     #   tags:
     #     - mosquitto

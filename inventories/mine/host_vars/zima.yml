@@ -62,6 +62,7 @@ portainer_enabled: true
 esphome_enabled: false
 watchtower_enabled: true
 syncthing_enabled: false
+musicseerr_enabled: true
 
 minecraft_bedrock_server_enabled: false
 minecraft_server_enabled: false

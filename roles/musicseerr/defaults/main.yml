@@ -1,0 +1,35 @@
+---
+# Enable or disable the Musicseerr container
+musicseerr_enabled: false
+
+# Container name
+musicseerr_container_name: musicseerr
+
+# Image and version
+musicseerr_image: ghcr.io/habirabbu/musicseerr
+musicseerr_version: latest
+
+# Port
+musicseerr_port: 8688
+
+# Data directories for Musicseerr
+musicseerr_config_directory: "{{ docker_home }}/musicseerr/config"
+musicseerr_cache_directory: "{{ docker_home }}/musicseerr/cache"
+
+# Optional: music library for local file playback
+# Set to a valid path on your host to enable; must match the root folder Lidarr uses
+musicseerr_music_directory: null
+
+# User and group IDs (run `id` on your host to find these)
+musicseerr_puid: "1000"
+musicseerr_pgid: "1000"
+
+# Memory limit (optional)
+# musicseerr_memory: "256m"
+
+# Volume mounts (config and cache are mandatory; music is optional)
+musicseerr_volumes:
+  - "{{ musicseerr_config_directory }}:/app/config"
+  - "{{ musicseerr_cache_directory }}:/app/cache"
+  - "/etc/localtime:/etc/localtime:ro"
+  # - "{{ musicseerr_music_directory }}:/music:ro"  # Uncomment and set musicseerr_music_directory to enable
