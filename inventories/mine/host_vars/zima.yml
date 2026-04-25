@@ -62,7 +62,6 @@ portainer_enabled: true
 esphome_enabled: false
 watchtower_enabled: true
 syncthing_enabled: false
-musicseerr_enabled: true
 
 minecraft_bedrock_server_enabled: false
 minecraft_server_enabled: false
@@ -84,7 +83,8 @@ sabnzbd_enabled: true
 sonarr_enabled: true
 tautulli_enabled: true
 jackett_enabled: false
-lidarr_enabled: false
+lidarr_enabled: true
+musicseerr_enabled: true
 nzbget_enabled: false
 prowlarr_enabled: true
 bazarr_enabled: true
