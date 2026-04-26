@@ -26,6 +26,6 @@ bindery_log_level: info
 # Volume mounts
 bindery_volumes:
   - "{{ bindery_config_directory }}:/config"
-  - "{{ bindery_books_directory }}:/books:ro"
+  - "{{ bindery_books_directory }}:/books"
   - "{{ bindery_downloads_directory }}:/downloads"
   - "/etc/localtime:/etc/localtime:ro"
