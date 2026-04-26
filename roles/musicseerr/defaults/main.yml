@@ -32,4 +32,4 @@ musicseerr_volumes:
   - "{{ musicseerr_config_directory }}:/app/config"
   - "{{ musicseerr_cache_directory }}:/app/cache"
   - "/etc/localtime:/etc/localtime:ro"
-  # - "{{ musicseerr_music_directory }}:/music:ro"  # Uncomment and set musicseerr_music_directory to enable
+  - "{{ musicseerr_music_directory }}:/music:ro"  # Uncomment and set musicseerr_music_directory to enable
