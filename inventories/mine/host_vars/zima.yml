@@ -75,6 +75,7 @@ ddwrt_enabled: true
 plex_memory_override: "4g"
 plex_port_override: "32402"
 readarr_enabled: false
+bindery_enabled: true
 overseerr_enabled: true
 ombi_enabled: false
 transmission_with_openvpn_enabled: true

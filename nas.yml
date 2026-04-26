@@ -75,6 +75,10 @@
       tags:
         - bazarr
 
+    - role: bindery
+      tags:
+        - bindery
+
     - role: bitwarden
       tags:
         - bitwarden

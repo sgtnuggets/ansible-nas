@@ -1,0 +1,31 @@
+---
+# Enable or disable the Bindery container
+bindery_enabled: false
+
+# Container name
+bindery_container_name: bindery
+
+# Image and version
+bindery_image: ghcr.io/vavallee/bindery
+bindery_version: latest
+
+# Port
+bindery_port: 8787
+
+# Data directories for Bindery
+bindery_config_directory: "{{ docker_home }}/bindery/config"
+bindery_books_directory: "{{ books_root }}"
+bindery_downloads_directory: "{{ downloads_root }}"
+
+# Logging level
+bindery_log_level: info
+
+# Memory limit (optional)
+# bindery_memory: "512m"
+
+# Volume mounts
+bindery_volumes:
+  - "{{ bindery_config_directory }}:/config"
+  - "{{ bindery_books_directory }}:/books:ro"
+  - "{{ bindery_downloads_directory }}:/downloads"
+  - "/etc/localtime:/etc/localtime:ro"

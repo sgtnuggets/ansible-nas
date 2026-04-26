@@ -1,0 +1,40 @@
+---
+- name: Start Bindery
+  block:
+    - name: Create Bindery Directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ bindery_config_directory }}"
+        - "{{ bindery_books_directory }}"
+        - "{{ bindery_downloads_directory }}"
+
+    - name: Bindery Docker Container
+      community.docker.docker_container:
+        name: "{{ bindery_container_name }}"
+        image: "{{ bindery_image }}:{{ bindery_version }}"
+        pull: true
+        ports:
+          - "{{ bindery_port }}:8787"
+        volumes: "{{ bindery_volumes }}"
+        env:
+          BINDERY_LOG_LEVEL: "{{ bindery_log_level }}"
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: unless-stopped
+        labels:
+          traefik.enable: "{{ bindery_available_externally | default(false) | string }}"
+          traefik.http.routers.bindery.rule: "Host(`{{ bindery_hostname | default('bindery') }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.bindery.tls.certresolver: "letsencrypt"
+          traefik.http.routers.bindery.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.bindery.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.bindery.loadbalancer.server.port: "8787"
+  when: bindery_enabled is true
+
+- name: Stop Bindery
+  block:
+    - name: Stop Bindery
+      community.docker.docker_container:
+        name: "{{ bindery_container_name }}"
+        state: absent
+  when: bindery_enabled is false

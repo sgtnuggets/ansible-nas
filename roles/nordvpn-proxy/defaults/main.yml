@@ -1,0 +1,54 @@
+---
+# Enable or disable the nordvpn-proxy container
+nordvpn_proxy_enabled: false
+
+# Container name
+nordvpn_proxy_container_name: nordvpn-proxy
+
+# Image and version
+docker_image: edgd1er/nordvpn-proxy
+docker_image_tag: latest
+
+# Ports
+nordvpn_proxy_socks_port: 1081
+nordvpn_proxy_http_port: 8888
+
+# Volumes
+nordvpn_proxy_config_directory: /srv/nordvpn-proxy/config
+nordvpn_proxy_docker_sock: /var/run/docker.sock
+
+# Environment variables
+nordvpn_proxy_timezone: America/Chicago
+nordvpn_proxy_dns: "1.1.1.1@853#cloudflare-dns.com 1.0.0.1@853#cloudflare-dns.com"
+nordvpn_proxy_country: germany
+nordvpn_proxy_protocol: udp
+nordvpn_proxy_category: p2p
+nordvpn_proxy_user: "<email>"
+nordvpn_proxy_pass: "<pass>"
+nordvpn_proxy_openvpn_parameters: ""
+nordvpn_proxy_openvpn_loglevel: ""
+nordvpn_proxy_exit_when_ip_notasexpected: 0
+nordvpn_proxy_local_network: 192.168.0.0/24
+nordvpn_proxy_tinyport: 8888
+nordvpn_proxy_tiny_loglevel: Error
+nordvpn_proxy_dante_loglevel: error
+nordvpn_proxy_dante_errorlog: /dev/stdout
+nordvpn_proxy_cron_loglevel: 9
+nordvpn_proxy_debug: 0
+nordvpn_proxy_tinyuser: username
+nordvpn_proxy_tinypass: password
+
+# Secrets (use file paths or Ansible vault as needed)
+nordvpn_proxy_nordvpn_creds_file: /srv/nordvpn-proxy/nordvpn_creds
+nordvpn_proxy_tiny_creds_file: /srv/nordvpn-proxy/tiny_creds
+
+# Sysctls
+nordvpn_proxy_sysctl_rp_filter: 2
+
+# Capabilities
+nordvpn_proxy_cap_add:
+  - NET_ADMIN
+
+# Devices (optional)
+nordvpn_proxy_devices:
+  # - /dev/net/tun

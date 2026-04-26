@@ -1,0 +1,58 @@
+---
+- name: Start nordvpn-proxy
+  block:
+    - name: Create nordvpn-proxy config directory
+      ansible.builtin.file:
+        path: "{{ nordvpn_proxy_config_directory }}"
+        state: directory
+
+    - name: nordvpn-proxy Docker Container
+      community.docker.docker_container:
+        name: "{{ nordvpn_proxy_container_name }}"
+        image: "{{ docker_image }}:{{ docker_image_tag }}"
+        pull: true
+        restart_policy: unless-stopped
+        ports:
+          - "{{ nordvpn_proxy_socks_port }}:1080"
+          - "{{ nordvpn_proxy_http_port }}:8888"
+        sysctls:
+          net.ipv4.conf.all.rp_filter: "{{ nordvpn_proxy_sysctl_rp_filter }}"
+        cap_add: "{{ nordvpn_proxy_cap_add }}"
+        volumes:
+          - "{{ nordvpn_proxy_config_directory }}:/config"
+          - "{{ nordvpn_proxy_docker_sock }}:/var/run/docker.sock"
+        env:
+          TZ: "{{ nordvpn_proxy_timezone }}"
+          DNS: "{{ nordvpn_proxy_dns }}"
+          NORDVPN_COUNTRY: "{{ nordvpn_proxy_country }}"
+          NORDVPN_PROTOCOL: "{{ nordvpn_proxy_protocol }}"
+          NORDVPN_CATEGORY: "{{ nordvpn_proxy_category }}"
+          NORDVPN_USER: "{{ nordvpn_proxy_user }}"
+          NORDVPN_PASS: "{{ nordvpn_proxy_pass }}"
+          OPENVPN_PARAMETERS: "{{ nordvpn_proxy_openvpn_parameters }}"
+          OPENVPN_LOGLEVEL: "{{ nordvpn_proxy_openvpn_loglevel }}"
+          EXIT_WHEN_IP_NOTASEXPECTED: "{{ nordvpn_proxy_exit_when_ip_notasexpected }}"
+          LOCAL_NETWORK: "{{ nordvpn_proxy_local_network }}"
+          TINYPORT: "{{ nordvpn_proxy_tinyport }}"
+          TINY_LOGLEVEL: "{{ nordvpn_proxy_tiny_loglevel }}"
+          DANTE_LOGLEVEL: "{{ nordvpn_proxy_dante_loglevel }}"
+          DANTE_ERRORLOG: "{{ nordvpn_proxy_dante_errorlog }}"
+          CRON_LOGLEVEL: "{{ nordvpn_proxy_cron_loglevel }}"
+          DEBUG: "{{ nordvpn_proxy_debug }}"
+          TINYUSER: "{{ nordvpn_proxy_tinyuser }}"
+          TINYPASS: "{{ nordvpn_proxy_tinypass }}"
+        secrets:
+          - source: "{{ nordvpn_proxy_nordvpn_creds_file }}"
+            target: NORDVPN_CREDS
+          - source: "{{ nordvpn_proxy_tiny_creds_file }}"
+            target: TINY_CREDS
+        # devices: "{{ nordvpn_proxy_devices }}" # Uncomment if needed
+  when: nordvpn_proxy_enabled is true
+
+- name: Stop nordvpn-proxy
+  block:
+    - name: Stop nordvpn-proxy
+      community.docker.docker_container:
+        name: "{{ nordvpn_proxy_container_name }}"
+        state: absent
+  when: nordvpn_proxy_enabled is false
