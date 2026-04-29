@@ -24,6 +24,8 @@ plex_url: http://{{ ansible_nas_hostname }}:32400
 plex_token: "{{ plex_token }}"
 plex_users_allow: sgtnuggets
 
+listenbrains_username: "sgtnuggets99"
+
 # User and group IDs
 multi_scrobbler_puid: "1000"
 multi_scrobbler_pgid: "1000"

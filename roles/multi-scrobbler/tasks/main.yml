@@ -21,6 +21,8 @@
           PGID: "{{ multi_scrobbler_pgid }}"
           LASTFM_API_KEY: "{{ lastfm_api_key }}"
           LASTFM_SECRET: "{{ lastfm_secret }}"
+          LZ_USERNAME: "{{ listenbrains_username }}"
+          LZ_TOKEN: "{{ lz_token }}"
           # LASTFM_REDIRECT_URI: "{{ multi_scrobbler_base_url }}/lastfm/callback"
           PLEX_URL: "{{ plex_url }}"
           PLEX_TOKEN: "{{ plex_token }}"
