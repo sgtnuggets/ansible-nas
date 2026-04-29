@@ -1,0 +1,41 @@
+---
+# Enable or disable the Multi-Scrobbler container
+multi_scrobbler_enabled: false
+
+# Container name
+multi_scrobbler_container_name: multi-scrobbler
+
+# Image and version
+multi_scrobbler_image: foxxmd/multi-scrobbler
+multi_scrobbler_version: latest
+
+# Port
+multi_scrobbler_port: 9078
+
+# Data directory
+multi_scrobbler_config_directory: "{{ docker_home }}/multi-scrobbler/config"
+
+# Base URL for Multi-Scrobbler (used for callbacks and UI access)
+multi_scrobbler_base_url: "http://{{ ansible_nas_host }}:{{ multi_scrobbler_port }}"
+
+# Plex integration
+# Set these to enable Plex integration
+plex_url: http://localhost:32400
+plex_token: {{ plex_token }}
+plex_users_allow: sgtnuggets
+
+# User and group IDs
+multi_scrobbler_puid: "1000"
+multi_scrobbler_pgid: "1000"
+
+# Optional: Redis/Valkey caching (set to true to enable; requires separate valkey service)
+# multi_scrobbler_cache_metadata: false
+# multi_scrobbler_cache_metadata_conn: "redis://valkey:6379"
+
+# Memory limit (optional)
+# multi_scrobbler_memory: "256m"
+
+# Volume mounts
+multi_scrobbler_volumes:
+  - "{{ multi_scrobbler_config_directory }}:/config"
+  - "/etc/localtime:/etc/localtime:ro"

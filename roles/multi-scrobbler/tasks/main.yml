@@ -1,0 +1,41 @@
+---
+- name: Start Multi-Scrobbler
+  block:
+    - name: Create Multi-Scrobbler Directories
+      ansible.builtin.file:
+        path: "{{ multi_scrobbler_config_directory }}"
+        state: directory
+
+    - name: Multi-Scrobbler Docker Container
+      community.docker.docker_container:
+        name: "{{ multi_scrobbler_container_name }}"
+        image: "{{ multi_scrobbler_image }}:{{ multi_scrobbler_version }}"
+        pull: true
+        ports:
+          - "{{ multi_scrobbler_port }}:9078"
+        volumes: "{{ multi_scrobbler_volumes }}"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+          BASE_URL: "{{ multi_scrobbler_base_url }}"
+          PUID: "{{ multi_scrobbler_puid }}"
+          PGID: "{{ multi_scrobbler_pgid }}"
+          PLEX_URL: "{{ plex_url }}"
+          PLEX_TOKEN: "{{ plex_token }}"
+          PLEX_USERS_ALLOW: "{{ plex_users_allow }}"
+        restart_policy: unless-stopped
+        labels:
+          traefik.enable: "{{ multi_scrobbler_available_externally | default(false) | string }}"
+          traefik.http.routers.multi-scrobbler.rule: "Host(`{{ multi_scrobbler_hostname | default('scrobbler') }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.multi-scrobbler.tls.certresolver: "letsencrypt"
+          traefik.http.routers.multi-scrobbler.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.multi-scrobbler.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.multi-scrobbler.loadbalancer.server.port: "9078"
+  when: multi_scrobbler_enabled is true
+
+- name: Stop Multi-Scrobbler
+  block:
+    - name: Stop Multi-Scrobbler
+      community.docker.docker_container:
+        name: "{{ multi_scrobbler_container_name }}"
+        state: absent
+  when: multi_scrobbler_enabled is false

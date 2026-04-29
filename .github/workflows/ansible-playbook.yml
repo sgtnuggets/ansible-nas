@@ -107,7 +107,8 @@ jobs:
           duplicati_pass=$DUPLICATI_PASSWORD \
           wireguard_pass=$WIREGUARD_PASSWORD \
           pihole_token=$PIHOLE_API_KEY \
-          duckdns_token=$DUCKDNS_TOKEN"
+          duckdns_token=$DUCKDNS_TOKEN \
+          plex_token=$PLEX_TOKEN"
         env: # Or as an environment variable
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
           HASSPASS: ${{ secrets.STATS_HASS_LONG_LIVED_ACCESS_TOKEN }}
@@ -119,3 +120,4 @@ jobs:
           WIREGUARD_PASSWORD: ${{ secrets.WIREGUARDLOGIN }}
           DUCKDNS_TOKEN: ${{ secrets.DUCKDNS_TOKEN }}
           PIHOLE_API_KEY: ${{ secrets.PIHOLE_API_KEY }}
+          PLEX_TOKEN: ${{ secrets.PLEX_TOKEN }}
