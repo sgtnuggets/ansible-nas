@@ -21,7 +21,7 @@
           PGID: "{{ multi_scrobbler_pgid }}"
           LASTFM_API_KEY: "{{ lastfm_api_key }}"
           LASTFM_SECRET: "{{ lastfm_secret }}"
-          LASTFM_REDIRECT_URI: "{{ multi_scrobbler_base_url }}/lastfm/callback"
+          # LASTFM_REDIRECT_URI: "{{ multi_scrobbler_base_url }}/lastfm/callback"
           PLEX_URL: "{{ plex_url }}"
           PLEX_TOKEN: "{{ plex_token }}"
           PLEX_USERS_ALLOW: "{{ plex_users_allow }}"
