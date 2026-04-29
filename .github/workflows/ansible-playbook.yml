@@ -108,6 +108,8 @@ jobs:
           wireguard_pass=$WIREGUARD_PASSWORD \
           pihole_token=$PIHOLE_API_KEY \
           duckdns_token=$DUCKDNS_TOKEN \
+          lastfm_api_key=$LASTFM_API_KEY \
+          lastfm_secret=$LASTFM_SECRET \
           plex_token=$PLEX_TOKEN"
         env: # Or as an environment variable
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
@@ -120,4 +122,6 @@ jobs:
           WIREGUARD_PASSWORD: ${{ secrets.WIREGUARDLOGIN }}
           DUCKDNS_TOKEN: ${{ secrets.DUCKDNS_TOKEN }}
           PIHOLE_API_KEY: ${{ secrets.PIHOLE_API_KEY }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
           PLEX_TOKEN: ${{ secrets.PLEX_TOKEN }}
