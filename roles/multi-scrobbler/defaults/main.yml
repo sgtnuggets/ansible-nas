@@ -16,7 +16,7 @@ multi_scrobbler_port: 9078
 multi_scrobbler_config_directory: "{{ docker_home }}/multi-scrobbler/config"
 
 # Base URL for Multi-Scrobbler (used for callbacks and UI access)
-multi_scrobbler_base_url: "http://{{ ansible_nas_host }}:{{ multi_scrobbler_port }}"
+multi_scrobbler_base_url: "http://{{ ansible_nas_hostname }}:{{ multi_scrobbler_port }}"
 
 # Plex integration
 # Set these to enable Plex integration
