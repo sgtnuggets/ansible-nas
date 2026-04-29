@@ -92,7 +92,7 @@ bazarr_enabled: true
 firefly_enabled: true
 orb_enabled: false
 flaresolverr_enabled: true
-multi-scrobbler_enabled: true
+multi_scrobbler_enabled: true
 
 
 ## Disabled Stuff
