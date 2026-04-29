@@ -254,9 +254,9 @@
       tags:
         - minio
 
-    # - role: multi-scrobbler
-    #   tags:
-    #     - multi-scrobbler
+    - role: multi-scrobbler
+      tags:
+        - multi-scrobbler
 
     - role: musicseerr
       tags:
