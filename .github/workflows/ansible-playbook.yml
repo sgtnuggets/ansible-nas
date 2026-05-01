@@ -110,7 +110,7 @@ jobs:
           duckdns_token=$DUCKDNS_TOKEN \
           lastfm_api_key=$LASTFM_API_KEY \
           lastfm_secret=$LASTFM_SECRET \
-          lz_token=LZ_TOKEN \
+          lz_token=$LZ_TOKEN \
           plex_token=$PLEX_TOKEN"
         env: # Or as an environment variable
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
