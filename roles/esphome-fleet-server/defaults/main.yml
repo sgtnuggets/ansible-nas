@@ -1,0 +1,26 @@
+---
+# Enable or disable the ESPHome Fleet Server container
+esphome_fleet_server_enabled: false
+
+# Container name
+esphome_fleet_server_container_name: esphome-fleet-server
+
+# Image and version
+esphome_fleet_server_image: ghcr.io/weirded/esphome-dist-server
+esphome_fleet_server_version: latest
+
+# Data directories
+esphome_fleet_server_config_directory: "{{ docker_home }}/esphome-fleet-server/config"
+esphome_fleet_server_data_volume: esphome-fleet-server-data
+
+# Server authentication token (choose a random string)
+# esphome_fleet_server_token: "change-me-to-random-string"
+
+# Memory limit (optional)
+# esphome_fleet_server_memory: "512m"
+
+# Volume mounts
+esphome_fleet_server_volumes:
+  - "{{ esphome_fleet_server_config_directory }}:/config/esphome"
+  - "{{ esphome_fleet_server_data_volume }}:/data"
+  - "/etc/localtime:/etc/localtime:ro"

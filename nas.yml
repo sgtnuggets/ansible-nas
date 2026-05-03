@@ -143,6 +143,10 @@
       tags:
         - esphome
 
+    - role: esphome-fleet-server
+      tags:
+        - esphome-fleet-server
+
     - role: flaresolverr
       tags:
         - flaresolverr

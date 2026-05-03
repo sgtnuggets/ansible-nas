@@ -1,0 +1,28 @@
+---
+- name: Start ESPHome Fleet Server
+  block:
+    - name: Create ESPHome Fleet Server Config Directory
+      ansible.builtin.file:
+        path: "{{ esphome_fleet_server_config_directory }}"
+        state: directory
+
+    - name: ESPHome Fleet Server Docker Container
+      community.docker.docker_container:
+        name: "{{ esphome_fleet_server_container_name }}"
+        image: "{{ esphome_fleet_server_image }}:{{ esphome_fleet_server_version }}"
+        pull: true
+        network_mode: host
+        volumes: "{{ esphome_fleet_server_volumes }}"
+        env:
+          # SERVER_TOKEN: "{{ esphome_fleet_server_token }}"
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: unless-stopped
+  when: esphome_fleet_server_enabled is true
+
+- name: Stop ESPHome Fleet Server
+  block:
+    - name: Stop ESPHome Fleet Server
+      community.docker.docker_container:
+        name: "{{ esphome_fleet_server_container_name }}"
+        state: absent
+  when: esphome_fleet_server_enabled is false
