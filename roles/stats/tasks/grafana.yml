@@ -44,6 +44,7 @@
         env:
           GF_PLUGINS_ENABLE_ALPHA: "true"
           GF_UNIFIED_ALERTING_ENABLED: "true"
+          GF_ANALYTICS_REPORTING_ENABLED: "false"
         restart_policy: unless-stopped
         memory: 1g
         labels:
