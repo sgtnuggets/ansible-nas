@@ -39,6 +39,7 @@
           - "/sys:/hostfs/sys:ro"
           - "/var:/hostfs/var:ro"
           - "/run:/hostfs/run:ro"
+          - /sys/fs/cgroup:/sys/fs/cgroup:ro
         env:
           HOST_ETC: "/hostfs/etc"
           HOST_PROC: "/hostfs/proc"
