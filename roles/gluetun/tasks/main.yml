@@ -24,7 +24,7 @@
           OPENVPN_USER: "{{ github_openvpn_username }}"
           OPENVPN_PASSWORD: "{{ github_openvpn_password }}"
           SERVER_REGIONS: "US"
-          VPN_PORT_FORWARDING: "on"
+          # VPN_PORT_FORWARDING: "on"
           HTTP_CONTROL_SERVER_AUTH_DEFAULT_ROLE: '{"auth":"apikey","apikey":"derpydo"}'
           TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
