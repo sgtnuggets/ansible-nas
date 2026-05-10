@@ -31,3 +31,5 @@ slskd_remote_configuration: "true"
 slskd_volumes:
   - "{{ slskd_data_directory }}:/app"
   - "/etc/localtime:/etc/localtime:ro"
+  - "{{ music_root }}:/music:rw"
+
