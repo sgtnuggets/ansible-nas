@@ -17,7 +17,7 @@
           - NET_ADMIN
         ports:
           - 8000:8000/tcp
-          - 5030:5030/tcp
+          - 8888:8888/tcp # HTTP proxy
         env:
           VPN_SERVICE_PROVIDER: "{{ gluetun_vpn_service_provider }}"
           VPN_TYPE: "{{ gluetun_vpn_type }}"
