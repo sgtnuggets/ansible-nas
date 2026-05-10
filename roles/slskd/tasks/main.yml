@@ -23,7 +23,7 @@
           SLSKD_FILE_PERMISSION_MODE: "777"
           SLSKD_DOWNLOADS_DIR: "/complete"
           SLSKD_INCOMPLETE_DIR: "/incomplete"
-          SLSKD_SHARED_DIR: "{{ music_root }}"
+          SLSKD_SHARED_DIR: "/music"
           SLSKD_SLSK_USERNAME: "culturepolluter"
           SLSKD_SLSK_PASSWORD: "{{ slskd_passsword }}"
           SLSKD_SLSK_PROXY: "enabled"
