@@ -93,7 +93,7 @@ firefly_enabled: true
 orb_enabled: false
 flaresolverr_enabled: true
 multi_scrobbler_enabled: true
-
+slskd_enabled: true
 
 ## Disabled Stuff
 # hyperion_enabled: false

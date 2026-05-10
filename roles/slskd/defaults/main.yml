@@ -1,0 +1,33 @@
+---
+# Enable or disable the Slskd container
+slskd_enabled: false
+
+# Container name
+slskd_container_name: slskd
+
+# Image and version
+slskd_image: slskd/slskd
+slskd_version: latest
+
+# Ports
+slskd_port_http: 5030
+slskd_port_obfuscated: 5031
+slskd_port_listener: 50300
+
+# Data directory
+slskd_data_directory: "{{ docker_home }}/slskd"
+
+# User and group IDs
+slskd_puid: "1000"
+slskd_pgid: "1000"
+
+# Enable remote configuration via web UI
+slskd_remote_configuration: "true"
+
+# Memory limit (optional)
+# slskd_memory: "512m"
+
+# Volume mounts
+slskd_volumes:
+  - "{{ slskd_data_directory }}:/app"
+  - "/etc/localtime:/etc/localtime:ro"

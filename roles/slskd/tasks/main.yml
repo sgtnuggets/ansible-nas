@@ -1,0 +1,40 @@
+---
+- name: Start Slskd
+  block:
+    - name: Create Slskd Directories
+      ansible.builtin.file:
+        path: "{{ slskd_data_directory }}"
+        state: directory
+
+    - name: Slskd Docker Container
+      community.docker.docker_container:
+        name: "{{ slskd_container_name }}"
+        image: "{{ slskd_image }}:{{ slskd_version }}"
+        pull: true
+        ports:
+          - "{{ slskd_port_http }}:5030"
+          - "{{ slskd_port_obfuscated }}:5031"
+          - "{{ slskd_port_listener }}:50300"
+        volumes: "{{ slskd_volumes }}"
+        env:
+          PUID: "{{ slskd_puid }}"
+          PGID: "{{ slskd_pgid }}"
+          SLSKD_REMOTE_CONFIGURATION: "{{ slskd_remote_configuration }}"
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: unless-stopped
+        labels:
+          traefik.enable: "{{ slskd_available_externally | default(false) | string }}"
+          traefik.http.routers.slskd.rule: "Host(`{{ slskd_hostname | default('slskd') }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.slskd.tls.certresolver: "letsencrypt"
+          traefik.http.routers.slskd.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.slskd.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.slskd.loadbalancer.server.port: "5030"
+  when: slskd_enabled is true
+
+- name: Stop Slskd
+  block:
+    - name: Stop Slskd
+      community.docker.docker_container:
+        name: "{{ slskd_container_name }}"
+        state: absent
+  when: slskd_enabled is false

@@ -398,6 +398,10 @@
       tags:
         - sonarr
 
+    - role: slskd
+      tags:
+        - slskd
+
     # - role: speedtest-tracker
     #   tags:
     #     - speedtest-tracker
