@@ -11,8 +11,12 @@
         name: "{{ gluetun_container_name }}"
         image: "{{ gluetun_image }}:{{ gluetun_version }}"
         pull: true
-        cap_add: "{{ gluetun_cap_add }}"
-        devices: "{{ gluetun_devices }}"
+        devices:
+          - /dev/net/tun
+        capabilities:
+          - NET_ADMIN
+        # cap_add: "{{ gluetun_cap_add }}"
+        # devices: "{{ gluetun_devices }}"
         env:
           VPN_SERVICE_PROVIDER: "{{ gluetun_vpn_service_provider }}"
           VPN_TYPE: "{{ gluetun_vpn_type }}"
