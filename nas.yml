@@ -155,6 +155,10 @@
       tags:
         - firefly
 
+    - role: gluetun
+      tags:
+        - gluetun
+
     # - role: freshrss
     #   tags:
     #     - freshrss

@@ -52,7 +52,6 @@
           OVERRIDE_DNS_1: "192.168.1.2"
           OVERRIDE_DNS_2: "45.90.28.231"
           LOG_TO_STDOUT: "true"
-          FEATURE_IPV6_SUPPORT: "No"  # for privoxy
         dns_servers: # I don't think this works
           - "192.168.1.2"
           - "192.168.1.1"

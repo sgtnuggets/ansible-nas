@@ -1,0 +1,32 @@
+---
+- name: Start Gluetun
+  block:
+    - name: Create Gluetun Directories
+      ansible.builtin.file:
+        path: "{{ gluetun_data_directory }}"
+        state: directory
+
+    - name: Gluetun Docker Container
+      community.docker.docker_container:
+        name: "{{ gluetun_container_name }}"
+        image: "{{ gluetun_image }}:{{ gluetun_version }}"
+        pull: true
+        cap_add: "{{ gluetun_cap_add }}"
+        devices: "{{ gluetun_devices }}"
+        env:
+          VPN_SERVICE_PROVIDER: "{{ gluetun_vpn_service_provider }}"
+          VPN_TYPE: "{{ gluetun_vpn_type }}"
+          OPENVPN_USER: "{{ github_openvpn_username }}"
+          OPENVPN_PASSWORD: "{{ github_openvpn_password }}"
+          SERVER_REGIONS: "US"
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: unless-stopped
+  when: gluetun_enabled is true
+
+- name: Stop Gluetun
+  block:
+    - name: Stop Gluetun
+      community.docker.docker_container:
+        name: "{{ gluetun_container_name }}"
+        state: absent
+  when: gluetun_enabled is false

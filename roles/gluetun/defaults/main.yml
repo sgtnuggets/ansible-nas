@@ -1,0 +1,35 @@
+---
+# Enable or disable the Gluetun VPN container
+gluetun_enabled: false
+
+# Container name
+gluetun_container_name: gluetun
+
+# Image and version
+gluetun_image: qmcgaw/gluetun
+gluetun_version: latest
+
+# VPN Configuration
+gluetun_vpn_service_provider: nordvpn
+gluetun_vpn_type: openvpn  # openvpn or wireguard
+# gluetun_openvpn_user: null
+# gluetun_openvpn_password: null
+
+# Optional: for Wireguard instead of OpenVPN
+# gluetun_vpn_type: wireguard
+# gluetun_wireguard_private_key: null
+# gluetun_wireguard_addresses: null
+
+# Data directory (for config/certs if needed)
+gluetun_data_directory: "{{ docker_home }}/gluetun"
+
+# Capabilities required for VPN
+gluetun_cap_add:
+  - NET_ADMIN
+
+# Devices required for VPN
+gluetun_devices:
+  - /dev/net/tun:/dev/net/tun
+
+# Memory limit (optional)
+# gluetun_memory: "256m"
