@@ -32,4 +32,5 @@ slskd_volumes:
   - "{{ slskd_data_directory }}:/app"
   - "/etc/localtime:/etc/localtime:ro"
   - "{{ music_root }}:/music:rw"
-
+  - "{{ downloads_root }}/complete:/complete:rw"
+  - "{{ downloads_root }}/incomplete:/incomplete:rw"
