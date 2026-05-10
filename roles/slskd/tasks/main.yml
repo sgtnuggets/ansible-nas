@@ -32,7 +32,7 @@
           SLSKD_SLSK_PROXY_ADDRESS: "stinker"
           SLSKD_SLSK_PROXY_PORT: "3140"
           SLSKD_VPN: "true"
-          SLSKD_VPN_PORT_FORWARDING: "true"
+          SLSKD_VPN_PORT_FORWARDING: "false"
           SLSKD_VPN_GLUETUN_URL: "http://zima:8000"
           SLSKD_VPN_GLUETUN_API_KEY: "derpydo"          # SLSKD_SLSK_DIAG_LEVEL: "Debug"
           TZ: "{{ ansible_nas_timezone }}"
