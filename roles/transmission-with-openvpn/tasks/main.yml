@@ -10,7 +10,7 @@
         - "{{ transmission_config_directory }}"
         - "{{ transmission_download_directory }}"
         - "{{ transmission_watch_directory }}"
-        # - "{{ transmission_config_directory }}/privoxy/"
+        - "{{ transmission_config_directory }}/privoxy/"
 
     - name: Transmission with VPN
       community.docker.docker_container:
@@ -22,7 +22,7 @@
           - "{{ transmission_download_directory }}:/downloads:rw"
           - "{{ transmission_config_directory }}:/config:rw"
           - "{{ transmission_watch_directory }}:/watch:rw"
-          # - "{{ transmission_config_directory }}/privoxy/:/etc/privoxy/"
+          - "{{ transmission_config_directory }}/privoxy/:/usr/share/privoxy/:rw"
           - "/etc/timezone:/etc/timezone:ro"
         ports:
           - "{{ transmission_openvpn_webui_port }}:9091"
@@ -52,6 +52,7 @@
           OVERRIDE_DNS_1: "192.168.1.2"
           OVERRIDE_DNS_2: "45.90.28.231"
           LOG_TO_STDOUT: "true"
+          FEATURE_IPV6_SUPPORT: "false"  # for privoxy
         dns_servers: # I don't think this works
           - "192.168.1.2"
           - "192.168.1.1"
