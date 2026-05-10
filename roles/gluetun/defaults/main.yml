@@ -23,13 +23,5 @@ gluetun_vpn_type: openvpn  # openvpn or wireguard
 # Data directory (for config/certs if needed)
 gluetun_data_directory: "{{ docker_home }}/gluetun"
 
-# Capabilities required for VPN
-# gluetun_cap_add:
-#   - NET_ADMIN
-
-# # Devices required for VPN
-# gluetun_devices:
-#   - /dev/net/tun:/dev/net/tun
-
 # Memory limit (optional)
 # gluetun_memory: "256m"
