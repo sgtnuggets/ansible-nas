@@ -80,7 +80,7 @@ ombi_enabled: false
 plex_enabled: false
 # plex_memory_override: "2g"
 # plex_port_override: "32401"
-transmission_with_openvpn_enabled: true
+transmission_with_openvpn_enabled: false
 bitwarden_enabled: true
 wireguard_enabled: true
 esphome_fleet_server_enabled: true
