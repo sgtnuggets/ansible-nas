@@ -31,7 +31,7 @@
           SLSKD_SLSK_PROXY_ENABLED: "false"
           SLSKD_SLSK_PROXY_ADDRESS: "stinker"
           SLSKD_SLSK_PROXY_PORT: "3140"
-          SLSKD_SLSK_DIAG_LEVEL: "Debug"
+          # SLSKD_SLSK_DIAG_LEVEL: "Debug"
           TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
         labels:
