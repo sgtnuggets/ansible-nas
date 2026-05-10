@@ -26,10 +26,13 @@
           SLSKD_SHARED_DIR: "/music"
           SLSKD_SLSK_USERNAME: "culturepolluter"
           SLSKD_SLSK_PASSWORD: "{{ slskd_passsword }}"
+          SLSKD_UPLOAD_SLOTS: "3"
+          SLSKD_NO_AUTH: "true"
           SLSKD_SLSK_PROXY: "enabled"
           SLSKD_SLSK_PROXY_ENABLED: "true"
-          SLSKD_SLSK_PROXY_ADDRESS: "http://stinker"
+          SLSKD_SLSK_PROXY_ADDRESS: "stinker"
           SLSKD_SLSK_PROXY_PORT: "3140"
+          SLSKD_SLSK_DIAG_LEVEL: "Debug"
           TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
         labels:
