@@ -25,7 +25,7 @@
           OPENVPN_PASSWORD: "{{ github_openvpn_password }}"
           SERVER_COUNTRIES: "United States"
           SERVER_REGIONS: "The Americas"
-          SERVER_CITIES: "Charlotte,Chicago,Dallas,Los Angeles"
+          SERVER_CITIES: "Los Angeles,Seattle,Salt Lake City,Charlotte,Chicago,Dallas"
           # VPN_PORT_FORWARDING: "on"
           HTTP_CONTROL_SERVER_AUTH_DEFAULT_ROLE: '{"auth":"apikey","apikey":"derpydo"}'
           HTTPPROXY: "on"
