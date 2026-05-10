@@ -111,6 +111,7 @@ jobs:
           lastfm_api_key=$LASTFM_API_KEY \
           lastfm_secret=$LASTFM_SECRET \
           lz_token=$LZ_TOKEN \
+          slskd_passsword=$SLSKD_PASSWORD \
           plex_token=$PLEX_TOKEN"
         env: # Or as an environment variable
           PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
@@ -126,4 +127,5 @@ jobs:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
           LZ_TOKEN: ${{ secrets.LZ_TOKEN }}
+          SLSKD_PASSWORD: ${{ secrets.SLSKD_PASSWORD }}
           PLEX_TOKEN: ${{ secrets.PLEX_TOKEN }}

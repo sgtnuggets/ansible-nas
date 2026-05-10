@@ -20,6 +20,15 @@
           PUID: "{{ slskd_puid }}"
           PGID: "{{ slskd_pgid }}"
           SLSKD_REMOTE_CONFIGURATION: "{{ slskd_remote_configuration }}"
+          SLSKD_FILE_PERMISSION_MODE: "777"
+          SLSKD_DOWNLOADS_DIR: "{{ downloads_root }}/complete"
+          SLSKD_INCOMPLETE_DIR: "{{ downloads_root }}/incomplete"
+          SLSKD_SHARED_DIR: "{{ music_root }}"
+          SLSKD_SLSK_USERNAME: "culturepolluter"
+          SLSKD_SLSK_PASSWORD: "{{ slskd_passsword }}"
+          SLSKD_SLSK_PROXY: "enabled"
+          SLSKD_SLSK_PROXY_ADDRESS: "http://stinker"
+          SLSKD_SLSK_PROXY_PORT: "3140"
           TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
         labels:
