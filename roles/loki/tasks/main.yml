@@ -46,7 +46,7 @@
           - 7946
           - 9095
         volumes:
-          - "{{ loki_data_directory }}/config.yml:/etc/loki/config.yml:r"
+          - "{{ loki_data_directory }}/config.yml:/etc/loki/config.yml:ro"
         restart_policy: unless-stopped
         memory: "{{ loki_memory }}"
         restart: "{{ loki_config is changed }}"
