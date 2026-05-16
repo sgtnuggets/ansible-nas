@@ -50,6 +50,8 @@
         restart_policy: unless-stopped
         memory: "{{ loki_memory }}"
         restart: "{{ loki_config is changed }}"
+        env:
+          GF_ANALYTICS_REPORTING_ENABLED: "false"
         dns_servers:
           - "192.168.1.2"
           - "192.168.1.1"
