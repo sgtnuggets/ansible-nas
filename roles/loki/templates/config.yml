@@ -2,6 +2,9 @@
 
 auth_enabled: false
 
+analtyics:
+  reporting_enabled: false
+
 server:
   http_listen_port: {{ loki_http_port }}
   grpc_listen_port: 9096
