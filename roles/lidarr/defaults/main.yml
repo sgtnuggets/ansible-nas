@@ -18,8 +18,8 @@ lidarr_hostname: "lidarr"
 # docker
 lidarr_container_name: "lidarr"
 lidarr_image_name: "linuxserver/lidarr"
-# lidarr_image_version: "nightly"  # using nightly so I can run plugins like https://github.com/TypNull/Tubifarry
-lidarr_image_version: "latest"
+lidarr_image_version: "nightly"  # using nightly so I can run plugins like https://github.com/TypNull/Tubifarry
+# lidarr_image_version: "latest"
 
 # specs
 lidarr_memory: 1g
