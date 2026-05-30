@@ -63,7 +63,7 @@ transmission_with_openvpn_enabled: false
 radarr_enabled: false
 sabnzbd_enabled: false
 sonarr_enabled: false
-tautulli_enabled: true
+tautulli_enabled: false
 jackett_enabled: false
 lidarr_enabled: false
 nzbget_enabled: false
@@ -80,8 +80,8 @@ WOL_enabled: false
 esphome_enabled: false
 watchtower_enabled: true
 organizr_enabled: true
-stats_enabled: true
-promtail_enabled: true
+stats_enabled: false
+promtail_enabled: false
 ddwrt_enabled: false
 stats_master: false
 stats_internet_speed_test_enabled: false
@@ -91,7 +91,7 @@ stats_snmp_exporter_enabled: false
 
 
 # Media Streaming
-plex_enabled: true
+plex_enabled: false
 plex_memory_override: "4g"
 plex_port_override: "32400"
 
