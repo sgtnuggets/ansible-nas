@@ -90,8 +90,8 @@ jobs:
           # ssh-keyscan -H nuc0 >> ~/.ssh/known_hosts
         if: ${{ github.event.inputs.runOneTimeAuth == true }}
 
-      - name: Test SSH
-        run: ssh jake@streamweaver "echo 'Connected to remote host'"
+      # - name: Test SSH
+      #   run: ssh jake@streamweaver "echo 'Connected to remote host'"
 
       - name: Run playbook
         # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass
