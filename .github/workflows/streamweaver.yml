@@ -96,7 +96,6 @@ jobs:
       - name: Run playbook
         # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass
         run: |
-          # ansible-playbook -i ./inventories/mine/${{ env.INVENTORY }} ./nas.yml -b --become-method=sudo --become-password-file=/home/jake/workspace/sudo_password.txt \
           ansible-playbook -i ./inventories/mine/${{ env.INVENTORY }} ./nas.yml -i "localhost," --connection=local \
           --limit ${{ env.LIMIT }} \
           --tags ${{ env.TAGS }} \
