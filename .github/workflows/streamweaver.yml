@@ -1,0 +1,131 @@
+# This is a basic workflow to help you get started with Actions
+
+name: "Deploy Ansible Stack on Streamweaver"
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
+  schedule:
+    - cron: "0 6 * * 3" # 11pm pst on Wed
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      # environment:
+      #   description: 'Environment'
+      #   required: false
+      #   default: 'weekly'
+      limit:
+        required: false
+        type: choice
+        default: "streamweaver"
+        options:
+          # - "servers"
+          # - "stinker"
+          # - "zima"
+          # - "nuc0"
+          - "streamweaver"
+      tags:
+        required: false
+        type: string
+        default: "all"
+      inventory:
+        required: false
+        type: string
+        default: "inventory.yml"
+      runOneTimeAuth:
+        required: true
+        type: boolean
+        default: false
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: [self-hosted, linux, streamweaver]
+    env:
+      # fallback to 'staging' if input is undefined
+      # ENVIRONMENT: ${{ github.event.inputs.environment || 'weekly' }}
+      # Provide sensible defaults when the workflow is triggered by schedule
+      INVENTORY: ${{ github.event.inputs.inventory || 'inventory.yml' }}
+      LIMIT: ${{ github.event.inputs.limit || 'servers' }}
+      TAGS: ${{ github.event.inputs.tags || 'all' }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # - name: Set up Python 3
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '3.x'
+
+      # - name: Install Ansible
+      #   run: pip3 install ansible
+
+      - name: Install roles
+        run: ansible-galaxy install -r requirements.yml
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H zima >> ~/.ssh/known_hosts
+          ssh-keyscan -H streamweaver >> ~/.ssh/known_hosts
+          # ssh-keyscan -H nuc0 >> ~/.ssh/known_hosts
+        if: ${{ github.event.inputs.runOneTimeAuth == true }}
+
+      - name: Add remote host to known_hosts
+        run: |
+          ssh-keyscan -H zima >> ~/.ssh/known_hosts
+          ssh-keyscan -H streamweaver >> ~/.ssh/known_hosts
+          # ssh-keyscan -H nuc0 >> ~/.ssh/known_hosts
+        if: ${{ github.event.inputs.runOneTimeAuth == true }}
+
+      - name: Test SSH
+        run: ssh jake@streamweaver "echo 'Connected to remote host'"
+
+      - name: Run playbook
+        # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass
+        run: |
+          ansible-playbook -i ./inventories/mine/${{ env.INVENTORY }} ./nas.yml -b --become-method=sudo --become-password-file=/home/jake/workspace/sudo_password.txt \
+          --limit ${{ env.LIMIT }} \
+          --tags ${{ env.TAGS }} \
+          --extra-vars "STATS_HASS_LONG_LIVED_ACCESS_TOKEN=$HASSPASS \
+          CLOUDFLARE_DNS_EDIT=$CLOUDFLARE_DNS_EDIT \
+          github_openvpn_username=$NORD_USERNAME \
+          github_openvpn_password=$NORD_PASSWORD \
+          bitwarden=$BITWARDEN \
+          duplicati_pass=$DUPLICATI_PASSWORD \
+          wireguard_pass=$WIREGUARD_PASSWORD \
+          pihole_token=$PIHOLE_API_KEY \
+          duckdns_token=$DUCKDNS_TOKEN \
+          lastfm_api_key=$LASTFM_API_KEY \
+          lastfm_secret=$LASTFM_SECRET \
+          lz_token=$LZ_TOKEN \
+          slskd_passsword=$SLSKD_PASSWORD \
+          plex_token=$PLEX_TOKEN"
+        env: # Or as an environment variable
+          PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
+          HASSPASS: ${{ secrets.STATS_HASS_LONG_LIVED_ACCESS_TOKEN }}
+          CLOUDFLARE_DNS_EDIT: ${{ secrets.CLOUDFLARE_DNS_EDIT }}
+          NORD_USERNAME: ${{ secrets.NORD_USERNAME }}
+          NORD_PASSWORD: ${{ secrets.NORD_PASSWORD }}
+          BITWARDEN: ${{ secrets.BITWARDEN }}
+          DUPLICATI_PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
+          WIREGUARD_PASSWORD: ${{ secrets.WIREGUARDLOGIN }}
+          DUCKDNS_TOKEN: ${{ secrets.DUCKDNS_TOKEN }}
+          PIHOLE_API_KEY: ${{ secrets.PIHOLE_API_KEY }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+          LZ_TOKEN: ${{ secrets.LZ_TOKEN }}
+          SLSKD_PASSWORD: ${{ secrets.SLSKD_PASSWORD }}
+          PLEX_TOKEN: ${{ secrets.PLEX_TOKEN }}
