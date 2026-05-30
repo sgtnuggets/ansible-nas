@@ -11,7 +11,7 @@ Vagrant.configure(2) do |config|
       ansible.galaxy_role_file = "requirements.yml"
       ansible.inventory_path = "tests/inventories/integration_testing/inventory"
       ansible.playbook = "nas.yml"
-      ansible.become = true
+      # ansible.become = true
       ansible.raw_arguments = [
         "--extra-vars @tests/test.yml"
       ]
