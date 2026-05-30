@@ -6,10 +6,10 @@
     ###
     ### Requirements
     ###
-    - role: ansible-nas-users
-      tags:
-        - ansible-nas-users
-        - ansible-nas
+    # - role: ansible-nas-users
+    #   tags:
+    #     - ansible-nas-users
+    #     - ansible-nas
 
     - role: bertvv.samba
       tags:
