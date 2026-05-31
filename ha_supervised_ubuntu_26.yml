@@ -4,8 +4,8 @@
   connection: local
   # become: yes
   vars:
-    ha_os_agent_version: "1.6.0"
-    ha_supervised_installer_version: "1.5.0"
+    ha_os_agent_version: "1.9.0"
+    ha_supervised_installer_version: "4.0.1"
 
   tasks:
 
