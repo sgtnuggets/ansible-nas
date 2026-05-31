@@ -1,0 +1,73 @@
+name: Ansible playbook (template)
+
+on:
+  workflow_call:
+    inputs:
+      runner:
+        description: 'Runner label or name (e.g. "self-hosted,linux,runner1")'
+        required: true
+        type: string
+      tags:
+        required: false
+        type: string
+        default: "all"
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ${{ inputs.runner }}
+    env:
+      # fallback to 'staging' if input is undefined
+      # ENVIRONMENT: ${{ github.event.inputs.environment || 'weekly' }}
+      # Provide sensible defaults when the workflow is triggered by schedule
+      INVENTORY: 'inventory.yml'
+      LIMIT: ${{ inputs.runner }}
+      TAGS: ${{ github.event.inputs.tags || 'all' }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      - name: Install roles
+        run: ansible-galaxy install -r requirements.yml
+
+
+      - name: Run playbook
+        # run: ansible-playbook -i inventory streamweaver.yml -b --become-method=sudo --become-pass-file=/home/jake/.vault_pass --vault-password-file=/home/jake/.vault_pass
+        run: |
+          ansible-playbook -i ./inventories/mine/${{ env.INVENTORY }} ./nas.yml --become --become-method=sudo --become-password-file=/home/jake/workspace/sudo_password.txt \
+          --limit ${{ env.LIMIT }} \
+          --tags ${{ env.TAGS }} \
+          --extra-vars "STATS_HASS_LONG_LIVED_ACCESS_TOKEN=$HASSPASS \
+          CLOUDFLARE_DNS_EDIT=$CLOUDFLARE_DNS_EDIT \
+          github_openvpn_username=$NORD_USERNAME \
+          github_openvpn_password=$NORD_PASSWORD \
+          bitwarden=$BITWARDEN \
+          duplicati_pass=$DUPLICATI_PASSWORD \
+          wireguard_pass=$WIREGUARD_PASSWORD \
+          pihole_token=$PIHOLE_API_KEY \
+          duckdns_token=$DUCKDNS_TOKEN \
+          lastfm_api_key=$LASTFM_API_KEY \
+          lastfm_secret=$LASTFM_SECRET \
+          lz_token=$LZ_TOKEN \
+          slskd_passsword=$SLSKD_PASSWORD \
+          plex_token=$PLEX_TOKEN"
+        env: # Or as an environment variable
+          PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
+          HASSPASS: ${{ secrets.STATS_HASS_LONG_LIVED_ACCESS_TOKEN }}
+          CLOUDFLARE_DNS_EDIT: ${{ secrets.CLOUDFLARE_DNS_EDIT }}
+          NORD_USERNAME: ${{ secrets.NORD_USERNAME }}
+          NORD_PASSWORD: ${{ secrets.NORD_PASSWORD }}
+          BITWARDEN: ${{ secrets.BITWARDEN }}
+          DUPLICATI_PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
+          WIREGUARD_PASSWORD: ${{ secrets.WIREGUARDLOGIN }}
+          DUCKDNS_TOKEN: ${{ secrets.DUCKDNS_TOKEN }}
+          PIHOLE_API_KEY: ${{ secrets.PIHOLE_API_KEY }}
+          LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+          LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+          LZ_TOKEN: ${{ secrets.LZ_TOKEN }}
+          SLSKD_PASSWORD: ${{ secrets.SLSKD_PASSWORD }}
+          PLEX_TOKEN: ${{ secrets.PLEX_TOKEN }}
