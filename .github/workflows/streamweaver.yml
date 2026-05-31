@@ -27,4 +27,4 @@ jobs:
 
       - name: Run playbook
         run: |
-          ansible-playbook ./ha_supervised.yml -i ./inventories/mine/inventory.yml --become --become-method=sudo --become-password-file=/home/jake/.vault_pass \
+          ansible-playbook ./ha_supervised_ubuntu_26.yml -i ./inventories/mine/inventory.yml --become --become-method=sudo --become-password-file=/home/jake/.vault_pass \
