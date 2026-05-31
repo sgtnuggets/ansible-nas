@@ -15,16 +15,16 @@ jobs:
       runner: 'streamweaver'
       tags: ${{ github.event.inputs.tags || 'all' }}
 
-  hass:
-    # The type of runner that the job will run on
-    runs-on: streamweaver
+  # hass:
+  #   # The type of runner that the job will run on
+  #   runs-on: streamweaver
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+  #   # Steps represent a sequence of tasks that will be executed as part of the job
+  #   steps:
+  #     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+  #     - uses: actions/checkout@v4
 
 
-      - name: Run playbook
-        run: |
-          ansible-playbook ./ha_supervised_ubuntu_26.yml -i ./inventories/mine/inventory.yml --become --become-method=sudo --become-password-file=/home/jake/.vault_pass \
+  #     - name: Run playbook
+  #       run: |
+  #         ansible-playbook ./ha_supervised_ubuntu_26.yml -i ./inventories/mine/inventory.yml --become --become-method=sudo --become-password-file=/home/jake/.vault_pass \
