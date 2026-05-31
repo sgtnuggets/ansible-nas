@@ -1,8 +1,8 @@
 ---
 - name: Install Home Assistant Supervised on Ubuntu 26
-  hosts: localhost
+  hosts: streamweaver
   connection: local
-  become: yes
+  # become: yes
   vars:
     ha_os_agent_version: "1.6.0"
     ha_supervised_installer_version: "1.5.0"
