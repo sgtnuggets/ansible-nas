@@ -9,30 +9,30 @@
 
   tasks:
 
-    - name: Update apt cache
-      apt:
-        update_cache: yes
+    # - name: Update apt cache
+    #   apt:
+    #     update_cache: yes
 
-    - name: Install required base packages
-      apt:
-        name:
-          - jq
-          - curl
-          - avahi-daemon
-          - apparmor
-          - apparmor-utils
-          - network-manager
-          - dbus
-          - socat
-          - lsb-release
-          - wget
-        state: present
+    # - name: Install required base packages
+    #   apt:
+    #     name:
+    #       - jq
+    #       - curl
+    #       - avahi-daemon
+    #       - apparmor
+    #       - apparmor-utils
+    #       - network-manager
+    #       - dbus
+    #       - socat
+    #       - lsb-release
+    #       - wget
+    #     state: present
 
-    - name: Ensure NetworkManager is enabled
-      systemd:
-        name: NetworkManager
-        enabled: yes
-        state: started
+    # - name: Ensure NetworkManager is enabled
+    #   systemd:
+    #     name: NetworkManager
+    #     enabled: yes
+    #     state: started
 
     # - name: Install Docker CE (official repo)
     #   block:
