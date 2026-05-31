@@ -13,6 +13,5 @@ jobs:
     uses: ./.github/workflows/ansible-playbook-template.yml
     with:
       runner: "self-hosted,linux,zima"
-      playbook: "nas.yml"
       tags: ${{ github.event.inputs.tags || 'all' }}
       # inventory: "hosts.ini"    # optional
