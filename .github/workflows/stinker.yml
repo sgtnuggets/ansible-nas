@@ -1,4 +1,4 @@
-name: Zima
+name: Stinker
 
 on:
   workflow_dispatch:
@@ -12,5 +12,5 @@ jobs:
   call-template:
     uses: ./.github/workflows/ansible-playbook-template.yml
     with:
-      runner: 'zima'
+      runner: 'stinker'
       tags: ${{ github.event.inputs.tags || 'all' }}
