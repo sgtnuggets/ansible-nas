@@ -12,6 +12,6 @@ jobs:
   call-template:
     uses: ./.github/workflows/ansible-playbook-template.yml
     with:
-      runner: "self-hosted,linux,zima"
+      runner: "self-hosted,Linux,zima"
       tags: ${{ github.event.inputs.tags || 'all' }}
       # inventory: "hosts.ini"    # optional
