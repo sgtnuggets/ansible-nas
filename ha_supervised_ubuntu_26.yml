@@ -69,14 +69,14 @@
         #       - docker-compose-plugin
         #     state: present
 
-    - name: Download OS-Agent
-      get_url:
-        url: "https://github.com/home-assistant/os-agent/releases/download/{{ ha_os_agent_version }}/os-agent_{{ ha_os_agent_version }}_linux_x86_64.deb"
-        dest: "/tmp/os-agent.deb"
+    # - name: Download OS-Agent
+    #   get_url:
+    #     url: "https://github.com/home-assistant/os-agent/releases/download/{{ ha_os_agent_version }}/os-agent_{{ ha_os_agent_version }}_linux_x86_64.deb"
+    #     dest: "/tmp/os-agent.deb"
 
-    - name: Install OS-Agent
-      apt:
-        deb: "/tmp/os-agent.deb"
+    # - name: Install OS-Agent
+    #   apt:
+    #     deb: "/tmp/os-agent.deb"
 
     - name: Download Home Assistant Supervised installer
       get_url:
