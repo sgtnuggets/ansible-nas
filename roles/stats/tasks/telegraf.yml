@@ -47,6 +47,7 @@
           HOST_VAR: "/hostfs/var"
           HOST_RUN: "/hostfs/run"
           HOST_MOUNT_PREFIX: "/hostfs"
+          TELEGRAF_LOG_LEVEL: "debug"
         restart_policy: unless-stopped
         memory: 1g
         restart: "{{ telegraf_config is changed }}"
