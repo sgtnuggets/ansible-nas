@@ -23,6 +23,10 @@
     dest: /etc/motd
   when: inventory_hostname == "nuc0"
 
+- name: Container Hosts File
+  ansible.builtin.copy:
+    src: hosts
+    dest: "{{ docker_home }}/containerhosts/"
 
 - name: Update apt-cache
   ansible.builtin.apt:
