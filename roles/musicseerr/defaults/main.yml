@@ -33,3 +33,4 @@ musicseerr_volumes:
   - "{{ musicseerr_cache_directory }}:/app/cache"
   - "/etc/localtime:/etc/localtime:ro"
   - "{{ musicseerr_music_directory }}:/music:ro"  # Uncomment and set musicseerr_music_directory to enable
+  - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"

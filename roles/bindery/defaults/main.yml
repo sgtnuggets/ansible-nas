@@ -29,3 +29,4 @@ bindery_volumes:
   - "{{ bindery_books_directory }}:/books"
   - "{{ bindery_downloads_directory }}:/downloads"
   - "/etc/localtime:/etc/localtime:ro"
+  - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"

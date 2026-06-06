@@ -17,6 +17,7 @@
           - "{{ bazarr_tv_directory }}:/tv:rw"
           - "{{ bazarr_movies_directory }}:/movies:rw"
           - "{{ bazarr_data_directory }}:/config:rw"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         ports:
           - "{{ bazarr_port }}:6767"
         env:

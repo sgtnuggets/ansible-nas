@@ -15,6 +15,7 @@
         pull: true
         volumes:
           - "{{ organizr_data_directory }}:/config:rw"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         env:
           PUID: "{{ organizr_user_id }}"
           PGID: "{{ organizr_group_id }}"
