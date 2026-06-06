@@ -16,6 +16,7 @@
         pull: true
         volumes:
           - "{{ overseerr_data_directory }}/config:/app/config:rw"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         ports:
           - "{{ overseerr_webui_port }}:5055"
         env:
