@@ -17,6 +17,7 @@
           - "{{ radarr_movies_directory }}:/movies:rw"
           - "{{ radarr_download_directory }}:/downloads:rw"
           - "{{ radarr_data_directory }}:/config:rw"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         ports:
           - "{{ radarr_port }}:7878"
         env:

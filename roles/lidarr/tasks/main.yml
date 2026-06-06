@@ -16,6 +16,7 @@
           - "{{ lidarr_downloads_directory }}:/downloads:rw"
           - "{{ lidarr_data_directory }}:/config:rw"
           - "{{ downloads_root }}/complete:/complete:rw"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         ports:
           - "{{ lidarr_port }}:8686"
         env:
