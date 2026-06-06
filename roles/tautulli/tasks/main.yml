@@ -18,6 +18,7 @@
         volumes:
           - "{{ tautulli_config_directory }}:/config:rw"
           - "{{ plex_logs }}:/logs:ro"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         ports:
           - "{{ tautulli_port }}:8181"
         env:
