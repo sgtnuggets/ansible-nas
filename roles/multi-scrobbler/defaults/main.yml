@@ -41,3 +41,4 @@ multi_scrobbler_pgid: "1000"
 multi_scrobbler_volumes:
   - "{{ multi_scrobbler_config_directory }}:/config"
   - "/etc/localtime:/etc/localtime:ro"
+  - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
