@@ -89,7 +89,7 @@ musicseerr_enabled: true
 nzbget_enabled: false
 prowlarr_enabled: true
 bazarr_enabled: true
-firefly_enabled: true
+firefly_enabled: false
 orb_enabled: false
 flaresolverr_enabled: true
 multi_scrobbler_enabled: true
