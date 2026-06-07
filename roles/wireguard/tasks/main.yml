@@ -11,6 +11,7 @@
           - "{{ docker_home }}/wireguard:/etc/wireguard"
           - "/lib/modules:/lib/modules:ro"
           - "{{ docker_home }}/wireguard/hosts:/etc/hosts:rw"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         ports:
           - "51820:51820/udp"
           - "51821:51821/tcp"
