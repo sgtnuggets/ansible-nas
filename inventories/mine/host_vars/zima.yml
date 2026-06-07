@@ -84,6 +84,7 @@ sabnzbd_enabled: true
 sonarr_enabled: true
 tautulli_enabled: true
 jackett_enabled: false
+aurral_enabled: true
 lidarr_enabled: true
 musicseerr_enabled: true
 nzbget_enabled: false

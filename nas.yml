@@ -71,6 +71,10 @@
       tags:
         - atlas
 
+    - role: aurral
+      tags:
+        - aurral
+
     - role: bazarr
       tags:
         - bazarr

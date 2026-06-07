@@ -1,0 +1,46 @@
+---
+- name: Start Aurral
+  block:
+    - name: Create Aurral Directory
+      ansible.builtin.file:
+        path: "{{ aurral_data_directory }}"
+        state: directory
+
+    - name: Aurral Docker Container
+      community.docker.docker_container:
+        name: "{{ aurral_container_name }}"
+        image: "{{ aurral_image_name }}:{{ aurral_image_version }}"
+        pull: true
+        volumes:
+          - "{{ downloads_root }}:/app/downloads:rw"
+          - "{{ aurral_data_directory }}:/app/backend/data:rw"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
+        ports:
+          - "{{ aurral_port }}:3001"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+          PUID: "{{ aurral_user_id }}"
+          PGID: "{{ aurral_group_id }}"
+          DOWNLOAD_FOLDER: "{{ downloads_root }}"
+          STORAGE: "{{ aurral_data_directory }}"
+        restart_policy: "unless-stopped"
+        # memory: "{{ aurral_memory }}"
+        dns_servers:
+          - "192.168.1.2"
+          - "192.168.1.1"
+        labels:
+          traefik.enable: "{{ aurral_available_externally | string }}"
+          traefik.http.routers.aurral.rule: "Host(`{{ aurral_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.aurral.tls.certresolver: "letsencrypt"
+          traefik.http.routers.aurral.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.aurral.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.aurral.loadbalancer.server.port: "3001"
+  when: aurral_enabled is true
+
+- name: Stop Aurral
+  block:
+    - name: Stop Aurral
+      community.docker.docker_container:
+        name: "{{ aurral_container_name }}"
+        state: absent
+  when: aurral_enabled is false

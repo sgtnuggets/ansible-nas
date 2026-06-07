@@ -1,0 +1,22 @@
+---
+aurral_enabled: false
+aurral_available_externally: false
+
+# directories
+aurral_data_directory: "{{ docker_home }}/aurral/data"
+
+# uid/gid
+aurral_user_id: "0"
+aurral_group_id: "0"
+
+# network
+aurral_port: "3002"
+aurral_hostname: "aurral"
+
+# docker
+aurral_container_name: "aurral"
+aurral_image_name: "ghcr.io/lklynet/aurral"
+aurral_image_version: "latest"
+
+# specs
+# aurral_memory: 1g
