@@ -14,3 +14,18 @@ jobs:
     with:
       runner: 'zima'
       tags: ${{ github.event.inputs.tags || 'all' }}
+    secrets:
+      # This maps your repository's secrets to the template's expected secret names
+      SYSTEM_PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}
+      CLOUDFLARE_DNS_EDIT: ${{ secrets.CLOUDFLARE_DNS_EDIT }}
+      NORD_USERNAME: ${{ secrets.NORD_USERNAME }}
+      NORD_PASSWORD: ${{ secrets.NORD_PASSWORD }}
+      BITWARDEN: ${{ secrets.BITWARDEN }}
+      WIREGUARD_PASSWORD: ${{ secrets.WIREGUARD_PASSWORD }}
+      PIHOLE_API_KEY: ${{ secrets.PIHOLE_API_KEY }}
+      DUCKDNS_TOKEN: ${{ secrets.DUCKDNS_TOKEN }}
+      LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
+      LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
+      LZ_TOKEN: ${{ secrets.LZ_TOKEN }}
+      SLSKD_PASSWORD: ${{ secrets.SLSKD_PASSWORD }}
+      PLEX_TOKEN: ${{ secrets.PLEX_TOKEN }}
