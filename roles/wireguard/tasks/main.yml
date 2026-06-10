@@ -19,8 +19,8 @@
           PUID: "1000"
           PGID: "1000"
           SERVERURL: jakesticka.duckdns.org
-          SERVERPORT: "{{ wireguard_udp_port }}"
-          PORT: "{{ wireguard_tcp_port }}"
+          # SERVERPORT: "{{ wireguard_udp_port }}"
+          # PORT: "{{ wireguard_tcp_port }}"
           INSECURE: "true"
           PEERS: "1"
           PEERDNS: "192.168.1.2"
