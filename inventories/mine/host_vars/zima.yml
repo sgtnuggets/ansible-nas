@@ -94,6 +94,7 @@ firefly_enabled: false
 orb_enabled: false
 flaresolverr_enabled: true
 multi_scrobbler_enabled: true
+wireguard_enabled: true
 gluetun_enabled: false
 slskd_enabled: false
 
