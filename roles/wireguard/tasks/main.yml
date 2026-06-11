@@ -12,15 +12,13 @@
           - "/lib/modules:/lib/modules:ro"
           - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         ports:
-          - "{{ wireguard_udp_port }}:51820/udp"
-          - "{{ wireguard_tcp_port }}:51821/tcp"
+          - "51820:51820/udp"
+          - "51821:51821/tcp"
         env:
           TZ: "{{ ansible_nas_timezone }}"
           PUID: "1000"
           PGID: "1000"
           SERVERURL: jakesticka.duckdns.org
-          # SERVERPORT: "{{ wireguard_udp_port }}"
-          # PORT: "{{ wireguard_tcp_port }}"
           INSECURE: "true"
           PEERS: "1"
           PEERDNS: "192.168.1.2"
