@@ -96,7 +96,7 @@ flaresolverr_enabled: true
 multi_scrobbler_enabled: true
 wireguard_enabled: true
 gluetun_enabled: false
-slskd_enabled: false
+slskd_enabled: true
 
 ## Disabled Stuff
 # hyperion_enabled: false
