@@ -86,7 +86,7 @@ tautulli_enabled: true
 jackett_enabled: false
 aurral_enabled: true
 lidarr_enabled: true
-musicseerr_enabled: true
+droppedneedle_enabled: true
 nzbget_enabled: false
 prowlarr_enabled: true
 bazarr_enabled: true

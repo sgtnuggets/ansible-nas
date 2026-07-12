@@ -270,9 +270,9 @@
       tags:
         - multi-scrobbler
 
-    - role: musicseerr
+    - role: droppedneedle
       tags:
-        - musicseerr
+        - droppedneedle
 
     # - role: mosquitto
     #   tags:

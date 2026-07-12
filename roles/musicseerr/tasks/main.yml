@@ -1,25 +1,25 @@
 ---
-- name: Start Musicseerr
+- name: Start droppedneedle
   block:
-    - name: Create Musicseerr Directories
+    - name: Create droppedneedle Directories
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
       with_items:
-        - "{{ musicseerr_config_directory }}"
-        - "{{ musicseerr_cache_directory }}"
+        - "{{ droppedneedle_config_directory }}"
+        - "{{ droppedneedle_cache_directory }}"
 
-    - name: Musicseerr
+    - name: droppedneedle
       community.docker.docker_container:
-        name: "{{ musicseerr_container_name }}"
-        image: "{{ musicseerr_image }}:{{ musicseerr_version }}"
+        name: "{{ droppedneedle_container_name }}"
+        image: "{{ droppedneedle_image }}:{{ droppedneedle_version }}"
         pull: true
         ports:
-          - "{{ musicseerr_port }}:8688"
-        volumes: "{{ musicseerr_volumes }}"
+          - "{{ droppedneedle_port }}:8688"
+        volumes: "{{ droppedneedle_volumes }}"
         env:
-          PUID: "{{ musicseerr_puid }}"
-          PGID: "{{ musicseerr_pgid }}"
+          PUID: "{{ droppedneedle_puid }}"
+          PGID: "{{ droppedneedle_pgid }}"
           PORT: "8688"
           TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
@@ -34,18 +34,18 @@
           start_period: 15s
           retries: 3
         labels:
-          traefik.enable: "{{ musicseerr_available_externally | default(false) | string }}"
-          traefik.http.routers.musicseerr.rule: "Host(`{{ musicseerr_hostname | default('musicseerr') }}.{{ ansible_nas_domain }}`)"
-          traefik.http.routers.musicseerr.tls.certresolver: "letsencrypt"
-          traefik.http.routers.musicseerr.tls.domains[0].main: "{{ ansible_nas_domain }}"
-          traefik.http.routers.musicseerr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-          traefik.http.services.musicseerr.loadbalancer.server.port: "8688"
-  when: musicseerr_enabled is true
+          traefik.enable: "{{ droppedneedle_available_externally | default(false) | string }}"
+          traefik.http.routers.droppedneedle.rule: "Host(`{{ droppedneedle_hostname | default('droppedneedle') }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.droppedneedle.tls.certresolver: "letsencrypt"
+          traefik.http.routers.droppedneedle.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.droppedneedle.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.droppedneedle.loadbalancer.server.port: "8688"
+  when: droppedneedle_enabled is true
 
-- name: Stop Musicseerr
+- name: Stop droppedneedle
   block:
-    - name: Stop Musicseerr
+    - name: Stop droppedneedle
       community.docker.docker_container:
-        name: "{{ musicseerr_container_name }}"
+        name: "{{ droppedneedle_container_name }}"
         state: absent
-  when: musicseerr_enabled is false
+  when: droppedneedle_enabled is false

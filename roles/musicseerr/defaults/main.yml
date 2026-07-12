@@ -1,36 +1,36 @@
 ---
-# Enable or disable the Musicseerr container
-musicseerr_enabled: false
+# Enable or disable the droppedneedle container
+droppedneedle_enabled: false
 
 # Container name
-musicseerr_container_name: musicseerr
+droppedneedle_container_name: droppedneedle
 
 # Image and version
-musicseerr_image: ghcr.io/habirabbu/musicseerr
-musicseerr_version: latest
+droppedneedle_image: ghcr.io/habirabbu/droppedneedle
+droppedneedle_version: latest
 
 # Port
-musicseerr_port: 8688
+droppedneedle_port: 8688
 
-# Data directories for Musicseerr
-musicseerr_config_directory: "{{ docker_home }}/musicseerr/config"
-musicseerr_cache_directory: "{{ docker_home }}/musicseerr/cache"
+# Data directories for droppedneedle
+droppedneedle_config_directory: "{{ docker_home }}/droppedneedle/config"
+droppedneedle_cache_directory: "{{ docker_home }}/droppedneedle/cache"
 
 # Optional: music library for local file playback
 # Set to a valid path on your host to enable; must match the root folder Lidarr uses
-musicseerr_music_directory: "{{ music_root }}"
+droppedneedle_music_directory: "{{ music_root }}"
 
 # User and group IDs (run `id` on your host to find these)
-musicseerr_puid: "1000"
-musicseerr_pgid: "1000"
+droppedneedle_puid: "1000"
+droppedneedle_pgid: "1000"
 
 # Memory limit (optional)
-# musicseerr_memory: "256m"
+# droppedneedle_memory: "256m"
 
 # Volume mounts (config and cache are mandatory; music is optional)
-musicseerr_volumes:
-  - "{{ musicseerr_config_directory }}:/app/config"
-  - "{{ musicseerr_cache_directory }}:/app/cache"
+droppedneedle_volumes:
+  - "{{ droppedneedle_config_directory }}:/app/config"
+  - "{{ droppedneedle_cache_directory }}:/app/cache"
   - "/etc/localtime:/etc/localtime:ro"
-  - "{{ musicseerr_music_directory }}:/music:ro"  # Uncomment and set musicseerr_music_directory to enable
+  - "{{ droppedneedle_music_directory }}:/music:ro"  # Uncomment and set droppedneedle_music_directory to enable
   - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
