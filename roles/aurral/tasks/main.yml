@@ -12,9 +12,10 @@
         image: "{{ aurral_image_name }}:{{ aurral_image_version }}"
         pull: true
         volumes:
-          - "{{ downloads_root }}:/app/downloads:rw"
+          - "{{ downloads_root }}:/downloads:rw"
           - "{{ aurral_data_directory }}:/app/backend/data:rw"
           - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
+          - "{{ music_root }}:/music"
         ports:
           - "{{ aurral_port }}:3001"
         env:
