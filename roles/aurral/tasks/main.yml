@@ -13,6 +13,7 @@
         pull: true
         volumes:
           - "{{ downloads_root }}:/downloads:rw"
+          - "{{ downloads_root }}/complete:/complete:rw"
           - "{{ aurral_data_directory }}:/app/backend/data:rw"
           - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
           - "{{ music_root }}:/music"
