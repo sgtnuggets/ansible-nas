@@ -26,7 +26,7 @@
           SLSKD_SHARED_DIR: "/music"
           SLSKD_SLSK_USERNAME: "culturepolluter"
           SLSKD_SLSK_PASSWORD: "{{ slskd_passsword }}"
-          SLSKD_UPLOAD_SLOTS: "3"
+          # SLSKD_UPLOAD_SLOTS: "2"
           SLSKD_NO_AUTH: "true"
           SLSKD_SLSK_PROXY_ENABLED: "false"
           SLSKD_SLSK_PROXY_ADDRESS: "stinker"
