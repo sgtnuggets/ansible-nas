@@ -20,21 +20,24 @@ scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: "prometheus"
     static_configs:
-      - targets: 
+      - targets:
         - "localhost:{{ stats_prometheus_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_port }}"
+        - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_prometheus_port }}"
 
   - job_name: "telegraf"
     static_configs:
-      - targets: 
+      - targets:
         - "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ stats_telegraf_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_telegraf_port }}"
+        - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_telegraf_port }}"
 
   - job_name: "smartctl"
     static_configs:
-      - targets: 
+      - targets:
         - "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:{{ stats_prometheus_smartctl_port }}"
         - "{{ hostvars['stinker']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
+        - "{{ hostvars['streamweaver']['host_ip'] }}:{{ stats_prometheus_smartctl_port }}"
 
   - job_name: "traefik"
     static_configs:
@@ -118,11 +121,11 @@ scrape_configs:
     authorization:
       credentials: "{{ stats_hass_long_lived_access_token | default("abcd") }}"
     static_configs:
-      - targets: 
+      - targets:
         - "{{ hostvars['stinker']['host_ip'] }}:8123"
 
 
   - job_name: 'pihole'
     static_configs:
-      - targets: 
+      - targets:
         - "{{ hostvars['stinker']['host_ip'] }}:9617"
