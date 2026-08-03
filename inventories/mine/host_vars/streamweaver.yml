@@ -77,6 +77,7 @@ plex_port_override: "32400"
 
 # Infra Monitoring
 stats_enabled: true
+promtail_enabled: true
 netdata_enabled: false
 atlas_enabled: false
 speedtest_enabled: false
@@ -104,5 +105,4 @@ deluge_enabled: false
 pihole_enabled: false
 WOL_enabled: false
 esphome_enabled: false
-promtail_enabled: false
 
