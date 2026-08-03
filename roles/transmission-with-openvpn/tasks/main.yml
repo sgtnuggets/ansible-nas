@@ -25,7 +25,7 @@
           - "{{ movies_root }}:/movies:rw"
           - "{{ tv_root }}:/tv:rw"
           # - "{{ transmission_config_directory }}/privoxy/:/usr/share/privoxy/:rw"
-          - "/etc/timezone:/etc/timezone:ro"
+          # - "/etc/timezone:/etc/timezone:ro"
         ports:
           - "{{ transmission_openvpn_webui_port }}:9091"
           - "{{ transmission_openvpn_external_port }}:51413"
