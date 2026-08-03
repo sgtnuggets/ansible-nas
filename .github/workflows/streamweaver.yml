@@ -14,7 +14,6 @@ jobs:
     with:
       runner: 'streamweaver'
       tags: ${{ github.event.inputs.tags || 'all' }}
-      # runs-on: self-hosted
     secrets:
       # This maps your repository's secrets to the template's expected secret names
       SYSTEM_PASSWORD: ${{ secrets.SYSTEM_PASSWORD }}

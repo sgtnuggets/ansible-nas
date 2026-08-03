@@ -47,57 +47,62 @@ ansible_nas_hostname: streamweaver
 ansible_nas_timezone: America/Los_Angeles
 
 ## Misc applications
-dashy_enabled: false
 portainer_enabled: true
 duplicati_enabled: true
-orb_enabled: false
-grocy_enabled: false
-bitwarden_enabled: false
-flaresolverr_enabled: false
-speedtest_enabled: false
-calibre_enable: false
-readarr_enabled: false
-overseerr_enabled: false
-ombi_enabled: false
-transmission_with_openvpn_enabled: false
-radarr_enabled: false
-sabnzbd_enabled: false
-sonarr_enabled: false
-tautulli_enabled: false
-jackett_enabled: false
+overseerr_enabled: true
+transmission_with_openvpn_enabled: true
+radarr_enabled: true
+sabnzbd_enabled: true
+sonarr_enabled: true
+tautulli_enabled: true
 lidarr_enabled: false
-nzbget_enabled: false
-prowlarr_enabled: false
-bazarr_enabled: false
-firefly_enabled: false
-nszhydra_enabled: false
-traefik_enabled: false
-airsonic_enabled: false
-homeassistant_enabled: false
-deluge_enabled: false
-pihole_enabled: false
-WOL_enabled: false
-esphome_enabled: false
+prowlarr_enabled: true
+bazarr_enabled: true
+traefik_enabled: true
 watchtower_enabled: true
 organizr_enabled: true
-stats_enabled: false
-promtail_enabled: false
 ddwrt_enabled: false
+flaresolverr_enabled: true
+multi_scrobbler_enabled: true
+wireguard_enabled: true
+slskd_enabled: true
+
+
+
+# Media Streaming
+plex_enabled: true
+plex_memory_override: "4g"
+plex_port_override: "32400"
+
+
+# Infra Monitoring
+stats_enabled: true
+netdata_enabled: false
+atlas_enabled: false
+speedtest_enabled: false
 stats_master: false
 stats_internet_speed_test_enabled: false
 stats_pihole_exporter_enabled: false
 stats_snmp_exporter_enabled: false
 
 
-
-# Media Streaming
-plex_enabled: false
-plex_memory_override: "4g"
-plex_port_override: "32400"
-
-
-# Infra Monitoring
-netdata_enabled: false
-atlas_enabled: false
-
+# Archive
+dashy_enabled: false
+orb_enabled: false
+grocy_enabled: false
+bitwarden_enabled: false
+calibre_enable: false
+readarr_enabled: false
+ombi_enabled: false
+jackett_enabled: false
+firefly_enabled: false
+nszhydra_enabled: false
+nzbget_enabled: false
+airsonic_enabled: false
+homeassistant_enabled: false
+deluge_enabled: false
+pihole_enabled: false
+WOL_enabled: false
+esphome_enabled: false
+promtail_enabled: false
 

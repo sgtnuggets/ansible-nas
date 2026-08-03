@@ -65,7 +65,6 @@ WOL_enabled: false
 flaresolverr_enabled: false
 # hyperion_enabled: false
 grocy_enabled: true
-orb_enabled: false
 ntfy_enabled: true
 kuma_enabled: true
 homebox_enabled: true
@@ -73,11 +72,6 @@ ddns_updater_enabled: true
 
 atlas_enabled: false
 duplicati_enabled: true
-duplicacy_enabled: false
-netdata_enabled: false
-overseerr_enabled: false
-ombi_enabled: false
-plex_enabled: false
 # plex_memory_override: "2g"
 # plex_port_override: "32401"
 transmission_with_openvpn_enabled: false
@@ -87,6 +81,12 @@ esphome_fleet_server_enabled: true
 
 
 ## Disabled Stuff
+orb_enabled: false
+duplicacy_enabled: false
+netdata_enabled: false
+overseerr_enabled: false
+ombi_enabled: false
+plex_enabled: false
 airsonic_enabled: false
 deluge_enabled: false
 bazarr_enabled: false
