@@ -55,7 +55,9 @@ radarr_enabled: true
 sabnzbd_enabled: true
 sonarr_enabled: true
 tautulli_enabled: true
-lidarr_enabled: false
+aurral_enabled: true
+lidarr_enabled: true
+droppedneedle_enabled: true
 prowlarr_enabled: true
 bazarr_enabled: true
 traefik_enabled: true
@@ -81,10 +83,12 @@ promtail_enabled: true
 netdata_enabled: false
 atlas_enabled: false
 speedtest_enabled: false
-stats_master: false
+stats_master: true
 stats_internet_speed_test_enabled: false
 stats_pihole_exporter_enabled: false
 stats_snmp_exporter_enabled: false
+minio_enabled: true
+logging_stack_enabled: true
 
 
 # Archive
