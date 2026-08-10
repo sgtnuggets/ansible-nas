@@ -90,6 +90,8 @@ scrape_configs:
     static_configs:
     - targets:
       - 'stinker:51821'
+      - 'streamweaver:51821'
+      # - 'zima:51821'
     authorization:
       type: Bearer
       credentials: '{{ wireguard_pass }}'
