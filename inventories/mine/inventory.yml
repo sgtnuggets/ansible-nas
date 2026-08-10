@@ -1,7 +1,7 @@
 all:
   vars:
     ansible_user: jake
-    loki_server: "192.168.1.7"
+    loki_server: "192.168.1.5"
   children:
     servers:
       vars:
