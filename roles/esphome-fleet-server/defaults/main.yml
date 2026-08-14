@@ -24,3 +24,4 @@ esphome_fleet_server_volumes:
   - "{{ esphome_fleet_server_config_directory }}:/config/esphome"
   - "{{ esphome_fleet_server_data_volume }}:/data"
   - "/etc/localtime:/etc/localtime:ro"
+  - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
