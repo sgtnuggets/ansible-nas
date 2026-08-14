@@ -35,7 +35,7 @@
           HTTP_TIMEOUT: "{{ ddns_updater_http_timeout }}"
         restart_policy: unless-stopped
         restart: "{{ ddns_updater_config is changed }}"
-        memory: "{{ ddns_updater_memory }}"
+        # memory: "{{ ddns_updater_memory }}"
         labels:
           traefik.enable: "{{ ddns_updater_available_externally }}"
           traefik.http.routers.airsonic.rule: "Host(`{{ ddns_updater_hostname }}.{{ ansible_nas_domain }}`)"
