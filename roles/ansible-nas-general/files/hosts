@@ -1,6 +1,6 @@
 127.0.0.1 localhost
-192.168.1.7 zima
-192.168.1.7 zima.local
+192.168.1.5 zima
+192.168.1.5 zima.local
 192.168.1.2 stinker
 192.168.1.2 stinker.local
 192.168.1.2 bitwarden.jakesticka.com
