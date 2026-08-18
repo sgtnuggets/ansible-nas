@@ -80,7 +80,7 @@ plex_port_override: "32400"
 # Infra Monitoring
 stats_enabled: true
 promtail_enabled: true
-netdata_enabled: true
+netdata_enabled: false
 atlas_enabled: false
 speedtest_enabled: false
 stats_master: true
