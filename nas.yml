@@ -266,6 +266,10 @@
       tags:
         - minio
 
+    - role: moodist
+      tags:
+        - moodist
+
     - role: multi-scrobbler
       tags:
         - multi-scrobbler
