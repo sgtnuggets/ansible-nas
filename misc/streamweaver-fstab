@@ -22,9 +22,10 @@ UUID=1ae867a0-0803-44ff-853e-32ea756c0cc0 /mnt/2tb ext4 defaults 0 0
 #//192.168.1.7/backups /mnt/storage/backups cifs credentials=/home/jake/.credentials 0 0
 
 # local mounts
-/mnt/2tb/movies         /mnt/storage/movies     none    bind
-/mnt/2tb/music          /mnt/storage/music      none    bind
-/mnt/2tb/tv             /mnt/storage/tv         none    bind
-/mnt/2tb/docker         /mnt/storage/docker     none    bind
-/mnt/2tb/downloads      /mnt/storage/downloads  none    bind
-/mnt/2tb/audiobooks     /mnt/storage/audiobooks none    bind
+/mnt/2tb/movies                 /mnt/storage/movies             none    bind
+/mnt/2tb/music                  /mnt/storage/music              none    bind
+/mnt/2tb/christmas_music        /mnt/storage/christmas_music    none    bind
+/mnt/2tb/tv                     /mnt/storage/tv                 none    bind
+/mnt/2tb/docker                 /mnt/storage/docker             none    bind
+/mnt/2tb/downloads              /mnt/storage/downloads          none    bind
+/mnt/2tb/audiobooks             /mnt/storage/audiobooks         none    bind
