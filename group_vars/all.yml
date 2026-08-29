@@ -50,6 +50,8 @@ torrents_root: "{{ samba_shares_root }}/torrents"
 # Where music is stored
 music_root: "{{ samba_shares_root }}/music"
 
+christmas_music_root: "{{ samba_shares_root }}/christmas_music"
+
 # Where podcasts are stored
 podcasts_root: "{{ samba_shares_root }}/podcasts"
 
@@ -116,6 +118,14 @@ samba_shares:
     writable: yes
     browseable: yes
     path: "{{ music_root }}"
+
+  - name: christmas_music
+    comment: "Music"
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browseable: yes
+    path: "{{ christmas_music_root }}"
 
   - name: podcasts
     comment: "Podcasts"
