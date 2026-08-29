@@ -1,0 +1,31 @@
+---
+- name: Start Moodist
+  block:
+    - name: Moodist Docker Container
+      community.docker.docker_container:
+        name: "{{ moodist_container_name }}"
+        image: "{{ moodist_image_name }}:{{ moodist_image_version }}"
+        pull: true
+        ports:
+          - "{{ moodist_port }}:8080"
+        log_driver: json-file
+        log_options:
+          max-size: "1g"
+        restart_policy: unless-stopped
+        memory: "{{ moodist_memory }}"
+        labels:
+          traefik.enable: "{{ moodist_available_externally | string }}"
+          traefik.http.routers.moodist.rule: "Host(`{{ moodist_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.moodist.tls.certresolver: "letsencrypt"
+          traefik.http.routers.moodist.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.moodist.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.moodist.loadbalancer.server.port: "8080"
+  when: moodist_enabled is true
+
+- name: Stop Moodist
+  block:
+    - name: Stop Moodist
+      community.docker.docker_container:
+        name: "{{ moodist_container_name }}"
+        state: absent
+  when: moodist_enabled is false

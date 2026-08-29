@@ -1,0 +1,15 @@
+---
+moodist_enabled: false
+moodist_available_externally: false
+
+# network
+moodist_port: "8080"
+moodist_hostname: "moodist"
+
+# docker
+moodist_container_name: "moodist"
+moodist_image_name: "ghcr.io/remvze/moodist"
+moodist_image_version: "latest"
+
+# specs
+moodist_memory: 1g
