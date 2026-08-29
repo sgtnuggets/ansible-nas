@@ -3,7 +3,7 @@ moodist_enabled: false
 moodist_available_externally: false
 
 # network
-moodist_port: "8080"
+moodist_port: "8088"
 moodist_hostname: "moodist"
 
 # docker

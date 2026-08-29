@@ -19,7 +19,7 @@
           traefik.http.routers.moodist.tls.certresolver: "letsencrypt"
           traefik.http.routers.moodist.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.moodist.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-          traefik.http.services.moodist.loadbalancer.server.port: "8080"
+          # traefik.http.services.moodist.loadbalancer.server.port: "8080"
   when: moodist_enabled is true
 
 - name: Stop Moodist
