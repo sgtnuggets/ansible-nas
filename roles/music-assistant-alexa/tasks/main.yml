@@ -20,8 +20,9 @@
           - "{{ music_assistant_alexa_debug_port }}:5678"
         volumes:
           - "{{ music_assistant_alexa_data_directory }}/ask_data:/root/.ask:rw"
-          - "{{ music_assistant_alexa_username_file }}:/run/secrets/APP_USERNAME:ro"
-          - "{{ music_assistant_alexa_password_file }}:/run/secrets/APP_PASSWORD:ro"
+          - "{{ music_assistant_alexa_secrets_directory }}:/run/secrets:ro"
+          # - "{{ music_assistant_alexa_username_file }}:/run/secrets/APP_USERNAME:ro"
+          # - "{{ music_assistant_alexa_password_file }}:/run/secrets/APP_PASSWORD:ro"
         env:
           SKILL_HOSTNAME: "{{ music_assistant_alexa_skill_hostname }}"
           MA_HOSTNAME: "{{ music_assistant_alexa_ma_hostname }}"

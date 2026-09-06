@@ -4,8 +4,8 @@ music_assistant_alexa_enabled: false
 # directories
 music_assistant_alexa_data_directory: "{{ docker_home }}/music-assistant-alexa"
 music_assistant_alexa_secrets_directory: "{{ music_assistant_alexa_data_directory }}/secrets"
-music_assistant_alexa_username_file: "{{ music_assistant_alexa_secrets_directory }}/app_username.txt"
-music_assistant_alexa_password_file: "{{ music_assistant_alexa_secrets_directory }}/app_password.txt"
+# music_assistant_alexa_username_file: "{{ music_assistant_alexa_secrets_directory }}/app_username.txt"
+# music_assistant_alexa_password_file: "{{ music_assistant_alexa_secrets_directory }}/app_password.txt"
 
 # network
 music_assistant_alexa_port: "5000"
