@@ -7,7 +7,7 @@ droppedneedle_container_name: droppedneedle
 
 # Image and version
 droppedneedle_image: ghcr.io/habirabbu/droppedneedle
-droppedneedle_version: latest
+droppedneedle_version: v2.3.0
 
 # Port
 droppedneedle_port: 8688
