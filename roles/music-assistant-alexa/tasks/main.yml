@@ -1,0 +1,43 @@
+---
+- name: Start Music Assistant Alexa Skill
+  block:
+    - name: Create Music Assistant Alexa directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "{{ music_assistant_alexa_data_directory }}"
+        - "{{ music_assistant_alexa_data_directory }}/ask_data"
+        - "{{ music_assistant_alexa_secrets_directory }}"
+
+    - name: Music Assistant Alexa Skill Docker Container
+      community.docker.docker_container:
+        name: "{{ music_assistant_alexa_container_name }}"
+        image: "{{ music_assistant_alexa_image_name }}:{{ music_assistant_alexa_image_version }}"
+        pull: true
+        ports:
+          - "{{ music_assistant_alexa_port }}:5000"
+          - "{{ music_assistant_alexa_debug_port }}:5678"
+        volumes:
+          - "{{ music_assistant_alexa_data_directory }}/ask_data:/root/.ask:rw"
+          - "{{ music_assistant_alexa_username_file }}:/run/secrets/APP_USERNAME:ro"
+          - "{{ music_assistant_alexa_password_file }}:/run/secrets/APP_PASSWORD:ro"
+        env:
+          SKILL_HOSTNAME: "{{ music_assistant_alexa_skill_hostname }}"
+          MA_HOSTNAME: "{{ music_assistant_alexa_ma_hostname }}"
+          APP_USERNAME: "/run/secrets/APP_USERNAME"
+          APP_PASSWORD: "/run/secrets/APP_PASSWORD"
+          PORT: "{{ music_assistant_alexa_port }}"
+          DEBUG_PORT: "{{ music_assistant_alexa_debug_port }}"
+          LOCALE: "{{ music_assistant_alexa_locale }}"
+          AWS_DEFAULT_REGION: "{{ music_assistant_alexa_aws_default_region }}"
+          TZ: "{{ music_assistant_alexa_timezone }}"
+        restart_policy: "{{ music_assistant_alexa_restart_policy }}"
+        # memory: "{{ music_assistant_alexa_memory }}"
+  when: music_assistant_alexa_enabled is true
+
+- name: Stop Music Assistant Alexa Skill
+  community.docker.docker_container:
+    name: "{{ music_assistant_alexa_container_name }}"
+    state: absent
+  when: music_assistant_alexa_enabled is false

@@ -62,6 +62,7 @@ If you have a spare domain name you can configure applications to be accessible 
 * [Minio](https://min.io/) - MinIO is a high-performance, S3 compatible object store
 * [Mosquitto](https://mosquitto.org) - An open source MQTT broker
 * [Mumble](https://www.mumble.info) - Open source, low latency, high quality voice chat
+* [Music Assistant Alexa Skill](https://github.com/alams154/music-assistant-skill) - Alexa skill integration for Music Assistant
 * [Mylar](https://github.com/evilhero/mylar) - An automated Comic Book downloader (cbr/cbz) for use with SABnzbd, NZBGet and torrents
 * [MyMediaForAlexa](https://www.mymediaalexa.com/) - Lets you stream your music collection to your alexa device
 * [n8n](https://n8n.io/) - Nodemation, a node based workflow and automation service like IFTTT.

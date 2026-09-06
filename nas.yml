@@ -266,6 +266,10 @@
       tags:
         - minio
 
+    - role: music-assistant-alexa
+      tags:
+        - music-assistant-alexa
+
     - role: moodist
       tags:
         - moodist

@@ -1,0 +1,25 @@
+---
+music_assistant_alexa_enabled: false
+
+# directories
+music_assistant_alexa_data_directory: "{{ docker_home }}/music-assistant-alexa"
+music_assistant_alexa_secrets_directory: "{{ music_assistant_alexa_data_directory }}/secrets"
+music_assistant_alexa_username_file: "{{ music_assistant_alexa_secrets_directory }}/app_username.txt"
+music_assistant_alexa_password_file: "{{ music_assistant_alexa_secrets_directory }}/app_password.txt"
+
+# network
+music_assistant_alexa_port: "5000"
+music_assistant_alexa_debug_port: "5678"
+
+# host and locale
+music_assistant_alexa_skill_hostname: "music-assistant-alexa.jakesticka.com"
+music_assistant_alexa_ma_hostname: "stinker"
+music_assistant_alexa_locale: "en-US"
+music_assistant_alexa_aws_default_region: "us-east-1"
+music_assistant_alexa_timezone: "{{ ansible_nas_timezone }}"
+
+# docker
+music_assistant_alexa_container_name: "music-assistant-skill"
+music_assistant_alexa_image_name: "ghcr.io/alams154/music-assistant-skill"
+music_assistant_alexa_image_version: "latest"
+music_assistant_alexa_restart_policy: "no"

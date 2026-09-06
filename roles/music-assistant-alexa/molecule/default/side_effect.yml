@@ -1,0 +1,10 @@
+---
+- name: Stop
+  hosts: all
+  become: true
+  tasks:
+    - name: Include music-assistant-alexa role
+      ansible.builtin.include_role:
+        name: music-assistant-alexa
+      vars:
+        music_assistant_alexa_enabled: false

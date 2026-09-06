@@ -79,6 +79,7 @@ transmission_with_openvpn_enabled: false
 bitwarden_enabled: true
 wireguard_enabled: true
 esphome_fleet_server_enabled: true
+music_assistant_alexa_enabled: true
 
 
 ## Disabled Stuff
