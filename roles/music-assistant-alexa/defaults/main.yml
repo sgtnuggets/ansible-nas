@@ -14,7 +14,7 @@ music_assistant_alexa_ip_whitelist: "192.168.1.0/24,73.71.15.234,10.8.0.0/24,172
 
 # host and locale
 music_assistant_alexa_skill_hostname: "music-assistant-alexa.jakesticka.com"
-music_assistant_alexa_ma_hostname: "stinker:8123"
+music_assistant_alexa_ma_hostname: "stinker:8095"
 music_assistant_alexa_locale: "en-US"
 music_assistant_alexa_aws_default_region: "us-east-1"
 music_assistant_alexa_timezone: "{{ ansible_nas_timezone }}"
