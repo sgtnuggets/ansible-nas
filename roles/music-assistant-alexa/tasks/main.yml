@@ -35,6 +35,14 @@
           TZ: "{{ music_assistant_alexa_timezone }}"
         restart_policy: "{{ music_assistant_alexa_restart_policy }}"
         # memory: "{{ music_assistant_alexa_memory }}"
+        labels:
+          traefik.enable: "true"
+          traefik.http.routers.music_assistant_alexa.rule: "Host(`{{ music_assistant_alexa_skill_hostname }}`)"
+          traefik.http.routers.music_assistant_alexa.tls.certresolver: "letsencrypt"
+          traefik.http.routers.music_assistant_alexa.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.music_assistant_alexa.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.music_assistant_alexa.loadbalancer.server.port: "{{ music_assistant_alexa_port }}"
+
   when: music_assistant_alexa_enabled is true
 
 - name: Stop Music Assistant Alexa Skill
