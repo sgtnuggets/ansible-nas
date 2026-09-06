@@ -20,6 +20,8 @@
           - "{{ transmission_config_directory }}:/config:rw"
           - "{{ transmission_download_directory }}:/downloads:rw"
           - "{{ transmission_watch_directory }}:/watch:rw"
+          - "{{ tv_root }}:/tv:rw"
+          - "{{ movies_root }}:/movies:rw"
         ports:
           - "{{ transmission_webui_port }}:9091"
           - "{{ transmission_external_port }}:51413"
