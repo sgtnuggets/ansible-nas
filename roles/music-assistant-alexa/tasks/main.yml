@@ -24,7 +24,7 @@
           # - "{{ music_assistant_alexa_username_file }}:/run/secrets/APP_USERNAME:ro"
           # - "{{ music_assistant_alexa_password_file }}:/run/secrets/APP_PASSWORD:ro"
         env:
-          SKILL_HOSTNAME: "{{ music_assistant_alexa_skill_hostname }}"
+          SKILL_HOSTNAME: "{{ music_assistant_alexa_skill_hostname }}:444"
           MA_HOSTNAME: "{{ music_assistant_alexa_ma_hostname }}"
           APP_USERNAME: "/run/secrets/APP_USERNAME"
           APP_PASSWORD: "/run/secrets/APP_PASSWORD"

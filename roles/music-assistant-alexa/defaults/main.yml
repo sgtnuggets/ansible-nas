@@ -12,7 +12,7 @@ music_assistant_alexa_port: "5000"
 music_assistant_alexa_debug_port: "5678"
 
 # host and locale
-music_assistant_alexa_skill_hostname: "music-assistant-alexa.jakesticka.com:444"
+music_assistant_alexa_skill_hostname: "music-assistant-alexa.jakesticka.com"
 music_assistant_alexa_ma_hostname: "stinker"
 music_assistant_alexa_locale: "en-US"
 music_assistant_alexa_aws_default_region: "us-east-1"
