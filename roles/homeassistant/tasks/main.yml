@@ -58,6 +58,51 @@
         #   traefik.http.services.homeassistant.loadbalancer.server.port: "8123"
         # memory: "{{ homeassistant_memory }}"
 
+    - name: Create Wyoming directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - "{{ wyoming_piper_data_directory }}"
+        - "{{ wyoming_whisper_data_directory }}"
+        - "{{ wyoming_openwakeword_data_directory }}"
+
+    - name: Wyoming Piper Docker Container
+      community.docker.docker_container:
+        name: "{{ wyoming_piper_container_name }}"
+        image: "{{ wyoming_piper_image }}"
+        pull: true
+        ports:
+          - "{{ wyoming_piper_port }}:10200"
+        volumes:
+          - "{{ wyoming_piper_data_directory }}:/data:rw"
+        command: "--voice {{ wyoming_piper_voice }}"
+        restart_policy: unless-stopped
+
+    - name: Wyoming Whisper Docker Container
+      community.docker.docker_container:
+        name: "{{ wyoming_whisper_container_name }}"
+        image: "{{ wyoming_whisper_image }}"
+        pull: true
+        ports:
+          - "{{ wyoming_whisper_port }}:10300"
+        volumes:
+          - "{{ wyoming_whisper_data_directory }}:/data:rw"
+        command: "--model {{ wyoming_whisper_model }} --language {{ wyoming_whisper_language }}"
+        restart_policy: unless-stopped
+
+    - name: Wyoming OpenWakeWord Docker Container
+      community.docker.docker_container:
+        name: "{{ wyoming_openwakeword_container_name }}"
+        image: "{{ wyoming_openwakeword_image }}"
+        pull: true
+        ports:
+          - "{{ wyoming_openwakeword_port }}:10400"
+        volumes:
+          - "{{ wyoming_openwakeword_data_directory }}:/data:rw"
+        command: "--preload-model {{ wyoming_openwakeword_model }}"
+        restart_policy: unless-stopped
+
   when: homeassistant_enabled is true
 
 - name: Stop homeassistant
@@ -65,5 +110,17 @@
     - name: Stop homeassistant
       community.docker.docker_container:
         name: "{{ homeassistant_container_name }}"
+        state: absent
+    - name: Stop Wyoming Piper
+      community.docker.docker_container:
+        name: "{{ wyoming_piper_container_name }}"
+        state: absent
+    - name: Stop Wyoming Whisper
+      community.docker.docker_container:
+        name: "{{ wyoming_whisper_container_name }}"
+        state: absent
+    - name: Stop Wyoming OpenWakeWord
+      community.docker.docker_container:
+        name: "{{ wyoming_openwakeword_container_name }}"
         state: absent
   when: homeassistant_enabled is false

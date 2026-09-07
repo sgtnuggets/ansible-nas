@@ -16,3 +16,23 @@ homeassistant_image_version: latest
 
 # specs
 homeassistant_memory: 1g
+
+# Wyoming voice services
+wyoming_piper_container_name: "wyoming-piper"
+wyoming_piper_image: "rhasspy/wyoming-piper:latest"
+wyoming_piper_port: "10200"
+wyoming_piper_data_directory: "{{ docker_home }}/wyoming/piper-data"
+wyoming_piper_voice: "en_US-lessac-medium"
+
+wyoming_whisper_container_name: "wyoming-whisper"
+wyoming_whisper_image: "rhasspy/wyoming-whisper:latest"
+wyoming_whisper_port: "10300"
+wyoming_whisper_data_directory: "{{ docker_home }}/wyoming/whisper-data"
+wyoming_whisper_model: "tiny-int8"
+wyoming_whisper_language: "en"
+
+wyoming_openwakeword_container_name: "wyoming-openwakeword"
+wyoming_openwakeword_image: "rhasspy/wyoming-openwakeword:latest"
+wyoming_openwakeword_port: "10400"
+wyoming_openwakeword_data_directory: "{{ docker_home }}/wyoming/openwakeword-data"
+wyoming_openwakeword_model: "ok_nabu"
