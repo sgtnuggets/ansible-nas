@@ -1,6 +1,6 @@
 ---
 homeassistant_enabled: false
-homeassistant_available_externally: false
+homeassistant_available_externally: true
 
 # directories
 homeassistant_data_directory: "{{ docker_home }}/homeassistant"
@@ -8,6 +8,8 @@ homeassistant_data_directory: "{{ docker_home }}/homeassistant"
 # network
 homeassistant_port: "8123"
 homeassistant_hostname: "homeassistant"
+homeassistant_hostname_ip_whitelist: "192.168.1.0/24,73.71.15.234,10.8.0.0/24,172.17.0.0/24"
+
 
 # docker
 homeassistant_container_name: "homeassistant"
