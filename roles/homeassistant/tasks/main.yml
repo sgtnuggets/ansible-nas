@@ -41,7 +41,7 @@
           traefik.http.routers.homeassistant-ws.middlewares: "homeassistant-ipwhitelist@docker"
           traefik.http.services.homeassistant.loadbalancer.server.port: "80"
           traefik.http.services.homeassistant-ws.loadbalancer.server.port: "8123"
-          traefik.http.middlewares.homeassistant-ipwhitelist.ipallowlist.sourcerange: "{{ traefik-ip-whitelist }}"
+          traefik.http.middlewares.homeassistant-ipwhitelist.ipallowlist.sourcerange: "{{ traefik_ip_whitelist }}"
         memory: "{{ homeassistant_memory }}"
     - name: Music Assistant Docker Container
       community.docker.docker_container:

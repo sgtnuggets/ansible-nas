@@ -42,7 +42,7 @@
           traefik.http.routers.music_assistant_alexa.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.music_assistant_alexa.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.music_assistant_alexa.loadbalancer.server.port: "{{ music_assistant_alexa_port }}"
-          # traefik.http.middlewares.music_assistant_alexa-ipwhitelist.ipallowlist.sourcerange: "{{ traefik-ip-whitelist }}"
+          # traefik.http.middlewares.music_assistant_alexa-ipwhitelist.ipallowlist.sourcerange: "{{ traefik_ip_whitelist }}"
 
   when: music_assistant_alexa_enabled is true
 
