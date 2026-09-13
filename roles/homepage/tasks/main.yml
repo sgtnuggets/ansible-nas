@@ -39,7 +39,7 @@
           traefik.http.routers.homepage-ws.middlewares: "homepage-ipwhitelist@docker"
           traefik.http.services.homepage-ws.loadbalancer.server.port: "{{ homepage_port }}"
           traefik.http.middlewares.homepage-ipwhitelist.ipallowlist.sourcerange: "{{ traefik_ip_whitelist }}"
-        when: homepage_enabled is true
+  when: homepage_enabled is true
 
 - name: Stop Homepage
   block:
