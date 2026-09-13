@@ -17,7 +17,7 @@
           - "{{ homepage_data_directory }}:/app/config:rw"
           - "/var/run/docker.sock:/var/run/docker.sock:ro"
         env:
-          HOMEPAGE_ALLOWED_HOSTS: "{{ homepage_allowed_hosts }}"
+          HOMEPAGE_ALLOWED_HOSTS: "*" # {{ homepage_allowed_hosts }}
           PUID: "{{ homepage_user_id }}"
           PGID: "{{ homepage_group_id }}"
           TZ: "{{ ansible_nas_timezone }}"
@@ -29,7 +29,17 @@
           traefik.http.routers.homepage.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.homepage.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.services.homepage.loadbalancer.server.port: "{{ homepage_port }}"
-  when: homepage_enabled is true
+          traefik.http.routers.homepage.service: "homepage"
+          traefik.http.routers.homepage.middlewares: "homepage-ipwhitelist@docker"
+          traefik.http.routers.homepage-ws.rule: "Host(`{{ homepage_hostname }}.{{ ansible_nas_domain }}`) && Path(`/notifications/hub`)"
+          traefik.http.routers.homepage-ws.tls.certresolver: "letsencrypt"
+          traefik.http.routers.homepage-ws.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.homepage-ws.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.routers.homepage-ws.service: "homepage-ws"
+          traefik.http.routers.homepage-ws.middlewares: "homepage-ipwhitelist@docker"
+          traefik.http.services.homepage-ws.loadbalancer.server.port: "{{ homepage_port }}"
+          traefik.http.middlewares.homepage-ipwhitelist.ipallowlist.sourcerange: "{{ traefik_ip_whitelist }}"
+        when: homepage_enabled is true
 
 - name: Stop Homepage
   block:
