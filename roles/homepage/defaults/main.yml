@@ -9,7 +9,7 @@ homepage_data_directory: "{{ docker_home }}/homepage"
 # network
 homepage_port: "3232"
 homepage_hostname: homepage
-homepage_allowed_hosts: "{{ homepage_hostname }}.{{ ansible_nas_domain }}"
+homepage_allowed_hosts: "{{ homepage_hostname }}.{{ ansible_nas_domain }}, {{ homepage_hostname }}"
 
 # uid / gid
 homepage_user_id: "1000"
