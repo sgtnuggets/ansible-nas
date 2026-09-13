@@ -68,6 +68,7 @@ flaresolverr_enabled: true
 multi_scrobbler_enabled: true
 wireguard_enabled: true
 slskd_enabled: true
+homepage_enabled: true
 
 
 

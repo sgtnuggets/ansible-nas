@@ -215,6 +215,10 @@
       tags:
         - homebox
 
+    - role: homepage
+      tags:
+        - homepage
+
     # - role: homebridge
     #   tags:
     #     - homebridge
