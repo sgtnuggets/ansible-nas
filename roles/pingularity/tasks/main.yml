@@ -11,6 +11,9 @@
         image: "{{ pingularity_image }}"
         pull: true
         network_mode: host
+        env:
+          PINGULARITY_ACCESS: network
+          TZ: "{{ ansible_nas_timezone }}"
         capabilities:
           - NET_RAW
         volumes:
