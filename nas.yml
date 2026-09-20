@@ -366,6 +366,10 @@
     #   tags:
     #     - piwigo
 
+    - role: pingularity
+      tags:
+        - pingularity
+
     - role: plex
       tags:
         - plex

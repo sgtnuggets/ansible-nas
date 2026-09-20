@@ -70,6 +70,7 @@ kuma_enabled: true
 homebox_enabled: true
 ddns_updater_enabled: true
 moodist_enabled: true
+pingularity_enabled: true
 
 atlas_enabled: false
 duplicati_enabled: true

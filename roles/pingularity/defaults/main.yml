@@ -1,0 +1,6 @@
+---
+pingular_enabled: false
+pingularity_name: "pingularity"
+pingularity_image: "ghcr.io/pingular/pingularity:latest"
+pingularity_data_volume: "pingularity"
+pingularity_port: "9007"

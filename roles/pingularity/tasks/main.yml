@@ -1,0 +1,29 @@
+---
+- name: Start pingularity
+  block:
+    - name: Ensure pingularity data volume exists
+      community.docker.docker_volume:
+        name: "{{ pingularity_data_volume }}"
+
+    - name: Deploy pingularity Docker Container
+      community.docker.docker_container:
+        name: "{{ pingularity_name }}"
+        image: "{{ pingularity_image }}"
+        pull: true
+        network_mode: host
+        capabilities:
+          - NET_RAW
+        volumes:
+          - "{{ pingularity_data_volume }}:/var/lib/pingularity"
+        ports:
+          - "{{ pingularity_port }}:9000"
+        restart_policy: unless-stopped
+  when: pingularity_enabled | default(true)
+
+- name: Stop pingularity
+  block:
+    - name: Remove pingularity Docker Container
+      community.docker.docker_container:
+        name: "{{ pingularity_name }}"
+        state: absent
+  when: pingularity_enabled is defined and not pingularity_enabled
