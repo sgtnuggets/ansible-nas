@@ -21,7 +21,7 @@
         ports:
           - "{{ pingularity_port }}:9000"
         restart_policy: unless-stopped
-  when: pingularity_enabled | default(true)
+  when: pingularity_enabled is true
 
 - name: Stop pingularity
   block:

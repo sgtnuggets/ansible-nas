@@ -90,6 +90,7 @@ stats_pihole_exporter_enabled: false
 stats_snmp_exporter_enabled: false
 minio_enabled: false
 logging_stack_enabled: false
+pingularity_enabled: false
 
 
 # Archive
