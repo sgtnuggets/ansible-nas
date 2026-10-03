@@ -1,0 +1,6 @@
+---
+echomuse_enabled: false
+echomuse_name: "echomuse-controller"
+echomuse_image: "ghcr.io/wilbowes/echomuse-controller:latest"
+echomuse_data_directory: "{{ docker_home }}/echomuse/data"
+echomuse_env_file: "{{ docker_home }}/echomuse/.env"

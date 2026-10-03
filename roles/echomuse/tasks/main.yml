@@ -1,0 +1,31 @@
+---
+- name: Start EchoMuse
+  block:
+    - name: Ensure EchoMuse data directory exists
+      ansible.builtin.file:
+        path: "{{ echomuse_data_directory }}"
+        state: directory
+
+    - name: Deploy EchoMuse Docker Container
+      community.docker.docker_container:
+        name: "{{ echomuse_name }}"
+        image: "{{ echomuse_image }}"
+        pull: true
+        network_mode: host
+        env_file: "{{ echomuse_env_file }}"
+        volumes:
+          - "{{ echomuse_data_directory }}:/app/data"
+        log_driver: json-file
+        log_options:
+          max-size: "10m"
+          max-file: "3"
+        restart_policy: unless-stopped
+  when: echomuse_enabled is true
+
+- name: Stop EchoMuse
+  block:
+    - name: Remove EchoMuse Docker Container
+      community.docker.docker_container:
+        name: "{{ echomuse_name }}"
+        state: absent
+  when: echomuse_enabled is defined and not echomuse_enabled

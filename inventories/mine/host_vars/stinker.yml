@@ -71,6 +71,7 @@ homebox_enabled: true
 ddns_updater_enabled: true
 moodist_enabled: true
 pingularity_enabled: true
+echomuse_enabled: true
 
 atlas_enabled: false
 duplicati_enabled: true

@@ -143,6 +143,10 @@
     #   tags:
     #     - emby
 
+    - role: echomuse
+      tags:
+        - echomuse
+
     - role: esphome
       tags:
         - esphome
