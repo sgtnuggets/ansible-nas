@@ -9,6 +9,7 @@ firefly_data_directory: "{{ docker_home }}/firefly"
 # network
 firefly_hostname: "firefly"
 firefly_port: "8066"
+firefly_importer_port: "8081"
 
 # specs
 firefly_memory: "1g"
