@@ -84,7 +84,7 @@
         ports:
           - "{{ firefly_importer_port }}:8080"
         env:
-          FIREFLY_III_CLIENT_ID: "01a122d1-449c-70f9-a558-988d750263c6"
+          # FIREFLY_III_CLIENT_ID: "01a122d1-449c-70f9-a558-988d750263c6"
           FIREFLY_III_VANITY_URL: "http://streamweaver:{{ firefly_port }}"
           FIREFLY_III_BASE_URL: "http://streamweaver:{{ firefly_port }}"
           FIREFLY_III_ACCESS_TOKEN: "{{ firefly_api_key }}"
