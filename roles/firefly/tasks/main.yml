@@ -9,6 +9,17 @@
         - "{{ firefly_data_directory }}/mariadb"
         - "{{ firefly_data_directory }}/upload"
         - "{{ firefly_data_directory }}/export"
+        - "{{ firefly_data_directory }}/importer"
+
+    - name: Ensure Firefly III environment files exist
+      ansible.builtin.copy:
+        content: ""
+        dest: "{{ item }}"
+        force: false
+      with_items:
+        - "{{ firefly_data_directory }}/.env"
+        - "{{ firefly_data_directory }}/importer/.env"
+        - "{{ firefly_data_directory }}/.importer.env"
 
     - name: Create MySQL container for Firefly
       community.docker.docker_container:
