@@ -19,7 +19,7 @@
       with_items:
         - "{{ firefly_data_directory }}/.env"
         - "{{ firefly_data_directory }}/importer/.env"
-        - "{{ firefly_data_directory }}/.importer.env"
+        # - "{{ firefly_data_directory }}/.importer.env"
 
     - name: Create MySQL container for Firefly
       community.docker.docker_container:
@@ -81,7 +81,7 @@
         pull: true
         volumes:
           - "{{ firefly_data_directory }}/import:/import:rw"
-          - "{{ firefly_data_directory }}/.importer.env:/app/.importer.env:rw"
+          # - "{{ firefly_data_directory }}/.importer.env:/app/.importer.env:rw"
           - "{{ firefly_data_directory }}/importer/.env:/var/www/html/.env:rw"
         ports:
           - "{{ firefly_importer_port }}:8080"
