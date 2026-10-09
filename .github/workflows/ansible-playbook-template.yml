@@ -85,7 +85,7 @@ jobs:
       LASTFM_SECRET_MULTI_SCROBBLER: ${{ secrets.LASTFM_SECRET_MULTI_SCROBBLER }}
       MARIADB_PASSWORD: ${{ secrets.MARIADB_PASSWORD }}
       MARIADB_ROOT_PASSWORD: ${{ secrets.MARIADB_ROOT_PASSWORD }}
-      FIREFLY_API_KEY: ${{ secrets.FIREFLY_API_KEY }}
+      firefly_api_key: ${{ secrets.FIREFLY_API_KEY }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
