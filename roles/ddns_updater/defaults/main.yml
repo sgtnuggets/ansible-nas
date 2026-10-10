@@ -21,7 +21,7 @@ ddns_updater_container_name: ddns-updater
 
 # DDNS Updater Config
 # Period of IP address check
-ddns_updater_period: 5m
+ddns_updater_period: 60m
 
 # Duration to cooldown between updates for each record. This is useful to avoid being rate limited or banned.
 ddns_updater_cooldown_period: 5m
