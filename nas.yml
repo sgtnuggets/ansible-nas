@@ -1,6 +1,9 @@
 ---
 - name: Ansible-NAS
   hosts: all
+  module_defaults:
+    community.docker.docker_container:
+      dns_servers: "{{ local_dns }}"
 
   roles:
     ###

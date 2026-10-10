@@ -46,6 +46,10 @@ nfs_exports:
 ansible_nas_hostname: streamweaver
 ansible_nas_timezone: America/Los_Angeles
 
+local_dns:
+  - "192.168.1.2"
+  - "192.168.1.1"
+
 ## Misc applications
 portainer_enabled: true
 duplicati_enabled: true

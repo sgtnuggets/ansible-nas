@@ -45,6 +45,9 @@ nfs_exports:
 # Example options
 ansible_nas_hostname: stinker
 ansible_nas_timezone: America/Los_Angeles
+local_dns:
+  - "192.168.1.2"
+  - "192.168.1.1"
 
 ## Enable some applications
 logging_stack_enabled: false

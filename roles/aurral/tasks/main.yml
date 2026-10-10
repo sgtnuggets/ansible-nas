@@ -27,9 +27,6 @@
           STORAGE: "{{ aurral_data_directory }}"
         restart_policy: "unless-stopped"
         # memory: "{{ aurral_memory }}"
-        dns_servers:
-          - "192.168.1.2"
-          - "192.168.1.1"
         labels:
           traefik.enable: "{{ aurral_available_externally | string }}"
           traefik.http.routers.aurral.rule: "Host(`{{ aurral_hostname }}.{{ ansible_nas_domain }}`)"
