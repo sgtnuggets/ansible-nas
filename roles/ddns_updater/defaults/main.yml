@@ -35,7 +35,7 @@ ddns_updater_http_timeout: 10s
 ddns_updater_config:
   settings:
     - provider: duckdns
-      domain: jakesticka.duckdns.org,jakesticka.duckdns.org
+      domain: jakesticka.duckdns.org
       token: "{{ duckdns_token }}"
       ip_version: ipv4
       ipv6_suffix: ""
