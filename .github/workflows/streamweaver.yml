@@ -34,6 +34,7 @@ jobs:
       MARIADB_ROOT_PASSWORD: ${{ secrets.MARIADB_ROOT_PASSWORD }}
       MARIADB_PASSWORD: ${{ secrets.MARIADB_PASSWORD }}
       FIREFLY_API_KEY: ${{ secrets.FIREFLY_API_KEY }}
+      FIREFLY_III_ACCESS_TOKEN: ${{ secrets.FIREFLY_III_ACCESS_TOKEN }}
   # hass:
   #   # The type of runner that the job will run on
   #   runs-on: streamweaver
