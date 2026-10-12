@@ -39,6 +39,7 @@ ddns_updater_config:
       token: "{{ duckdns_token }}"
       ip_version: ipv4
       ipv6_suffix: ""
+      ttl: 600
     - provider: "cloudflare"
       domain: "home.jakesticka.com"
       token: "{{ CLOUDFLARE_DNS_EDIT }}"
