@@ -1,0 +1,128 @@
+services:
+  web:
+    image: ${JITSI_IMAGE_REPO:-{{ jitsi_image_repo }}}/web:${JITSI_IMAGE_VERSION:-{{ jitsi_image_version }}}
+    restart: ${RESTART_POLICY:-{{ jitsi_restart_policy }}}
+    read_only: true
+    tmpfs:
+      - /run:size=16M,mode=1750,exec
+      - /tmp:size=16M,mode=1777,noexec
+    ports:
+      - '${HTTP_PORT:-{{ jitsi_http_port }}}:8000'
+      - '${HTTPS_PORT:-{{ jitsi_https_port }}}:8443'
+    volumes:
+      - ${CONFIG:-{{ jitsi_config_dir }}}/web:/config:Z
+      - ${CONFIG:-{{ jitsi_config_dir }}}/storage/web:/storage:Z
+      - ${CONFIG:-{{ jitsi_config_dir }}}/storage/transcripts:/usr/share/jitsi-meet/transcripts:ro,z
+      - ${CONFIG:-{{ jitsi_config_dir }}}/tmp/web-load-test:/usr/share/jitsi-meet/load-test:Z
+    environment:
+      - TZ
+      - PUBLIC_URL
+      - XMPP_DOMAIN
+      - XMPP_AUTH_DOMAIN
+      - XMPP_GUEST_DOMAIN
+      - XMPP_MUC_DOMAIN
+      - XMPP_INTERNAL_MUC_DOMAIN
+      - XMPP_PORT
+      - ENABLE_GUESTS
+      - ENABLE_AUTH
+      - ENABLE_RECORDING
+      - ENABLE_TRANSCRIPTIONS
+    networks:
+      - meet.jitsi
+    depends_on:
+      - jvb
+
+  prosody:
+    image: ${JITSI_IMAGE_REPO:-{{ jitsi_image_repo }}}/prosody:${JITSI_IMAGE_VERSION:-{{ jitsi_image_version }}}
+    restart: ${RESTART_POLICY:-{{ jitsi_restart_policy }}}
+    read_only: true
+    tmpfs:
+      - /run:size=16M,mode=1750,exec
+      - /tmp:size=16M,mode=1777,noexec
+    expose:
+      - '${XMPP_PORT:-{{ jitsi_xmpp_port }}}'
+      - '${PROSODY_S2S_PORT:-{{ jitsi_prosody_s2s_port }}}'
+      - '5347'
+      - '${PROSODY_HTTP_PORT:-{{ jitsi_prosody_http_port }}}'
+    volumes:
+      - ${CONFIG:-{{ jitsi_config_dir }}}/prosody/config:/config:Z
+      - ${CONFIG:-{{ jitsi_config_dir }}}/prosody/prosody-plugins-custom:/prosody-plugins-custom:Z
+      - ${CONFIG:-{{ jitsi_config_dir }}}/storage/prosody:/var/lib/prosody:Z
+    environment:
+      - TZ
+      - XMPP_DOMAIN
+      - XMPP_AUTH_DOMAIN
+      - XMPP_GUEST_DOMAIN
+      - XMPP_MUC_DOMAIN
+      - XMPP_INTERNAL_MUC_DOMAIN
+      - XMPP_PORT
+      - PROSODY_HTTP_PORT
+      - PROSODY_S2S_PORT
+      - JVB_AUTH_USER
+      - JVB_AUTH_PASSWORD
+      - JICOFO_AUTH_PASSWORD
+      - PROSODY_ADMINS
+      - ENABLE_GUESTS
+      - ENABLE_AUTH
+      - ENABLE_RECORDING
+      - ENABLE_TRANSCRIPTIONS
+    networks:
+      meet.jitsi:
+        aliases:
+          - ${XMPP_SERVER:-xmpp.meet.jitsi}
+
+  jicofo:
+    image: ${JITSI_IMAGE_REPO:-{{ jitsi_image_repo }}}/jicofo:${JITSI_IMAGE_VERSION:-{{ jitsi_image_version }}}
+    restart: ${RESTART_POLICY:-{{ jitsi_restart_policy }}}
+    read_only: true
+    tmpfs:
+      - /run:size=32M,mode=1750,exec
+      - /tmp:size=16M,mode=1777,noexec
+    ports:
+      - '127.0.0.1:${JICOFO_REST_PORT:-{{ jitsi_jicofo_rest_port }}}:8888'
+    environment:
+      - TZ
+      - XMPP_DOMAIN
+      - XMPP_AUTH_DOMAIN
+      - XMPP_INTERNAL_MUC_DOMAIN
+      - XMPP_MUC_DOMAIN
+      - XMPP_SERVER
+      - XMPP_PORT
+      - JICOFO_AUTH_PASSWORD
+      - ENABLE_RECORDING
+      - ENABLE_TRANSCRIPTIONS
+      - ENABLE_AUTH
+    depends_on:
+      - prosody
+    networks:
+      - meet.jitsi
+
+  jvb:
+    image: ${JITSI_IMAGE_REPO:-{{ jitsi_image_repo }}}/jvb:${JITSI_IMAGE_VERSION:-{{ jitsi_image_version }}}
+    restart: ${RESTART_POLICY:-{{ jitsi_restart_policy }}}
+    read_only: true
+    tmpfs:
+      - /run:size=32M,mode=1750,exec
+      - /tmp:size=16M,mode=1777,noexec
+    ports:
+      - '${JVB_PORT:-{{ jitsi_jvb_port }}}:${JVB_PORT:-{{ jitsi_jvb_port }}}/udp'
+      - '127.0.0.1:${JVB_COLIBRI_PORT:-8080}:8080'
+    volumes:
+      - ${CONFIG:-{{ jitsi_config_dir }}}/jvb:/config:Z
+    environment:
+      - TZ
+      - JVB_AUTH_USER
+      - JVB_AUTH_PASSWORD
+      - XMPP_AUTH_DOMAIN
+      - XMPP_INTERNAL_MUC_DOMAIN
+      - XMPP_SERVER
+      - XMPP_PORT
+      - JVB_PORT
+      - JVB_STUN_SERVERS
+    depends_on:
+      - prosody
+    networks:
+      - meet.jitsi
+
+networks:
+  meet.jitsi:

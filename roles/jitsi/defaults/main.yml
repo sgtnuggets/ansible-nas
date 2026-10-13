@@ -1,0 +1,30 @@
+---
+jitsi_enabled: false
+
+jitsi_compose_dir: "/opt/docker/jitsi"
+jitsi_config_dir: "/srv/jitsi"
+
+jitsi_image_repo: "ghcr.io/jitsi"
+jitsi_image_version: "stable-11248"
+jitsi_restart_policy: "unless-stopped"
+jitsi_timezone: "UTC"
+
+jitsi_http_port: "8000"
+jitsi_https_port: "8443"
+jitsi_jvb_port: "10000"
+jitsi_jicofo_rest_port: "8888"
+jitsi_prosody_http_port: "5280"
+jitsi_prosody_s2s_port: "5269"
+jitsi_xmpp_port: "5222"
+
+jitsi_public_url: "https://zoom.jakesticka.com:444"
+jitsi_xmpp_domain: "meet.jitsi"
+jitsi_xmpp_auth_domain: "auth.meet.jitsi"
+jitsi_xmpp_guest_domain: "guest.meet.jitsi"
+jitsi_xmpp_muc_domain: "muc.meet.jitsi"
+jitsi_xmpp_internal_muc_domain: "internal.auth.meet.jitsi"
+
+jitsi_jvb_auth_user: "jvb"
+jitsi_jvb_auth_password: "change-me"
+jitsi_jicofo_auth_password: "change-me"
+jitsi_prosody_admins: "admin@{{ jitsi_xmpp_domain }}"
