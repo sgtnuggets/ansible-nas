@@ -75,6 +75,7 @@ ddns_updater_enabled: true
 moodist_enabled: true
 pingularity_enabled: false
 echomuse_enabled: true
+mirotalk_enabled: true
 
 atlas_enabled: false
 duplicati_enabled: true
