@@ -14,7 +14,7 @@
         image: "{{ mirotalk_image_name }}:{{ mirotalk_image_version }}"
         volumes:
           - "{{ mirotalk_data_directory }}/config.js:/src/app/src/config.js:ro"
-          - "{{ mirotalk_data_directory }}/.env:/src/.env:ro"
+          # - "{{ mirotalk_data_directory }}/.env:/src/.env:ro"
         ports:
           - '3010:3010/tcp'
           - '40000-40100:40000-40100/tcp'
