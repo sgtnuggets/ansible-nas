@@ -2,7 +2,7 @@
 jitsi_enabled: false
 
 jitsi_compose_dir: "/opt/docker/jitsi"
-jitsi_config_dir: "/srv/jitsi"
+jitsi_config_dir: "{{ docker_home }}/jitsi"
 
 jitsi_image_repo: "ghcr.io/jitsi"
 jitsi_image_version: "stable-11248"
