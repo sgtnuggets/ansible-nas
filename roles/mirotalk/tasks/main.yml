@@ -41,7 +41,7 @@
           traefik.http.routers.mirotalk.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
           traefik.http.routers.mirotalk.service: "mirotalk"
           traefik.http.routers.mirotalk.middlewares: "mirotalk-ipwhitelist@docker"
-          traefik.http.routers.mirotalk-ws.rule: "Host(`{{ mirotalk_hostname }}.{{ ansible_nas_domain }}`) && Path(`/notifications/hub`)"
+          traefik.http.routers.mirotalk-ws.rule: "Host(`{{ mirotalk_hostname }}.{{ ansible_nas_domain }}`)"
           traefik.http.routers.mirotalk-ws.tls.certresolver: "letsencrypt"
           traefik.http.routers.mirotalk-ws.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.mirotalk-ws.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
