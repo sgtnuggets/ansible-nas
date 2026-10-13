@@ -22,14 +22,13 @@
         env:
           TZ: "{{ ansible_nas_timezone }}"
         restart_policy: unless-stopped
-        memory: "{{ mirotalk_memory }}"
         labels:
           traefik.enable: "{{ mirotalk_available_externally | string }}"
           traefik.http.routers.mirotalk.rule: "Host(`{{ mirotalk_hostname }}.{{ ansible_nas_domain }}`)"
           traefik.http.routers.mirotalk.tls.certresolver: "letsencrypt"
           traefik.http.routers.mirotalk.tls.domains[0].main: "{{ ansible_nas_domain }}"
           traefik.http.routers.mirotalk.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
-          traefik.http.services.mirotalk.loadbalancer.server.port: "9117"
+          traefik.http.services.mirotalk.loadbalancer.server.port: "3010"
   when: mirotalk_enabled is true
 
 - name: Stop mirotalk

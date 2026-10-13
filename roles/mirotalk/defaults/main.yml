@@ -10,3 +10,4 @@ mirotalk_timezone: "UTC"
 
 mirotalk_available_externally: false
 mirotalk_hostname: "mirotalk"
+mirotalk_container_name: "mirotalk"
