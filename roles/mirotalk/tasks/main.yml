@@ -8,6 +8,17 @@
       with_items:
         - "{{ mirotalk_data_directory }}"
 
+    - name: Create mirotalk files
+      ansible.builtin.file:
+        path: "{{ item.dest }}"
+        force: false
+        mode: '0644'
+        state: file
+      loop:
+        - { dest: "{{ mirotalk_data_directory }}/config.js" }
+        - { dest: "{{ mirotalk_data_directory }}/.env" }
+
+
     - name: mirotalk Docker Container
       community.docker.docker_container:
         name: "{{ mirotalk_container_name }}"
