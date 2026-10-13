@@ -7,6 +7,7 @@ all:
       vars:
         someVar: "testValue"
         traefik_ip_whitelist: "192.168.1.0/24,73.71.15.234,10.8.0.0/24,172.17.0.0/24"
+        mirocast_ip_whitelist: "69.146.198.114,192.168.1.0/24,73.71.15.234,10.8.0.0/24,172.17.0.0/24"
       hosts:
         stinker:
           ansible_connection: local

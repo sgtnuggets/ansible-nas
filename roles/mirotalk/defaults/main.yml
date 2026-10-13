@@ -8,6 +8,6 @@ mirotalk_image_version: "latest"
 mirotalk_restart_policy: "unless-stopped"
 mirotalk_timezone: "UTC"
 
-mirotalk_available_externally: false
+mirotalk_available_externally: true
 mirotalk_hostname: "mirotalk"
 mirotalk_container_name: "mirotalk"
