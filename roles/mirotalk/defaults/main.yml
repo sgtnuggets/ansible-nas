@@ -1,0 +1,12 @@
+---
+mirotalk_enabled: false
+
+mirotalk_data_directory: "{{ docker_home }}/mirotalk"
+
+mirotalk_image_name: "mirotalk/sfu"
+mirotalk_image_version: "latest"
+mirotalk_restart_policy: "unless-stopped"
+mirotalk_timezone: "UTC"
+
+mirotalk_available_externally: false
+mirotalk_hostname: "mirotalk"

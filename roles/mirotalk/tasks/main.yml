@@ -1,0 +1,41 @@
+---
+- name: Start mirotalk
+  block:
+    - name: Create mirotalk Directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ mirotalk_data_directory }}"
+
+    - name: mirotalk Docker Container
+      community.docker.docker_container:
+        name: "{{ mirotalk_container_name }}"
+        image: "{{ mirotalk_image_name }}:{{ mirotalk_image_version }}"
+        volumes:
+          - "{{ mirotalk_data_directory }}/config.js:/src/app/src/config.js:ro"
+          - "{{ mirotalk_data_directory }}/.env:/src/.env:ro"
+        ports:
+          - '3010:3010/tcp'
+          - '40000-40100:40000-40100/tcp'
+          - '40000-40100:40000-40100/udp'
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: unless-stopped
+        memory: "{{ mirotalk_memory }}"
+        labels:
+          traefik.enable: "{{ mirotalk_available_externally | string }}"
+          traefik.http.routers.mirotalk.rule: "Host(`{{ mirotalk_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.mirotalk.tls.certresolver: "letsencrypt"
+          traefik.http.routers.mirotalk.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.mirotalk.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.mirotalk.loadbalancer.server.port: "9117"
+  when: mirotalk_enabled is true
+
+- name: Stop mirotalk
+  block:
+    - name: Stop mirotalk
+      community.docker.docker_container:
+        name: "{{ mirotalk_container_name }}"
+        state: absent
+  when: mirotalk_enabled is false
