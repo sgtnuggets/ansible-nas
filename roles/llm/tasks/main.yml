@@ -6,17 +6,15 @@
 
 - name: Deploy Stinker LLMs
   ansible.builtin.command:
-    name: "{{ item.name }}"
     cmd: "docker model run {{ item.image_name }} --backend llama.cpp"
   loop: "{{ stinker_models }}"
-  when: llm_enabled | default(true) and {{ ansible_nas_hostname }} == "stinker"
+  when: llm_enabled | default(true) and ansible_nas_hostname == "stinker"
 
 - name: Deploy streamweaver LLMs
   ansible.builtin.command:
-    name: "{{ item.name }}"
     cmd: "docker model run {{ item.image_name }} --backend llama.cpp"
   loop: "{{ streamweaver_models }}"
-  when: llm_enabled | default(true) and {{ ansible_nas_hostname }} == "streamweaver"
+  when: llm_enabled | default(true) and ansible_nas_hostname == "streamweaver"
 
 
 
