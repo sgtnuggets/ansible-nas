@@ -13,6 +13,11 @@ streamweaver_models:
   - name: "Gemma 2B"
     image_name: "gemma2b/gemma2b"
     image_version: "latest"
-    container_name: "gemma2b"
     env:
       TZ: "{{ ansible_nas_timezone }}"
+
+  # - name: "Home-Llama-3.2-3B"
+  #   image_name: "acon96/Home-Llama-3.2-3B"
+  #   image_version: "latest"
+  #   env:
+  #     TZ: "{{ ansible_nas_timezone }}"
