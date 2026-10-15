@@ -4,15 +4,20 @@
     path: "{{ llm_config_directory }}"
     state: directory
 
+- name: Deploy llama.cpp backend
+  ansible.builtin.command:
+    cmd: "docker model install-runner --backend llama.cpp"
+  when: llm_enabled | default(true)
+
 - name: Deploy Stinker LLMs
   ansible.builtin.command:
-    cmd: "docker model run {{ item.image_name }} --backend llama.cpp"
+    cmd: "docker model run {{ item.image_name }}"
   loop: "{{ stinker_models }}"
   when: llm_enabled | default(true) and ansible_nas_hostname == "stinker"
 
-- name: Deploy streamweaver LLMs
+- name: Deploy Streamweaver LLMs
   ansible.builtin.command:
-    cmd: "docker model run {{ item.image_name }} --backend llama.cpp"
+    cmd: "docker model run {{ item.image_name }}"
   loop: "{{ streamweaver_models }}"
   when: llm_enabled | default(true) and ansible_nas_hostname == "streamweaver"
 
