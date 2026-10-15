@@ -7,17 +7,23 @@
 - name: Deploy llama.cpp backend
   ansible.builtin.command:
     cmd: "docker model install-runner --backend llama.cpp"
+  environment:
+    HF_TOKEN: "{{ hf_token }}"
   when: llm_enabled | default(true)
 
 - name: Deploy Stinker LLMs
   ansible.builtin.command:
-    cmd: "docker model run {{ item.image_name }}"
+    cmd: "docker model run {{ item.image_name }}:{{ item.image_version }}"
+  environment:
+    HF_TOKEN: "{{ hf_token }}"
   loop: "{{ stinker_models }}"
   when: llm_enabled | default(true) and ansible_nas_hostname == "stinker"
 
 - name: Deploy Streamweaver LLMs
   ansible.builtin.command:
-    cmd: "docker model run {{ item.image_name }}"
+    cmd: "docker model run {{ item.image_name }}:{{ item.image_version }}"
+  environment:
+    HF_TOKEN: "{{ hf_token }}"
   loop: "{{ streamweaver_models }}"
   when: llm_enabled | default(true) and ansible_nas_hostname == "streamweaver"
 
