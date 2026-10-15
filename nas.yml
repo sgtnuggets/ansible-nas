@@ -257,6 +257,11 @@
     - role: lidarr
       tags:
         - lidarr
+ 
+    - role: llm
+      tags:
+        - llm
+
     # - role: mealie
     #   tags:
     #     - mealie

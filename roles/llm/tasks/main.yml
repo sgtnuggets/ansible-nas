@@ -1,0 +1,22 @@
+---
+- name: Create llm Configuration Directory
+  ansible.builtin.file:
+    path: "{{ llm_config_directory }}"
+    state: directory
+
+- name: Deploy Stinker LLMs
+  ansible.builtin.command:
+    name: "{{ item.name }}"
+    cmd: docker model run {{ item.image_name }}:{{ item.image_version }} --backend llama.cpp
+  loop: "{{ stinker_models }}"
+  when: llm_enabled | default(true) && {{ ansible_nas_hostname }} == "stinker"
+
+- name: Deploy streamweaver LLMs
+  ansible.builtin.command:
+    name: "{{ item.name }}"
+    cmd: docker model run {{ item.image_name }}:{{ item.image_version }} --backend llama.cpp
+  loop: "{{ streamweaver_models }}"
+  when: llm_enabled | default(true) && {{ ansible_nas_hostname }} == "streamweaver"
+
+
+

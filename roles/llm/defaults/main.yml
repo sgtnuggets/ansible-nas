@@ -1,0 +1,18 @@
+llm_enabled: false
+llm_config_directory: "{{ docker_home }}/llm"
+
+stinker_models:
+  - name: "Gemma 2B"
+    image_name: "gemma2b/gemma2b"
+    image_version: "latest"
+    container_name: "gemma2b"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
+
+streamweaver_models:
+  - name: "Gemma 2B"
+    image_name: "gemma2b/gemma2b"
+    image_version: "latest"
+    container_name: "gemma2b"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
