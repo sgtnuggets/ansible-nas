@@ -1,5 +1,7 @@
 llm_enabled: false
 llm_config_directory: "{{ docker_home }}/llm"
+open_webui_config_directory: "{{ docker_home }}/open-webui"
+open_webui_port: "6969"
 
 stinker_models:
   - name: "Gemma 2B"
@@ -18,6 +20,6 @@ streamweaver_models:
 
   - name: "hf.co/acon96/Home-FunctionGemma-270m"
     image_name: "hf.co/acon96/Home-FunctionGemma-270m"
-    image_version: "Q8_0"
+    image_version: "Q4_K_M"
     env:
       TZ: "{{ ansible_nas_timezone }}"

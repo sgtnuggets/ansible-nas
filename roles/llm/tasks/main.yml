@@ -29,3 +29,34 @@
 
 
 
+- name: Open WebUI
+  block:
+    - name: Create Open WebUI Configuration Directory
+      ansible.builtin.file:
+        path: "{{ open_webui_config_directory }}"
+        state: directory
+
+    - name: Deploy Open WebUI Docker Container
+      community.docker.docker_container:
+        name: "open-webui"
+        image: "ghcr.io/open-webui/open-webui:main"
+        pull: true
+        volumes:
+          - "{{ open_webui_config_directory }}:/app/backend/data"
+          # - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
+        ports:
+          - "{{ open_webui_port }}:3001"
+        etc_hosts:
+          - "host.docker.internal:host-gateway"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+        restart_policy: always
+  when: open_webui_enabled | default(true)
+
+- name: Stop Open WebUI
+  block:
+    - name: Remove Open WebUI Docker Container
+      community.docker.docker_container:
+        name: "open-webui"
+        state: absent
+  when: open_webui_enabled is defined and not open_webui_enabled
