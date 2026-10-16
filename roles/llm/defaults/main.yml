@@ -12,11 +12,11 @@ stinker_models:
       TZ: "{{ ansible_nas_timezone }}"
 
 streamweaver_models:
-  # - name: "Gemma 2B"
-  #   image_name: "gemma2b/gemma2b"
-  #   image_version: "latest"
-  #   env:
-  #     TZ: "{{ ansible_nas_timezone }}"
+  - name: "embeddinggemma-2-GGUF"
+    image_name: "unsloth/embeddinggemma-2-GGUF"
+    image_version: "Q8_0"
+    env:
+      TZ: "{{ ansible_nas_timezone }}"
 
   - name: "hf.co/acon96/Home-FunctionGemma-270m"
     image_name: "hf.co/acon96/Home-FunctionGemma-270m"
