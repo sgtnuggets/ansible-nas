@@ -18,8 +18,8 @@ streamweaver_models:
     env:
       TZ: "{{ ansible_nas_timezone }}"
 
-  - name: "hf.co/acon96/Home-FunctionGemma-270m"
-    image_name: "hf.co/acon96/Home-FunctionGemma-270m"
-    image_version: "Q4_K_M"
-    env:
-      TZ: "{{ ansible_nas_timezone }}"
+  # - name: "hf.co/acon96/Home-FunctionGemma-270m"
+  #   image_name: "hf.co/acon96/Home-FunctionGemma-270m"
+  #   image_version: "Q4_K_M"
+  #   env:
+  #     TZ: "{{ ansible_nas_timezone }}"
