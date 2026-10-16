@@ -12,8 +12,8 @@ stinker_models:
       TZ: "{{ ansible_nas_timezone }}"
 
 streamweaver_models:
-  - name: "embeddinggemma-2-GGUF"
-    image_name: "unsloth/embeddinggemma-2-GGUF"
+  - name: "hf.co/embeddinggemma-2-GGUF"
+    image_name: "hf.co/unsloth/embeddinggemma-2-GGUF"
     image_version: "Q8_0"
     env:
       TZ: "{{ ansible_nas_timezone }}"
