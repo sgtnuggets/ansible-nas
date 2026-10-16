@@ -13,7 +13,7 @@
 
 - name: Deploy Stinker LLMs
   ansible.builtin.command:
-    cmd: "docker model run {{ item.image_name }}:{{ item.image_version }}"
+    cmd: "docker model run -d  {{ item.image_name }}:{{ item.image_version }}"
   environment:
     HF_TOKEN: "{{ hf_token }}"
   loop: "{{ stinker_models }}"
@@ -21,7 +21,7 @@
 
 - name: Deploy Streamweaver LLMs
   ansible.builtin.command:
-    cmd: "docker model run {{ item.image_name }}:{{ item.image_version }}"
+    cmd: "docker model run -d {{ item.image_name }}:{{ item.image_version }}"
   environment:
     HF_TOKEN: "{{ hf_token }}"
   loop: "{{ streamweaver_models }}"
