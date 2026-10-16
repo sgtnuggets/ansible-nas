@@ -51,9 +51,11 @@
     state: present
   register: result
   until: result is succeeded
+  when: architecture == "x86_64"
 
 - name: Install llama.cpp
   community.general.snap:
     name: llama-cpp
   register: result
   until: result is succeeded
+  when: architecture == "x86_64"

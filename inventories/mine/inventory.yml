@@ -15,6 +15,7 @@ all:
           host_ip: "192.168.1.2"
           wireguard_tcp_port: 51820
           wireguard_udp_port: 51821
+          architecture: "arm64"
         streamweaver:
           ansible_connection: local
           ansible_host: streamweaver
@@ -23,6 +24,7 @@ all:
           # ansible_ssh_private_key_file: ~/.ssh/id_rsa
           # ansible_become: true
           host_ip: "192.168.1.5"
+          architecture: "x86_64"
           plex_devices:
             - "/dev/dri:/dev/dri"
         # nuc0:
@@ -42,5 +44,6 @@ all:
           host_ip: "192.168.1.7"
           wireguard_tcp_port: 51830
           wireguard_udp_port: 51831
+          architecture: "x86_64"
           plex_devices:
             - "/dev/dri:/dev/dri"
