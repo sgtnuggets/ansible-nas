@@ -45,11 +45,13 @@
           - "{{ open_webui_config_directory }}:/app/backend/data"
           # - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
         ports:
-          - "{{ open_webui_port }}:3001"
+          - "{{ open_webui_port }}:8080"
         etc_hosts:
           host.docker.internal: "host-gateway"
         env:
           TZ: "{{ ansible_nas_timezone }}"
+          HF_TOKEN: "{{ hf_token }}"
+
         restart_policy: always
   when: open_webui_enabled | default(true)
 
