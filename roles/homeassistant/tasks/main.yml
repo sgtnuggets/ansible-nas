@@ -70,15 +70,15 @@
         restart_policy: unless-stopped
         env:
           TZ: "{{ ansible_nas_timezone }}"
-          BYPASS: 1
+          BYPASS: "1"
           MQTT_SERVICE: true
           MQTT_HOST: stinker
-          MQTT_PORT: 1883
+          MQTT_PORT: "1883"
           # MQTT_USERNAME: <user>
           # MQTT_PASSWORD: <password>
           MQTT_RAW_USAGE: true
           LOG_LEVEL: info
-          POLLING_RATE: 3600
+          POLLING_RATE: "3600"
 
 
     - name: Create Wyoming directories
