@@ -302,9 +302,9 @@
       tags:
         - droppedneedle
 
-    # - role: mosquitto
-    #   tags:
-    #     - mosquitto
+    - role: mosquitto
+      tags:
+        - mosquitto
 
     # - role: mumble
     #   tags:
