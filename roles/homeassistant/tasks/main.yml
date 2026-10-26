@@ -43,6 +43,7 @@
           traefik.http.services.homeassistant-ws.loadbalancer.server.port: "8123"
           traefik.http.middlewares.homeassistant-ipwhitelist.ipallowlist.sourcerange: "{{ traefik_ip_whitelist }}"
         memory: "{{ homeassistant_memory }}"
+
     - name: Music Assistant Docker Container
       community.docker.docker_container:
         name: "music-assistant-server"
@@ -56,6 +57,29 @@
         env:
           TZ: "{{ ansible_nas_timezone }}"
           LOG_LEVEL: info
+
+    - name: hassio-xfinity-usage Docker Container
+      community.docker.docker_container:
+        name: "hassio-xfinity-usage"
+        image: "ghcr.io/thor0215/hassio-xfinity-usage:latest"
+        pull: true
+        volumes:
+          - "{{ docker_home }}/hassio-xfinity-usage/:/config/"
+        # network_mode: host
+        # memory: 1g
+        restart_policy: unless-stopped
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+          BYPASS: 1
+          MQTT_SERVICE: true
+          MQTT_HOST: stinker
+          MQTT_PORT: 1883
+          MQTT_USERNAME: <user>
+          MQTT_PASSWORD: <password>
+          MQTT_RAW_USAGE: true
+          LOG_LEVEL: info
+          POLLING_RATE: 3600
+
 
     - name: Create Wyoming directories
       ansible.builtin.file:
