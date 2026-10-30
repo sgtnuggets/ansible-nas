@@ -58,35 +58,6 @@
           TZ: "{{ ansible_nas_timezone }}"
           LOG_LEVEL: info
 
-    # - name: Klar Docker Container
-    #   community.docker.docker_container:
-    #     name: "Klar NLU"
-    #     image: "ghcr.io/music-assistant/server:latest"
-    #     pull: true
-    #     volumes:
-    #       - "{{ docker_home }}/music-assistant-server/data:/data/"
-    #       - /mnt/storage/music:/media:ro
-    #     network_mode: host
-    #     restart_policy: unless-stopped
-    #     env:
-    #       TZ: "{{ ansible_nas_timezone }}"
-    #       LOG_LEVEL: info
-
-    - name: Sophia Docker Container
-      community.docker.docker_container:
-        name: "Sophia NLU"
-        image: "sophia:latest"
-        pull: true
-        volumes:
-          - "{{ homeassistant_data_directory }}/config:/config:ro"
-          - "{{ docker_home }}/sophia/data:/data:rw"
-        ports:
-          - "10520:10520"
-        # network_mode: host
-        restart_policy: unless-stopped
-        env:
-          TZ: "{{ ansible_nas_timezone }}"
-
     - name: Create Wyoming directories
       ansible.builtin.file:
         path: "{{ item }}"
