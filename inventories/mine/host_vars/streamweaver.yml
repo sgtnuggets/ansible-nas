@@ -92,6 +92,7 @@ speedtest_enabled: false
 stats_master: true
 stats_internet_speed_test_enabled: false
 stats_pihole_exporter_enabled: true
+stats_scraparr_exporter_enabled: true
 stats_snmp_exporter_enabled: false
 minio_enabled: false
 logging_stack_enabled: false

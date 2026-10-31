@@ -54,6 +54,18 @@
         restart_policy: unless-stopped
       when: stats_pihole_exporter_enabled
 
+    - name: Scraparr Exporter Docker Container
+      community.docker.docker_container:
+        name: "scraparr_exporter"
+        image: "ghcr.io/thecfu/scraparr:latest"
+        pull: true
+        ports:
+          - "7100:7100"
+        volumes:
+          - "{{ docker_home }}/stats/scraparr/config.yaml:/scraparr/config/config.yaml:ro"
+        restart_policy: unless-stopped
+      when: stats_scraparr_exporter_enabled
+
   when: stats_enabled is true
 
 - name: Stop Exporters

@@ -136,3 +136,8 @@ scrape_configs:
     static_configs:
       - targets:
         - "{{ hostvars['streamweaver']['host_ip'] }}:9617"
+
+  - job_name: 'scraparr'
+    static_configs:
+      - targets:
+        - "{{ hostvars['streamweaver']['host_ip'] }}:7100"
