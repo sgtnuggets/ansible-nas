@@ -1,0 +1,47 @@
+---
+- name: Start Seerrr
+  block:
+    - name: Create Seerrr Directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+      with_items:
+        - "{{ seerrr_data_directory }}"
+        - "{{ seerrr_data_directory }}/config"
+
+    - name: Seerrr
+      community.docker.docker_container:
+        name: "{{ seerrr_container_name }}"
+        image: "{{ seerrr_image_name }}:{{ seerrr_image_version }}"
+        pull: true
+        volumes:
+          - "{{ seerrr_data_directory }}/config:/app/config:rw"
+          - "{{ docker_home }}/containerhosts/hosts:/etc/hosts:ro"
+        ports:
+          - "{{ seerrr_webui_port }}:5055"
+        env:
+          TZ: "{{ ansible_nas_timezone }}"
+          PORT: "{{ seerrr_webui_port }}"
+          # PUID: "{{ seerrr_user_id }}"
+          # PGID: "{{ seerrr_group_id }}"
+        restart_policy: unless-stopped
+        # memory: "{{ seerrr_memory }}"
+        dns_servers:
+          - "192.168.1.2"
+          - "192.168.1.1"
+        labels:
+          traefik.enable: "{{ seerrr_available_externally | string }}"
+          traefik.http.routers.seerrr.rule: "Host(`{{ seerrr_hostname }}.{{ ansible_nas_domain }}`)"
+          traefik.http.routers.seerrr.tls.certresolver: "letsencrypt"
+          traefik.http.routers.seerrr.tls.domains[0].main: "{{ ansible_nas_domain }}"
+          traefik.http.routers.seerrr.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+          traefik.http.services.seerrr.loadbalancer.server.port: "5055"
+  when: seerrr_enabled is true
+
+- name: Stop Seerrr
+  block:
+    - name: Stop Seerrr
+      community.docker.docker_container:
+        name: "{{ seerrr_container_name }}"
+        state: absent
+  when: seerrr_enabled is false

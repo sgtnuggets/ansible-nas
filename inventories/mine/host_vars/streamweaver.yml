@@ -53,7 +53,8 @@ local_dns:
 ## Misc applications
 portainer_enabled: true
 duplicati_enabled: true
-overseerr_enabled: true
+overseerr_enabled: false
+seerr_enabled: true
 transmission_with_openvpn_enabled: true
 radarr_enabled: true
 sabnzbd_enabled: true

@@ -430,6 +430,10 @@
       tags:
         - sabnzbd
 
+    - role: seerr
+      tags:
+        - seerr
+
     # - role: sickchill
     #   tags:
     #     - sickchill
