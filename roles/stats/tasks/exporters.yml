@@ -62,7 +62,7 @@
         ports:
           - "7100:7100"
         volumes:
-          - "{{ docker_home }}/stats/scraparr/config.yaml:/scraparr/config/config.yaml:ro"
+          - "{{ docker_home }}/stats/scraparr/config.yaml:/app/src/scraparr/config/config.yaml:ro"
         restart_policy: unless-stopped
       when: stats_scraparr_exporter_enabled
 
