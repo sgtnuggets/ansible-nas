@@ -88,7 +88,7 @@
           - "{{ wyoming_whisper_port }}:10300"
         volumes:
           - "{{ wyoming_whisper_data_directory }}:/data:rw"
-        command: "--model {{ wyoming_whisper_model }} --language {{ wyoming_whisper_language }} --WYO_WHISPER_HASS_API {{ wyoming_whisper_hass_api }} --WYO_WHISPER_HASS_TOKEN {{ wyoming_whisper_hass_token }}"
+        command: "--model {{ wyoming_whisper_model }} --language {{ wyoming_whisper_language }} --hass-api {{ wyoming_whisper_hass_api }} --hass-token {{ wyoming_whisper_hass_token }}"
         restart_policy: unless-stopped
 
     - name: Wyoming OpenWakeWord Docker Container
