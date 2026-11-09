@@ -32,6 +32,8 @@ wyoming_whisper_port: "10300"
 wyoming_whisper_data_directory: "{{ docker_home }}/wyoming/whisper-data"
 wyoming_whisper_model: "tiny-int8"
 wyoming_whisper_language: "en"
+wyoming_whisper_hass_api: "http://stinker:8123/api"
+wyoming_whisper_hass_token: "{{ hass_token_wyoming }}"
 
 wyoming_openwakeword_container_name: "wyoming-openwakeword"
 wyoming_openwakeword_image: "rhasspy/wyoming-openwakeword:latest"

@@ -55,6 +55,8 @@ on:
         required: false
       HF_TOKEN:
         required: false
+      HASS_TOKEN_WYOMING:
+        required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -92,6 +94,7 @@ jobs:
       FIREFLY_API_KEY: ${{ secrets.FIREFLY_API_KEY }}
       FIREFLY_III_ACCESS_TOKEN: ${{ secrets.FIREFLY_III_ACCESS_TOKEN }}
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      HASS_TOKEN_WYOMING: ${{ secrets.HASS_TOKEN_WYOMING }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -126,4 +129,5 @@ jobs:
           mariadb_root_password=$MARIADB_ROOT_PASSWORD \
           firefly_api_key=$FIREFLY_API_KEY \
           firefly_iii_access_token=$FIREFLY_III_ACCESS_TOKEN \
-          hf_token=$HF_TOKEN"
+          hf_token=$HF_TOKEN \
+          hass_token_wyoming=$HASS_TOKEN_WYOMING"
