@@ -91,17 +91,17 @@
         command: "--model {{ wyoming_whisper_model }} --language {{ wyoming_whisper_language }} --hass-api {{ wyoming_whisper_hass_api }} --hass-token {{ wyoming_whisper_hass_token }}"
         restart_policy: unless-stopped
 
-    - name: Wyoming OpenWakeWord Docker Container
-      community.docker.docker_container:
-        name: "{{ wyoming_openwakeword_container_name }}"
-        image: "{{ wyoming_openwakeword_image }}"
-        pull: true
-        ports:
-          - "{{ wyoming_openwakeword_port }}:10400"
-        volumes:
-          - "{{ wyoming_openwakeword_data_directory }}:/data:rw"
-        command: "--preload-model {{ wyoming_openwakeword_model }}"
-        restart_policy: unless-stopped
+    # - name: Wyoming OpenWakeWord Docker Container
+    #   community.docker.docker_container:
+    #     name: "{{ wyoming_openwakeword_container_name }}"
+    #     image: "{{ wyoming_openwakeword_image }}"
+    #     pull: true
+    #     ports:
+    #       - "{{ wyoming_openwakeword_port }}:10400"
+    #     volumes:
+    #       - "{{ wyoming_openwakeword_data_directory }}:/data:rw"
+    #     command: "--preload-model {{ wyoming_openwakeword_model }}"
+    #     restart_policy: unless-stopped
 
   when: homeassistant_enabled is true
 
