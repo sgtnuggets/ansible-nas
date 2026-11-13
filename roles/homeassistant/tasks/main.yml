@@ -52,6 +52,7 @@
         volumes:
           - "{{ docker_home }}/music-assistant-server/data:/data/"
           - /mnt/storage/music:/media:ro
+        memory: "1g"
         network_mode: host
         restart_policy: unless-stopped
         env:
